@@ -1,36 +1,311 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Brew & Bloom
 
-## Getting Started
+Brew & Bloom — учебный full-stack проект кофейни.
 
-First, run the development server:
+В будущем сайт будет включать меню, события, бронирование столика, заказы, личный кабинет и административную панель.
+
+## Цель проекта
+
+Проект создаётся как практическое учебное приложение. Главная цель — не просто получить готовый сайт, а понять, как взаимодействуют frontend, backend, база данных и авторизация.
+
+В процессе мы изучаем:
+
+- Next.js и App Router;
+- TypeScript;
+- Tailwind CSS;
+- SCSS;
+- PostgreSQL;
+- Prisma;
+- Auth.js;
+- мультиязычность через next-intl;
+- адаптивную вёрстку;
+- Server Components и Client Components;
+- формы и работу с данными.
+
+## Используемый стек
+
+### Next.js
+
+Next.js используется как основа проекта. Он отвечает за страницы, маршрутизацию, layout, Server Components, Client Components и серверную обработку данных.
+
+### TypeScript
+
+TypeScript добавляет типизацию JavaScript-коду. Типы помогают заранее находить ошибки, описывать props компонентов и безопасно работать с данными приложения.
+
+### Tailwind CSS
+
+Tailwind CSS используется для создания интерфейса с помощью utility-классов. Через Tailwind задаются размеры, отступы, цвета, flex, grid, типографика, адаптивность и состояния hover/focus.
+
+### SCSS
+
+SCSS используется для глобальных стилей, переменных и стилей отдельных компонентов.
+
+Общие переменные проекта находятся в:
+
+```text
+src/components/styles/_variables.scss
+```
+
+### next-intl
+
+`next-intl` отвечает за мультиязычность проекта.
+
+Доступные локали:
+
+- `ru` — русский язык;
+- `en` — английский язык.
+
+Русский язык используется по умолчанию.
+
+Примеры адресов:
+
+```text
+/ru
+/en
+/ru/menu
+/en/menu
+```
+
+### PostgreSQL
+
+PostgreSQL будет использоваться как основная база данных. В ней будут храниться пользователи, товары, категории, заказы, бронирования, события, избранные товары и бонусы.
+
+### Prisma
+
+Prisma будет использоваться как прослойка между Next.js и PostgreSQL. С помощью Prisma мы будем описывать модели, создавать миграции и выполнять запросы к базе данных.
+
+### Auth.js
+
+Auth.js будет использоваться для регистрации, входа, сессий, защищённых страниц и ролей пользователей.
+
+Планируемые роли:
+
+- `CUSTOMER` — обычный пользователь;
+- `ADMIN` — администратор.
+
+## Запуск проекта
+
+Перед первым запуском нужно установить зависимости:
+
+```bash
+npm install
+```
+
+Команда `npm install` читает `package.json`, устанавливает необходимые пакеты и создаёт папку `node_modules`.
+
+Запуск сервера разработки:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+После запуска открыть:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Проверка ESLint:
 
-## Learn More
+```bash
+npm run lint
+```
 
-To learn more about Next.js, take a look at the following resources:
+Создание production-сборки:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Запуск production-версии:
 
-## Deploy on Vercel
+```bash
+npm run start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Структура проекта
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```text
+src/
+├── app/
+│   ├── [locale]/
+│   │   └── page.tsx
+│   ├── data/
+│   │   └── products/
+│   ├── globals.scss
+│   └── layout.tsx
+│
+├── components/
+│   ├── common/
+│   │   └── Container/
+│   │       ├── Container.tsx
+│   │       ├── Container.module.scss
+│   │       └── index.ts
+│   ├── styles/
+│   │   └── _variables.scss
+│   └── UI/
+│       └── Header/
+│           ├── Header.tsx
+│           ├── MobileMenu.tsx
+│           ├── NavLinks.tsx
+│           ├── SearchButton.tsx
+│           └── index.ts
+│
+├── i18n/
+│   ├── request.ts
+│   └── routing.ts
+├── messages/
+│   ├── ru.json
+│   └── en.json
+└── middleware.ts
+```
+
+## Основные компоненты
+
+### Container
+
+`Container` — общий контейнер страницы. Он задаёт максимальную ширину, центрирует содержимое и добавляет боковые отступы.
+
+### Header
+
+`Header` содержит логотип, навигацию, поиск, избранное, профиль и переключатель языка. На небольших экранах навигация заменяется бургер-меню.
+
+### Client Components
+
+`MobileMenu` и `SearchButton` являются Client Components, потому что используют React-состояние через `useState`.
+
+Остальная часть Header может оставаться Server Component, потому что получает переводы на сервере и не требует состояния браузера.
+
+## Локализация
+
+Переводы находятся в папке:
+
+```text
+src/messages/
+```
+
+Русские переводы находятся в `ru.json`, английские — в `en.json`.
+
+Для получения переводов используется namespace:
+
+```ts
+const t = await getTranslations('nav');
+```
+
+После этого `t('home')` возвращает перевод ключа `home` для текущего языка.
+
+## План базы данных
+
+Основные модели PostgreSQL и Prisma:
+
+- `User` — пользователь;
+- `Product` — товар;
+- `Category` — категория товара;
+- `Order` — заказ;
+- `OrderItem` — отдельная позиция заказа;
+- `Booking` — бронирование столика;
+- `Event` — событие;
+- `Favorite` — избранный товар.
+
+Один пользователь сможет иметь несколько заказов, бронирований и избранных товаров.
+
+## Безопасность
+
+Обычные пароли нельзя хранить в базе данных.
+
+В будущем будут использоваться:
+
+- хеширование паролей через bcrypt или аналогичный алгоритм;
+- серверная проверка данных;
+- cookies и сессии;
+- проверка ролей;
+- защита административной панели.
+
+Данным от клиента нельзя полностью доверять. Важные проверки должны выполняться на сервере.
+
+## Планируемые страницы
+
+### Публичная часть
+
+- Главная;
+- Меню;
+- Карточка товара;
+- О нас;
+- События;
+- Контакты;
+- Бронирование столика.
+
+### Пользовательская часть
+
+- Регистрация;
+- Вход;
+- Выход;
+- Восстановление пароля;
+- Личный кабинет;
+- Профиль;
+- История заказов;
+- Избранное;
+- Бонусы.
+
+### Магазин
+
+- Каталог;
+- Корзина;
+- Checkout;
+- Создание заказа.
+
+### Административная панель
+
+- `/admin`;
+- Dashboard;
+- товары;
+- категории;
+- заказы;
+- пользователи;
+- события;
+- бронирования;
+- промокоды;
+- аналитика.
+
+## Текущий статус
+
+- Создан проект на Next.js с TypeScript.
+- Подключены Tailwind CSS и SCSS.
+- Подключены шрифты проекта.
+- Настроены локали `ru` и `en`.
+- Русский язык установлен по умолчанию.
+- Создан общий компонент `Container`.
+- Создан адаптивный Header.
+- Добавлены логотип и навигация.
+- Добавлено мобильное бургер-меню.
+- Добавлены иконки поиска, избранного и профиля.
+- Добавлен переключатель языка.
+- Добавлен интерфейс поиска.
+- Добавлена защита от переполнения длинного контента.
+- ESLint, TypeScript и production-сборка проходят успешно.
+
+## Ближайшие задачи
+
+1. Исправить оставшиеся глобальные CSS-переменные.
+2. Создать главную страницу.
+3. Добавить секции Hero, «Наши хиты» и «Атмосфера».
+4. Создать страницу меню.
+5. Подключить карточки товаров.
+6. Подключить PostgreSQL.
+7. Создать первую Prisma-модель.
+8. Реализовать регистрацию и авторизацию.
+9. Создать корзину и оформление заказа.
+10. Создать административную панель.
+
+## Принцип разработки
+
+Проект разрабатывается маленькими шагами.
+
+Перед использованием новой технологии сначала разбираем:
+
+- зачем она нужна;
+- какую проблему решает;
+- где она будет использоваться;
+- как взаимодействует с остальными частями проекта.
+
+После каждого шага проверяем работу приложения, ошибки, адаптивность и понимание добавленного кода.
