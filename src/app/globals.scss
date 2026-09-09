@@ -1,0 +1,25 @@
+@use '@/components/styles/variables' as *;
+@import 'tailwindcss';
+
+:root {
+	--background: #{$color-background};
+	--foreground: #{$color-text};
+}
+
+body {
+	background: var(--background);
+	color: var(--foreground);
+	font-family: var(--font-body), sans-serif;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
