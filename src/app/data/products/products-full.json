@@ -1,0 +1,2337 @@
+[
+  {
+    "name": "Эспрессо",
+    "slug": "espresso",
+    "price": 150,
+    "currency": "RUB",
+    "description": "Насыщенный кофе с плотным телом, ярким ароматом и бархатистой крема.",
+    "ingredients": [
+      "эспрессо"
+    ],
+    "volumeMl": [
+      40
+    ],
+    "allergens": [],
+    "category": "Кофе",
+    "categoryKey": "coffee",
+    "image": "/images/products/coffee/espresso.jpg",
+    "isAvailable": true,
+    "stockQuantity": 48
+  },
+  {
+    "name": "Американо",
+    "slug": "amerikano",
+    "price": 180,
+    "currency": "RUB",
+    "description": "Классический эспрессо с горячей водой — мягкий, сбалансированный и ароматный.",
+    "ingredients": [
+      "эспрессо",
+      "вода"
+    ],
+    "volumeMl": [
+      250,
+      350
+    ],
+    "allergens": [],
+    "category": "Кофе",
+    "categoryKey": "coffee",
+    "image": "/images/products/coffee/amerikano.jpg",
+    "isAvailable": true,
+    "stockQuantity": 15
+  },
+  {
+    "name": "Капучино",
+    "slug": "kapucino",
+    "price": 250,
+    "currency": "RUB",
+    "description": "Эспрессо, тёплое молоко и воздушная микропена в гармоничном балансе.",
+    "ingredients": [
+      "эспрессо",
+      "молоко"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [
+      "молоко"
+    ],
+    "category": "Кофе",
+    "categoryKey": "coffee",
+    "image": "/images/products/coffee/kapucino.jpg",
+    "isAvailable": true,
+    "stockQuantity": 9
+  },
+  {
+    "name": "Латте",
+    "slug": "latte",
+    "price": 260,
+    "currency": "RUB",
+    "description": "Латте — мягкий молочный кофе с выразительным ароматом и нежной кремовой текстурой.",
+    "ingredients": [
+      "эспрессо",
+      "молоко"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [
+      "молоко"
+    ],
+    "category": "Кофе",
+    "categoryKey": "coffee",
+    "image": "/images/products/coffee/latte.jpg",
+    "isAvailable": true,
+    "stockQuantity": 25
+  },
+  {
+    "name": "Раф Классический",
+    "slug": "raf-klassiceskij",
+    "price": 320,
+    "currency": "RUB",
+    "description": "Сливочный кофейный напиток на основе эспрессо с нежной, бархатистой текстурой.",
+    "ingredients": [
+      "эспрессо",
+      "молоко"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [
+      "молоко"
+    ],
+    "category": "Кофе",
+    "categoryKey": "coffee",
+    "image": "/images/products/coffee/raf-klassiceskij.jpg",
+    "isAvailable": true,
+    "stockQuantity": 23
+  },
+  {
+    "name": "Флэт Уайт",
+    "slug": "flet-uajt",
+    "price": 270,
+    "currency": "RUB",
+    "description": "Флэт Уайт — авторская кофейная классика Brew & Bloom с мягким и сбалансированным вкусом.",
+    "ingredients": [
+      "эспрессо",
+      "молоко"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [
+      "молоко"
+    ],
+    "category": "Кофе",
+    "categoryKey": "coffee",
+    "image": "/images/products/coffee/flet-uajt.jpg",
+    "isAvailable": true,
+    "stockQuantity": 22
+  },
+  {
+    "name": "Мокко",
+    "slug": "mokko",
+    "price": 310,
+    "currency": "RUB",
+    "description": "Эспрессо, шоколад и молоко — насыщенный кофейно-десертный вкус.",
+    "ingredients": [
+      "эспрессо",
+      "молоко",
+      "шоколад"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [
+      "молоко"
+    ],
+    "category": "Кофе",
+    "categoryKey": "coffee",
+    "image": "/images/products/coffee/mokko.jpg",
+    "isAvailable": true,
+    "stockQuantity": 16
+  },
+  {
+    "name": "Айс Латте",
+    "slug": "ajs-latte",
+    "price": 280,
+    "currency": "RUB",
+    "description": "Айс Латте — мягкий молочный кофе с выразительным ароматом и нежной кремовой текстурой.",
+    "ingredients": [
+      "эспрессо",
+      "молоко"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [
+      "молоко"
+    ],
+    "category": "Кофе",
+    "categoryKey": "coffee",
+    "image": "/images/products/coffee/ajs-latte.jpg",
+    "isAvailable": true,
+    "stockQuantity": 14
+  },
+  {
+    "name": "Карамельный Макиато",
+    "slug": "karamel-nyj-makiato",
+    "price": 300,
+    "currency": "RUB",
+    "description": "Карамельный Макиато — мягкий молочный кофе с выразительным ароматом и нежной кремовой текстурой.",
+    "ingredients": [
+      "эспрессо",
+      "молоко",
+      "карамельный соус"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [
+      "молоко"
+    ],
+    "category": "Кофе",
+    "categoryKey": "coffee",
+    "image": "/images/products/coffee/karamel-nyj-makiato.jpg",
+    "isAvailable": true,
+    "stockQuantity": 42
+  },
+  {
+    "name": "Ванильный Латте",
+    "slug": "vanil-nyj-latte",
+    "price": 290,
+    "currency": "RUB",
+    "description": "Ванильный Латте — мягкий молочный кофе с выразительным ароматом и нежной кремовой текстурой.",
+    "ingredients": [
+      "эспрессо",
+      "молоко",
+      "ванильный сироп"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [
+      "молоко"
+    ],
+    "category": "Кофе",
+    "categoryKey": "coffee",
+    "image": "/images/products/coffee/vanil-nyj-latte.jpg",
+    "isAvailable": true,
+    "stockQuantity": 13
+  },
+  {
+    "name": "Ореховый Раф",
+    "slug": "orehovyj-raf",
+    "price": 340,
+    "currency": "RUB",
+    "description": "Сливочный кофейный напиток на основе эспрессо с нежной, бархатистой текстурой.",
+    "ingredients": [
+      "эспрессо",
+      "молоко",
+      "ореховый сироп"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [
+      "молоко",
+      "орехи"
+    ],
+    "category": "Кофе",
+    "categoryKey": "coffee",
+    "image": "/images/products/coffee/orehovyj-raf.jpg",
+    "isAvailable": true,
+    "stockQuantity": 45
+  },
+  {
+    "name": "Аффогато",
+    "slug": "affogato",
+    "price": 330,
+    "currency": "RUB",
+    "description": "Горячий эспрессо с шариком сливочного мороженого — кофе и десерт в одной чашке.",
+    "ingredients": [
+      "эспрессо",
+      "сливочное мороженое"
+    ],
+    "volumeMl": [
+      120
+    ],
+    "allergens": [
+      "молоко"
+    ],
+    "category": "Кофе",
+    "categoryKey": "coffee",
+    "image": "/images/products/coffee/affogato.jpg",
+    "isAvailable": true,
+    "stockQuantity": 35
+  },
+  {
+    "name": "Кофе по-венски",
+    "slug": "kofe-po-venski",
+    "price": 300,
+    "currency": "RUB",
+    "description": "Кофе по-венски — авторская кофейная классика Brew & Bloom с мягким и сбалансированным вкусом.",
+    "ingredients": [
+      "эспрессо",
+      "молоко"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [
+      "молоко"
+    ],
+    "category": "Кофе",
+    "categoryKey": "coffee",
+    "image": "/images/products/coffee/kofe-po-venski.jpg",
+    "isAvailable": true,
+    "stockQuantity": 10
+  },
+  {
+    "name": "Ледяной Брю",
+    "slug": "ledanoj-bru",
+    "price": 280,
+    "currency": "RUB",
+    "description": "Холодное заваривание с чистым кофейным вкусом, мягкой кислотностью и льдом.",
+    "ingredients": [
+      "кофе холодного заваривания",
+      "вода",
+      "лёд"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [],
+    "category": "Кофе",
+    "categoryKey": "coffee",
+    "image": "/images/products/coffee/ledanoj-bru.jpg",
+    "isAvailable": true,
+    "stockQuantity": 9
+  },
+  {
+    "name": "Цитрусовый Бамбл",
+    "slug": "citrusovyj-bambl",
+    "price": 320,
+    "currency": "RUB",
+    "description": "Яркое сочетание эспрессо и цитруса со льдом — свежо, бодро и необычно.",
+    "ingredients": [
+      "эспрессо",
+      "апельсиновый сок",
+      "лёд"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [],
+    "category": "Кофе",
+    "categoryKey": "coffee",
+    "image": "/images/products/coffee/citrusovyj-bambl.jpg",
+    "isAvailable": true,
+    "stockQuantity": 13
+  },
+  {
+    "name": "Кокосовый Латте",
+    "slug": "kokosovyj-latte",
+    "price": 300,
+    "currency": "RUB",
+    "description": "Кокосовый Латте — мягкий молочный кофе с выразительным ароматом и нежной кремовой текстурой.",
+    "ingredients": [
+      "эспрессо",
+      "молоко",
+      "кокосовый сироп"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [
+      "молоко"
+    ],
+    "category": "Кофе",
+    "categoryKey": "coffee",
+    "image": "/images/products/coffee/kokosovyj-latte.jpg",
+    "isAvailable": true,
+    "stockQuantity": 21
+  },
+  {
+    "name": "Пряный Латте",
+    "slug": "pranyj-latte",
+    "price": 300,
+    "currency": "RUB",
+    "description": "Пряный Латте — мягкий молочный кофе с выразительным ароматом и нежной кремовой текстурой.",
+    "ingredients": [
+      "эспрессо",
+      "молоко",
+      "корица и специи"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [
+      "молоко"
+    ],
+    "category": "Кофе",
+    "categoryKey": "coffee",
+    "image": "/images/products/coffee/pranyj-latte.jpg",
+    "isAvailable": true,
+    "stockQuantity": 22
+  },
+  {
+    "name": "Медовый Латте",
+    "slug": "medovyj-latte",
+    "price": 310,
+    "currency": "RUB",
+    "description": "Медовый Латте — мягкий молочный кофе с выразительным ароматом и нежной кремовой текстурой.",
+    "ingredients": [
+      "эспрессо",
+      "молоко",
+      "мёд"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [
+      "молоко"
+    ],
+    "category": "Кофе",
+    "categoryKey": "coffee",
+    "image": "/images/products/coffee/medovyj-latte.jpg",
+    "isAvailable": true,
+    "stockQuantity": 40
+  },
+  {
+    "name": "Соленая Карамель Латте",
+    "slug": "solenaa-karamel-latte",
+    "price": 320,
+    "currency": "RUB",
+    "description": "Соленая Карамель Латте — мягкий молочный кофе с выразительным ароматом и нежной кремовой текстурой.",
+    "ingredients": [
+      "эспрессо",
+      "молоко",
+      "карамельный соус"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [
+      "молоко"
+    ],
+    "category": "Кофе",
+    "categoryKey": "coffee",
+    "image": "/images/products/coffee/solenaa-karamel-latte.jpg",
+    "isAvailable": true,
+    "stockQuantity": 46
+  },
+  {
+    "name": "Фисташковый Латте",
+    "slug": "fistaskovyj-latte",
+    "price": 340,
+    "currency": "RUB",
+    "description": "Фисташковый Латте — мягкий молочный кофе с выразительным ароматом и нежной кремовой текстурой.",
+    "ingredients": [
+      "эспрессо",
+      "молоко",
+      "фисташковый соус"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [
+      "молоко",
+      "орехи"
+    ],
+    "category": "Кофе",
+    "categoryKey": "coffee",
+    "image": "/images/products/coffee/fistaskovyj-latte.jpg",
+    "isAvailable": true,
+    "stockQuantity": 9
+  },
+  {
+    "name": "Матча Латте",
+    "slug": "matca-latte",
+    "price": 340,
+    "currency": "RUB",
+    "description": "Матча Латте — нежный напиток на основе японской матчи с мягкой кремовой текстурой.",
+    "ingredients": [
+      "матча",
+      "молоко"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [
+      "молоко"
+    ],
+    "category": "Авторские напитки",
+    "categoryKey": "signature",
+    "image": "/images/products/signature/matca-latte.jpg",
+    "isAvailable": true,
+    "stockQuantity": 43
+  },
+  {
+    "name": "Клубничная Матча",
+    "slug": "klubnicnaa-matca",
+    "price": 360,
+    "currency": "RUB",
+    "description": "Клубничная Матча — нежный напиток на основе японской матчи с мягкой кремовой текстурой.",
+    "ingredients": [
+      "матча",
+      "молоко",
+      "клубничное пюре"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [
+      "молоко"
+    ],
+    "category": "Авторские напитки",
+    "categoryKey": "signature",
+    "image": "/images/products/signature/klubnicnaa-matca.jpg",
+    "isAvailable": true,
+    "stockQuantity": 20
+  },
+  {
+    "name": "Лавандовый Латте",
+    "slug": "lavandovyj-latte",
+    "price": 340,
+    "currency": "RUB",
+    "description": "Лавандовый Латте — фирменный напиток Brew & Bloom с необычным сочетанием вкусов и мягким послевкусием.",
+    "ingredients": [
+      "эспрессо",
+      "молоко",
+      "авторский сироп"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [
+      "молоко"
+    ],
+    "category": "Авторские напитки",
+    "categoryKey": "signature",
+    "image": "/images/products/signature/lavandovyj-latte.jpg",
+    "isAvailable": true,
+    "stockQuantity": 49
+  },
+  {
+    "name": "Карамельный Бамбл",
+    "slug": "karamel-nyj-bambl",
+    "price": 360,
+    "currency": "RUB",
+    "description": "Карамельный Бамбл — фирменный напиток Brew & Bloom с необычным сочетанием вкусов и мягким послевкусием.",
+    "ingredients": [
+      "эспрессо",
+      "молоко",
+      "авторский сироп"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [],
+    "category": "Авторские напитки",
+    "categoryKey": "signature",
+    "image": "/images/products/signature/karamel-nyj-bambl.jpg",
+    "isAvailable": true,
+    "stockQuantity": 42
+  },
+  {
+    "name": "Цитрусовый Раф",
+    "slug": "citrusovyj-raf",
+    "price": 340,
+    "currency": "RUB",
+    "description": "Цитрусовый Раф — фирменный напиток Brew & Bloom с необычным сочетанием вкусов и мягким послевкусием.",
+    "ingredients": [
+      "эспрессо",
+      "молоко",
+      "авторский сироп"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [
+      "молоко"
+    ],
+    "category": "Авторские напитки",
+    "categoryKey": "signature",
+    "image": "/images/products/signature/citrusovyj-raf.jpg",
+    "isAvailable": true,
+    "stockQuantity": 34
+  },
+  {
+    "name": "Манговый Латте",
+    "slug": "mangovyj-latte",
+    "price": 340,
+    "currency": "RUB",
+    "description": "Манговый Латте — фирменный напиток Brew & Bloom с необычным сочетанием вкусов и мягким послевкусием.",
+    "ingredients": [
+      "эспрессо",
+      "молоко",
+      "авторский сироп"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [
+      "молоко"
+    ],
+    "category": "Авторские напитки",
+    "categoryKey": "signature",
+    "image": "/images/products/signature/mangovyj-latte.jpg",
+    "isAvailable": true,
+    "stockQuantity": 22
+  },
+  {
+    "name": "Ягодный Латте",
+    "slug": "agodnyj-latte",
+    "price": 360,
+    "currency": "RUB",
+    "description": "Ягодный Латте — фирменный напиток Brew & Bloom с необычным сочетанием вкусов и мягким послевкусием.",
+    "ingredients": [
+      "эспрессо",
+      "молоко",
+      "авторский сироп"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [
+      "молоко"
+    ],
+    "category": "Авторские напитки",
+    "categoryKey": "signature",
+    "image": "/images/products/signature/agodnyj-latte.jpg",
+    "isAvailable": true,
+    "stockQuantity": 36
+  },
+  {
+    "name": "Малиновый Айс Ти",
+    "slug": "malinovyj-ajs-ti",
+    "price": 320,
+    "currency": "RUB",
+    "description": "Малиновый Айс Ти — прохладный чайный напиток с фруктовыми нотами и освежающим послевкусием.",
+    "ingredients": [
+      "чай",
+      "фруктовое пюре",
+      "лёд"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [],
+    "category": "Авторские напитки",
+    "categoryKey": "signature",
+    "image": "/images/products/signature/malinovyj-ajs-ti.jpg",
+    "isAvailable": true,
+    "stockQuantity": 45
+  },
+  {
+    "name": "Персиковый Айс Ти",
+    "slug": "persikovyj-ajs-ti",
+    "price": 320,
+    "currency": "RUB",
+    "description": "Персиковый Айс Ти — прохладный чайный напиток с фруктовыми нотами и освежающим послевкусием.",
+    "ingredients": [
+      "чай",
+      "фруктовое пюре",
+      "лёд"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [],
+    "category": "Авторские напитки",
+    "categoryKey": "signature",
+    "image": "/images/products/signature/persikovyj-ajs-ti.jpg",
+    "isAvailable": true,
+    "stockQuantity": 25
+  },
+  {
+    "name": "Лимонад Классический",
+    "slug": "limonad-klassiceskij",
+    "price": 290,
+    "currency": "RUB",
+    "description": "Лимонад Классический — освежающий домашний лимонад с ярким фруктовым вкусом и льдом.",
+    "ingredients": [
+      "фрукты или ягоды",
+      "лимон",
+      "содовая",
+      "лёд"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [],
+    "category": "Авторские напитки",
+    "categoryKey": "signature",
+    "image": "/images/products/signature/limonad-klassiceskij.jpg",
+    "isAvailable": true,
+    "stockQuantity": 8
+  },
+  {
+    "name": "Лимонад Клубничный",
+    "slug": "limonad-klubnicnyj",
+    "price": 310,
+    "currency": "RUB",
+    "description": "Лимонад Клубничный — освежающий домашний лимонад с ярким фруктовым вкусом и льдом.",
+    "ingredients": [
+      "фрукты или ягоды",
+      "лимон",
+      "содовая",
+      "лёд"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [],
+    "category": "Авторские напитки",
+    "categoryKey": "signature",
+    "image": "/images/products/signature/limonad-klubnicnyj.jpg",
+    "isAvailable": true,
+    "stockQuantity": 18
+  },
+  {
+    "name": "Лимонад Малиновый",
+    "slug": "limonad-malinovyj",
+    "price": 310,
+    "currency": "RUB",
+    "description": "Лимонад Малиновый — освежающий домашний лимонад с ярким фруктовым вкусом и льдом.",
+    "ingredients": [
+      "фрукты или ягоды",
+      "лимон",
+      "содовая",
+      "лёд"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [],
+    "category": "Авторские напитки",
+    "categoryKey": "signature",
+    "image": "/images/products/signature/limonad-malinovyj.jpg",
+    "isAvailable": true,
+    "stockQuantity": 35
+  },
+  {
+    "name": "Огуречный Лимонад",
+    "slug": "ogurecnyj-limonad",
+    "price": 300,
+    "currency": "RUB",
+    "description": "Огуречный Лимонад — освежающий домашний лимонад с ярким фруктовым вкусом и льдом.",
+    "ingredients": [
+      "фрукты или ягоды",
+      "лимон",
+      "содовая",
+      "лёд"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [],
+    "category": "Авторские напитки",
+    "categoryKey": "signature",
+    "image": "/images/products/signature/ogurecnyj-limonad.jpg",
+    "isAvailable": true,
+    "stockQuantity": 29
+  },
+  {
+    "name": "Лимонад Маракуйя",
+    "slug": "limonad-marakuja",
+    "price": 340,
+    "currency": "RUB",
+    "description": "Лимонад Маракуйя — освежающий домашний лимонад с ярким фруктовым вкусом и льдом.",
+    "ingredients": [
+      "фрукты или ягоды",
+      "лимон",
+      "содовая",
+      "лёд"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [],
+    "category": "Авторские напитки",
+    "categoryKey": "signature",
+    "image": "/images/products/signature/limonad-marakuja.jpg",
+    "isAvailable": true,
+    "stockQuantity": 25
+  },
+  {
+    "name": "Чай Облепиховый",
+    "slug": "caj-oblepihovyj",
+    "price": 320,
+    "currency": "RUB",
+    "description": "Чай Облепиховый — согревающий авторский чай с натуральными ягодами, травами и пряными нотами.",
+    "ingredients": [
+      "чай",
+      "ягоды или травы",
+      "мёд"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [],
+    "category": "Авторские напитки",
+    "categoryKey": "signature",
+    "image": "/images/products/signature/caj-oblepihovyj.jpg",
+    "isAvailable": true,
+    "stockQuantity": 17
+  },
+  {
+    "name": "Чай Имбирный",
+    "slug": "caj-imbirnyj",
+    "price": 320,
+    "currency": "RUB",
+    "description": "Чай Имбирный — согревающий авторский чай с натуральными ягодами, травами и пряными нотами.",
+    "ingredients": [
+      "чай",
+      "ягоды или травы",
+      "мёд"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [],
+    "category": "Авторские напитки",
+    "categoryKey": "signature",
+    "image": "/images/products/signature/caj-imbirnyj.jpg",
+    "isAvailable": true,
+    "stockQuantity": 21
+  },
+  {
+    "name": "Чай Ягодный",
+    "slug": "caj-agodnyj",
+    "price": 320,
+    "currency": "RUB",
+    "description": "Чай Ягодный — согревающий авторский чай с натуральными ягодами, травами и пряными нотами.",
+    "ingredients": [
+      "чай",
+      "ягоды или травы",
+      "мёд"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [],
+    "category": "Авторские напитки",
+    "categoryKey": "signature",
+    "image": "/images/products/signature/caj-agodnyj.jpg",
+    "isAvailable": true,
+    "stockQuantity": 29
+  },
+  {
+    "name": "Чай Мятный",
+    "slug": "caj-matnyj",
+    "price": 300,
+    "currency": "RUB",
+    "description": "Чай Мятный — согревающий авторский чай с натуральными ягодами, травами и пряными нотами.",
+    "ingredients": [
+      "чай",
+      "ягоды или травы",
+      "мёд"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [],
+    "category": "Авторские напитки",
+    "categoryKey": "signature",
+    "image": "/images/products/signature/caj-matnyj.jpg",
+    "isAvailable": true,
+    "stockQuantity": 14
+  },
+  {
+    "name": "Горячий Шоколад",
+    "slug": "goracij-sokolad",
+    "price": 340,
+    "currency": "RUB",
+    "description": "Густой горячий шоколад с насыщенным какао-вкусом и нежной сливочной текстурой.",
+    "ingredients": [
+      "какао",
+      "молоко",
+      "шоколад"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [
+      "молоко"
+    ],
+    "category": "Авторские напитки",
+    "categoryKey": "signature",
+    "image": "/images/products/signature/goracij-sokolad.jpg",
+    "isAvailable": true,
+    "stockQuantity": 13
+  },
+  {
+    "name": "Сезонный Напиток",
+    "slug": "sezonnyj-napitok",
+    "price": 360,
+    "currency": "RUB",
+    "description": "Сезонный Напиток — фирменный напиток Brew & Bloom с необычным сочетанием вкусов и мягким послевкусием.",
+    "ingredients": [
+      "эспрессо",
+      "молоко",
+      "авторский сироп"
+    ],
+    "volumeMl": [
+      300,
+      400
+    ],
+    "allergens": [
+      "молоко"
+    ],
+    "category": "Авторские напитки",
+    "categoryKey": "signature",
+    "image": "/images/products/signature/sezonnyj-napitok.jpg",
+    "isAvailable": true,
+    "stockQuantity": 32
+  },
+  {
+    "name": "Черный классический",
+    "slug": "cernyj-klassiceskij",
+    "price": 180,
+    "currency": "RUB",
+    "description": "Черный классический — свежезаваренный чай с чистым ароматом и сбалансированным вкусом.",
+    "ingredients": [
+      "черный классический",
+      "вода"
+    ],
+    "volumeMl": [
+      400,
+      600
+    ],
+    "allergens": [],
+    "category": "Чай",
+    "categoryKey": "tea",
+    "image": "/images/products/tea/cernyj-klassiceskij.jpg",
+    "isAvailable": true,
+    "stockQuantity": 14
+  },
+  {
+    "name": "Эрл Грей",
+    "slug": "erl-grej",
+    "price": 200,
+    "currency": "RUB",
+    "description": "Эрл Грей — свежезаваренный чай с чистым ароматом и сбалансированным вкусом.",
+    "ingredients": [
+      "эрл грей",
+      "вода"
+    ],
+    "volumeMl": [
+      400,
+      600
+    ],
+    "allergens": [],
+    "category": "Чай",
+    "categoryKey": "tea",
+    "image": "/images/products/tea/erl-grej.jpg",
+    "isAvailable": true,
+    "stockQuantity": 30
+  },
+  {
+    "name": "Английский завтрак",
+    "slug": "anglijskij-zavtrak",
+    "price": 200,
+    "currency": "RUB",
+    "description": "Английский завтрак — свежезаваренный чай с чистым ароматом и сбалансированным вкусом.",
+    "ingredients": [
+      "английский завтрак",
+      "вода"
+    ],
+    "volumeMl": [
+      400,
+      600
+    ],
+    "allergens": [],
+    "category": "Чай",
+    "categoryKey": "tea",
+    "image": "/images/products/tea/anglijskij-zavtrak.jpg",
+    "isAvailable": true,
+    "stockQuantity": 30
+  },
+  {
+    "name": "Зеленый классический",
+    "slug": "zelenyj-klassiceskij",
+    "price": 180,
+    "currency": "RUB",
+    "description": "Зеленый классический — свежезаваренный чай с чистым ароматом и сбалансированным вкусом.",
+    "ingredients": [
+      "зеленый классический",
+      "вода"
+    ],
+    "volumeMl": [
+      400,
+      600
+    ],
+    "allergens": [],
+    "category": "Чай",
+    "categoryKey": "tea",
+    "image": "/images/products/tea/zelenyj-klassiceskij.jpg",
+    "isAvailable": true,
+    "stockQuantity": 46
+  },
+  {
+    "name": "Жасминовый",
+    "slug": "jasminovyj",
+    "price": 220,
+    "currency": "RUB",
+    "description": "Жасминовый — свежезаваренный чай с чистым ароматом и сбалансированным вкусом.",
+    "ingredients": [
+      "жасминовый",
+      "вода"
+    ],
+    "volumeMl": [
+      400,
+      600
+    ],
+    "allergens": [],
+    "category": "Чай",
+    "categoryKey": "tea",
+    "image": "/images/products/tea/jasminovyj.jpg",
+    "isAvailable": true,
+    "stockQuantity": 24
+  },
+  {
+    "name": "Сенча",
+    "slug": "senca",
+    "price": 220,
+    "currency": "RUB",
+    "description": "Сенча — свежезаваренный чай с чистым ароматом и сбалансированным вкусом.",
+    "ingredients": [
+      "сенча",
+      "вода"
+    ],
+    "volumeMl": [
+      400,
+      600
+    ],
+    "allergens": [],
+    "category": "Чай",
+    "categoryKey": "tea",
+    "image": "/images/products/tea/senca.jpg",
+    "isAvailable": true,
+    "stockQuantity": 10
+  },
+  {
+    "name": "Генмайча",
+    "slug": "genmajca",
+    "price": 240,
+    "currency": "RUB",
+    "description": "Генмайча — свежезаваренный чай с чистым ароматом и сбалансированным вкусом.",
+    "ingredients": [
+      "генмайча",
+      "вода"
+    ],
+    "volumeMl": [
+      400,
+      600
+    ],
+    "allergens": [],
+    "category": "Чай",
+    "categoryKey": "tea",
+    "image": "/images/products/tea/genmajca.jpg",
+    "isAvailable": true,
+    "stockQuantity": 37
+  },
+  {
+    "name": "Матча",
+    "slug": "matca",
+    "price": 280,
+    "currency": "RUB",
+    "description": "Традиционный напиток из мелко молотого зелёного чая с насыщенным травянистым вкусом.",
+    "ingredients": [
+      "матча",
+      "вода"
+    ],
+    "volumeMl": [
+      400,
+      600
+    ],
+    "allergens": [],
+    "category": "Чай",
+    "categoryKey": "tea",
+    "image": "/images/products/tea/matca.jpg",
+    "isAvailable": true,
+    "stockQuantity": 42
+  },
+  {
+    "name": "Улун",
+    "slug": "ulun",
+    "price": 260,
+    "currency": "RUB",
+    "description": "Улун — свежезаваренный чай с чистым ароматом и сбалансированным вкусом.",
+    "ingredients": [
+      "улун",
+      "вода"
+    ],
+    "volumeMl": [
+      400,
+      600
+    ],
+    "allergens": [],
+    "category": "Чай",
+    "categoryKey": "tea",
+    "image": "/images/products/tea/ulun.jpg",
+    "isAvailable": true,
+    "stockQuantity": 15
+  },
+  {
+    "name": "Молочный улун",
+    "slug": "molocnyj-ulun",
+    "price": 280,
+    "currency": "RUB",
+    "description": "Молочный улун — свежезаваренный чай с чистым ароматом и сбалансированным вкусом.",
+    "ingredients": [
+      "молочный улун",
+      "вода"
+    ],
+    "volumeMl": [
+      400,
+      600
+    ],
+    "allergens": [
+      "молоко"
+    ],
+    "category": "Чай",
+    "categoryKey": "tea",
+    "image": "/images/products/tea/molocnyj-ulun.jpg",
+    "isAvailable": true,
+    "stockQuantity": 32
+  },
+  {
+    "name": "Пуэр",
+    "slug": "puer",
+    "price": 250,
+    "currency": "RUB",
+    "description": "Пуэр — свежезаваренный чай с чистым ароматом и сбалансированным вкусом.",
+    "ingredients": [
+      "пуэр",
+      "вода"
+    ],
+    "volumeMl": [
+      400,
+      600
+    ],
+    "allergens": [],
+    "category": "Чай",
+    "categoryKey": "tea",
+    "image": "/images/products/tea/puer.jpg",
+    "isAvailable": true,
+    "stockQuantity": 13
+  },
+  {
+    "name": "Белый чай",
+    "slug": "belyj-caj",
+    "price": 300,
+    "currency": "RUB",
+    "description": "Белый чай — свежезаваренный чай с чистым ароматом и сбалансированным вкусом.",
+    "ingredients": [
+      "белый чай",
+      "вода"
+    ],
+    "volumeMl": [
+      400,
+      600
+    ],
+    "allergens": [],
+    "category": "Чай",
+    "categoryKey": "tea",
+    "image": "/images/products/tea/belyj-caj.jpg",
+    "isAvailable": true,
+    "stockQuantity": 43
+  },
+  {
+    "name": "Травяной сбор",
+    "slug": "travanoj-sbor",
+    "price": 220,
+    "currency": "RUB",
+    "description": "Травяной сбор — свежезаваренный чай с чистым ароматом и сбалансированным вкусом.",
+    "ingredients": [
+      "травяной сбор",
+      "вода"
+    ],
+    "volumeMl": [
+      400,
+      600
+    ],
+    "allergens": [],
+    "category": "Чай",
+    "categoryKey": "tea",
+    "image": "/images/products/tea/travanoj-sbor.jpg",
+    "isAvailable": true,
+    "stockQuantity": 26
+  },
+  {
+    "name": "Мятный",
+    "slug": "matnyj",
+    "price": 200,
+    "currency": "RUB",
+    "description": "Ароматный чай с яркой мятной свежестью и лёгким успокаивающим послевкусием.",
+    "ingredients": [
+      "мята",
+      "чай"
+    ],
+    "volumeMl": [
+      400,
+      600
+    ],
+    "allergens": [],
+    "category": "Чай",
+    "categoryKey": "tea",
+    "image": "/images/products/tea/matnyj.jpg",
+    "isAvailable": true,
+    "stockQuantity": 48
+  },
+  {
+    "name": "Имбирный",
+    "slug": "imbirnyj",
+    "price": 220,
+    "currency": "RUB",
+    "description": "Согревающий чай с выразительной пряностью имбиря и мягким ароматом.",
+    "ingredients": [
+      "чай",
+      "имбирь",
+      "лимон"
+    ],
+    "volumeMl": [
+      400,
+      600
+    ],
+    "allergens": [],
+    "category": "Чай",
+    "categoryKey": "tea",
+    "image": "/images/products/tea/imbirnyj.jpg",
+    "isAvailable": true,
+    "stockQuantity": 47
+  },
+  {
+    "name": "Облепиховый",
+    "slug": "oblepihovyj",
+    "price": 240,
+    "currency": "RUB",
+    "description": "Облепиховый — ароматный фруктово-ягодный чай с яркой кислинкой и насыщенным вкусом.",
+    "ingredients": [
+      "чай",
+      "облепиха"
+    ],
+    "volumeMl": [
+      400,
+      600
+    ],
+    "allergens": [],
+    "category": "Чай",
+    "categoryKey": "tea",
+    "image": "/images/products/tea/oblepihovyj.jpg",
+    "isAvailable": true,
+    "stockQuantity": 31
+  },
+  {
+    "name": "Ягодный",
+    "slug": "agodnyj",
+    "price": 240,
+    "currency": "RUB",
+    "description": "Ягодный — ароматный фруктово-ягодный чай с яркой кислинкой и насыщенным вкусом.",
+    "ingredients": [
+      "чай",
+      "ягодный микс"
+    ],
+    "volumeMl": [
+      400,
+      600
+    ],
+    "allergens": [],
+    "category": "Чай",
+    "categoryKey": "tea",
+    "image": "/images/products/tea/agodnyj.jpg",
+    "isAvailable": true,
+    "stockQuantity": 44
+  },
+  {
+    "name": "Цитрусовый",
+    "slug": "citrusovyj",
+    "price": 220,
+    "currency": "RUB",
+    "description": "Цитрусовый — ароматный фруктово-ягодный чай с яркой кислинкой и насыщенным вкусом.",
+    "ingredients": [
+      "чай",
+      "цитрусы"
+    ],
+    "volumeMl": [
+      400,
+      600
+    ],
+    "allergens": [],
+    "category": "Чай",
+    "categoryKey": "tea",
+    "image": "/images/products/tea/citrusovyj.jpg",
+    "isAvailable": true,
+    "stockQuantity": 20
+  },
+  {
+    "name": "Чай Масала",
+    "slug": "caj-masala",
+    "price": 260,
+    "currency": "RUB",
+    "description": "Чай Масала — свежезаваренный чай с чистым ароматом и сбалансированным вкусом.",
+    "ingredients": [
+      "чёрный чай",
+      "молоко",
+      "специи"
+    ],
+    "volumeMl": [
+      400,
+      600
+    ],
+    "allergens": [
+      "молоко"
+    ],
+    "category": "Чай",
+    "categoryKey": "tea",
+    "image": "/images/products/tea/caj-masala.jpg",
+    "isAvailable": true,
+    "stockQuantity": 12
+  },
+  {
+    "name": "Ройбуш",
+    "slug": "rojbus",
+    "price": 220,
+    "currency": "RUB",
+    "description": "Ройбуш — свежезаваренный чай с чистым ароматом и сбалансированным вкусом.",
+    "ingredients": [
+      "ройбуш",
+      "вода"
+    ],
+    "volumeMl": [
+      400,
+      600
+    ],
+    "allergens": [],
+    "category": "Чай",
+    "categoryKey": "tea",
+    "image": "/images/products/tea/rojbus.jpg",
+    "isAvailable": true,
+    "stockQuantity": 10
+  },
+  {
+    "name": "Чизкейк Классический",
+    "slug": "cizkejk-klassiceskij",
+    "price": 320,
+    "currency": "RUB",
+    "description": "Чизкейк Классический — нежный сливочный чизкейк на хрустящей основе с мягкой кремовой текстурой.",
+    "ingredients": [
+      "сливочный сыр",
+      "сливки",
+      "яйца",
+      "сахар",
+      "песочная основа"
+    ],
+    "weightGrams": 150,
+    "allergens": [
+      "молоко",
+      "яйца",
+      "глютен"
+    ],
+    "category": "Десерты",
+    "categoryKey": "desserts",
+    "image": "/images/products/desserts/cizkejk-klassiceskij.jpg",
+    "isAvailable": true,
+    "stockQuantity": 50
+  },
+  {
+    "name": "Чизкейк Ягодный",
+    "slug": "cizkejk-agodnyj",
+    "price": 340,
+    "currency": "RUB",
+    "description": "Чизкейк Ягодный — нежный сливочный чизкейк на хрустящей основе с мягкой кремовой текстурой.",
+    "ingredients": [
+      "сливочный сыр",
+      "сливки",
+      "яйца",
+      "сахар",
+      "песочная основа",
+      "ягодный соус"
+    ],
+    "weightGrams": 150,
+    "allergens": [
+      "молоко",
+      "яйца",
+      "глютен"
+    ],
+    "category": "Десерты",
+    "categoryKey": "desserts",
+    "image": "/images/products/desserts/cizkejk-agodnyj.jpg",
+    "isAvailable": true,
+    "stockQuantity": 22
+  },
+  {
+    "name": "Тирамису",
+    "slug": "tiramisu",
+    "price": 320,
+    "currency": "RUB",
+    "description": "Тирамису — фирменный десерт Brew & Bloom с нежной текстурой и выразительным вкусом.",
+    "ingredients": [
+      "мука",
+      "яйца",
+      "сливочное масло",
+      "сахар",
+      "крем"
+    ],
+    "weightGrams": 150,
+    "allergens": [
+      "молоко",
+      "яйца",
+      "глютен"
+    ],
+    "category": "Десерты",
+    "categoryKey": "desserts",
+    "image": "/images/products/desserts/tiramisu.jpg",
+    "isAvailable": true,
+    "stockQuantity": 26
+  },
+  {
+    "name": "Шоколадный Брауни",
+    "slug": "sokoladnyj-brauni",
+    "price": 290,
+    "currency": "RUB",
+    "description": "Шоколадный Брауни — фирменный десерт Brew & Bloom с нежной текстурой и выразительным вкусом.",
+    "ingredients": [
+      "мука",
+      "яйца",
+      "сливочное масло",
+      "сахар",
+      "крем"
+    ],
+    "weightGrams": 150,
+    "allergens": [
+      "молоко",
+      "яйца",
+      "глютен"
+    ],
+    "category": "Десерты",
+    "categoryKey": "desserts",
+    "image": "/images/products/desserts/sokoladnyj-brauni.jpg",
+    "isAvailable": true,
+    "stockQuantity": 13
+  },
+  {
+    "name": "Панакота",
+    "slug": "panakota",
+    "price": 280,
+    "currency": "RUB",
+    "description": "Панакота — фирменный десерт Brew & Bloom с нежной текстурой и выразительным вкусом.",
+    "ingredients": [
+      "мука",
+      "яйца",
+      "сливочное масло",
+      "сахар",
+      "крем"
+    ],
+    "weightGrams": 150,
+    "allergens": [
+      "молоко",
+      "яйца",
+      "глютен"
+    ],
+    "category": "Десерты",
+    "categoryKey": "desserts",
+    "image": "/images/products/desserts/panakota.jpg",
+    "isAvailable": true,
+    "stockQuantity": 22
+  },
+  {
+    "name": "Эклер Ванильный",
+    "slug": "ekler-vanil-nyj",
+    "price": 260,
+    "currency": "RUB",
+    "description": "Эклер Ванильный — воздушное заварное тесто с кремовой начинкой и аккуратной глазурью.",
+    "ingredients": [
+      "заварное тесто",
+      "сливочный крем",
+      "глазурь"
+    ],
+    "weightGrams": 120,
+    "allergens": [
+      "молоко",
+      "яйца",
+      "глютен"
+    ],
+    "category": "Десерты",
+    "categoryKey": "desserts",
+    "image": "/images/products/desserts/ekler-vanil-nyj.jpg",
+    "isAvailable": true,
+    "stockQuantity": 14
+  },
+  {
+    "name": "Эклер Шоколадный",
+    "slug": "ekler-sokoladnyj",
+    "price": 260,
+    "currency": "RUB",
+    "description": "Эклер Шоколадный — воздушное заварное тесто с кремовой начинкой и аккуратной глазурью.",
+    "ingredients": [
+      "заварное тесто",
+      "сливочный крем",
+      "глазурь"
+    ],
+    "weightGrams": 120,
+    "allergens": [
+      "молоко",
+      "яйца",
+      "глютен"
+    ],
+    "category": "Десерты",
+    "categoryKey": "desserts",
+    "image": "/images/products/desserts/ekler-sokoladnyj.jpg",
+    "isAvailable": true,
+    "stockQuantity": 32
+  },
+  {
+    "name": "Макарон Малина",
+    "slug": "makaron-malina",
+    "price": 180,
+    "currency": "RUB",
+    "description": "Макарон Малина — французское миндальное пирожное с хрустящей корочкой и нежной начинкой.",
+    "ingredients": [
+      "миндальная мука",
+      "яичный белок",
+      "сахар",
+      "крем"
+    ],
+    "weightGrams": 80,
+    "allergens": [
+      "молоко",
+      "яйца",
+      "орехи"
+    ],
+    "category": "Десерты",
+    "categoryKey": "desserts",
+    "image": "/images/products/desserts/makaron-malina.jpg",
+    "isAvailable": true,
+    "stockQuantity": 25
+  },
+  {
+    "name": "Макарон Фисташка",
+    "slug": "makaron-fistaska",
+    "price": 180,
+    "currency": "RUB",
+    "description": "Макарон Фисташка — французское миндальное пирожное с хрустящей корочкой и нежной начинкой.",
+    "ingredients": [
+      "миндальная мука",
+      "яичный белок",
+      "сахар",
+      "крем"
+    ],
+    "weightGrams": 80,
+    "allergens": [
+      "молоко",
+      "яйца",
+      "орехи"
+    ],
+    "category": "Десерты",
+    "categoryKey": "desserts",
+    "image": "/images/products/desserts/makaron-fistaska.jpg",
+    "isAvailable": true,
+    "stockQuantity": 37
+  },
+  {
+    "name": "Макарон Шоколад",
+    "slug": "makaron-sokolad",
+    "price": 180,
+    "currency": "RUB",
+    "description": "Макарон Шоколад — французское миндальное пирожное с хрустящей корочкой и нежной начинкой.",
+    "ingredients": [
+      "миндальная мука",
+      "яичный белок",
+      "сахар",
+      "крем"
+    ],
+    "weightGrams": 80,
+    "allergens": [
+      "молоко",
+      "яйца",
+      "орехи"
+    ],
+    "category": "Десерты",
+    "categoryKey": "desserts",
+    "image": "/images/products/desserts/makaron-sokolad.jpg",
+    "isAvailable": true,
+    "stockQuantity": 48
+  },
+  {
+    "name": "Муссовый Десерт",
+    "slug": "mussovyj-desert",
+    "price": 320,
+    "currency": "RUB",
+    "description": "Муссовый Десерт — фирменный десерт Brew & Bloom с нежной текстурой и выразительным вкусом.",
+    "ingredients": [
+      "мука",
+      "яйца",
+      "сливочное масло",
+      "сахар",
+      "крем"
+    ],
+    "weightGrams": 150,
+    "allergens": [
+      "молоко",
+      "яйца",
+      "глютен"
+    ],
+    "category": "Десерты",
+    "categoryKey": "desserts",
+    "image": "/images/products/desserts/mussovyj-desert.jpg",
+    "isAvailable": true,
+    "stockQuantity": 31
+  },
+  {
+    "name": "Фисташковый Торт",
+    "slug": "fistaskovyj-tort",
+    "price": 350,
+    "currency": "RUB",
+    "description": "Фисташковый Торт — многослойный десерт с нежным кремом и насыщенным домашним вкусом.",
+    "ingredients": [
+      "мука",
+      "яйца",
+      "сливочное масло",
+      "сахар",
+      "крем"
+    ],
+    "weightGrams": 150,
+    "allergens": [
+      "молоко",
+      "яйца",
+      "орехи"
+    ],
+    "category": "Десерты",
+    "categoryKey": "desserts",
+    "image": "/images/products/desserts/fistaskovyj-tort.jpg",
+    "isAvailable": true,
+    "stockQuantity": 18
+  },
+  {
+    "name": "Лимонный Тарт",
+    "slug": "limonnyj-tart",
+    "price": 300,
+    "currency": "RUB",
+    "description": "Лимонный Тарт — хрустящая песочная основа с нежной начинкой и ярким акцентом.",
+    "ingredients": [
+      "мука",
+      "яйца",
+      "сливочное масло",
+      "сахар",
+      "крем"
+    ],
+    "weightGrams": 150,
+    "allergens": [
+      "молоко",
+      "яйца",
+      "глютен"
+    ],
+    "category": "Десерты",
+    "categoryKey": "desserts",
+    "image": "/images/products/desserts/limonnyj-tart.jpg",
+    "isAvailable": true,
+    "stockQuantity": 31
+  },
+  {
+    "name": "Красный Бархат",
+    "slug": "krasnyj-barhat",
+    "price": 340,
+    "currency": "RUB",
+    "description": "Красный Бархат — многослойный десерт с нежным кремом и насыщенным домашним вкусом.",
+    "ingredients": [
+      "мука",
+      "яйца",
+      "сливочное масло",
+      "сахар",
+      "крем"
+    ],
+    "weightGrams": 150,
+    "allergens": [
+      "молоко",
+      "яйца",
+      "глютен"
+    ],
+    "category": "Десерты",
+    "categoryKey": "desserts",
+    "image": "/images/products/desserts/krasnyj-barhat.jpg",
+    "isAvailable": true,
+    "stockQuantity": 30
+  },
+  {
+    "name": "Медовик",
+    "slug": "medovik",
+    "price": 320,
+    "currency": "RUB",
+    "description": "Медовик — многослойный десерт с нежным кремом и насыщенным домашним вкусом.",
+    "ingredients": [
+      "мука",
+      "яйца",
+      "сливочное масло",
+      "сахар",
+      "крем"
+    ],
+    "weightGrams": 150,
+    "allergens": [
+      "молоко",
+      "яйца",
+      "глютен"
+    ],
+    "category": "Десерты",
+    "categoryKey": "desserts",
+    "image": "/images/products/desserts/medovik.jpg",
+    "isAvailable": true,
+    "stockQuantity": 21
+  },
+  {
+    "name": "Наполеон",
+    "slug": "napoleon",
+    "price": 300,
+    "currency": "RUB",
+    "description": "Наполеон — многослойный десерт с нежным кремом и насыщенным домашним вкусом.",
+    "ingredients": [
+      "мука",
+      "яйца",
+      "сливочное масло",
+      "сахар",
+      "крем"
+    ],
+    "weightGrams": 150,
+    "allergens": [
+      "молоко",
+      "яйца",
+      "глютен"
+    ],
+    "category": "Десерты",
+    "categoryKey": "desserts",
+    "image": "/images/products/desserts/napoleon.jpg",
+    "isAvailable": true,
+    "stockQuantity": 50
+  },
+  {
+    "name": "Птичье Молоко",
+    "slug": "ptic-e-moloko",
+    "price": 290,
+    "currency": "RUB",
+    "description": "Птичье Молоко — фирменный десерт Brew & Bloom с нежной текстурой и выразительным вкусом.",
+    "ingredients": [
+      "мука",
+      "яйца",
+      "сливочное масло",
+      "сахар",
+      "крем"
+    ],
+    "weightGrams": 150,
+    "allergens": [
+      "молоко",
+      "яйца",
+      "глютен"
+    ],
+    "category": "Десерты",
+    "categoryKey": "desserts",
+    "image": "/images/products/desserts/ptic-e-moloko.jpg",
+    "isAvailable": true,
+    "stockQuantity": 25
+  },
+  {
+    "name": "Тарталетка с ягодами",
+    "slug": "tartaletka-s-agodami",
+    "price": 280,
+    "currency": "RUB",
+    "description": "Тарталетка с ягодами — хрустящая песочная основа с нежной начинкой и ярким акцентом.",
+    "ingredients": [
+      "мука",
+      "яйца",
+      "сливочное масло",
+      "сахар",
+      "крем"
+    ],
+    "weightGrams": 150,
+    "allergens": [
+      "молоко",
+      "яйца",
+      "глютен"
+    ],
+    "category": "Десерты",
+    "categoryKey": "desserts",
+    "image": "/images/products/desserts/tartaletka-s-agodami.jpg",
+    "isAvailable": true,
+    "stockQuantity": 49
+  },
+  {
+    "name": "Профитроли",
+    "slug": "profitroli",
+    "price": 300,
+    "currency": "RUB",
+    "description": "Профитроли — фирменный десерт Brew & Bloom с нежной текстурой и выразительным вкусом.",
+    "ingredients": [
+      "мука",
+      "яйца",
+      "сливочное масло",
+      "сахар",
+      "крем"
+    ],
+    "weightGrams": 150,
+    "allergens": [
+      "молоко",
+      "яйца",
+      "глютен"
+    ],
+    "category": "Десерты",
+    "categoryKey": "desserts",
+    "image": "/images/products/desserts/profitroli.jpg",
+    "isAvailable": true,
+    "stockQuantity": 12
+  },
+  {
+    "name": "Чиа-пудинг",
+    "slug": "cia-puding",
+    "price": 260,
+    "currency": "RUB",
+    "description": "Чиа-пудинг — фирменный десерт Brew & Bloom с нежной текстурой и выразительным вкусом.",
+    "ingredients": [
+      "семена чиа",
+      "кокосовое молоко",
+      "манго"
+    ],
+    "weightGrams": 150,
+    "allergens": [
+      "молоко",
+      "яйца",
+      "глютен"
+    ],
+    "category": "Десерты",
+    "categoryKey": "desserts",
+    "image": "/images/products/desserts/cia-puding.jpg",
+    "isAvailable": true,
+    "stockQuantity": 46
+  },
+  {
+    "name": "Круассан Классический",
+    "slug": "kruassan-klassiceskij",
+    "price": 220,
+    "currency": "RUB",
+    "description": "Круассан Классический — слоёный французский круассан с хрустящей корочкой и воздушной серединой.",
+    "ingredients": [
+      "пшеничная мука",
+      "сливочное масло",
+      "молоко",
+      "дрожжи",
+      "сахар"
+    ],
+    "weightGrams": 120,
+    "allergens": [
+      "глютен",
+      "молоко",
+      "яйца"
+    ],
+    "category": "Выпечка",
+    "categoryKey": "bakery",
+    "image": "/images/products/bakery/kruassan-klassiceskij.jpg",
+    "isAvailable": true,
+    "stockQuantity": 48
+  },
+  {
+    "name": "Круассан Миндальный",
+    "slug": "kruassan-mindal-nyj",
+    "price": 240,
+    "currency": "RUB",
+    "description": "Круассан Миндальный — слоёный французский круассан с хрустящей корочкой и воздушной серединой.",
+    "ingredients": [
+      "пшеничная мука",
+      "сливочное масло",
+      "молоко",
+      "дрожжи",
+      "сахар"
+    ],
+    "weightGrams": 120,
+    "allergens": [
+      "глютен",
+      "молоко",
+      "яйца"
+    ],
+    "category": "Выпечка",
+    "categoryKey": "bakery",
+    "image": "/images/products/bakery/kruassan-mindal-nyj.jpg",
+    "isAvailable": true,
+    "stockQuantity": 18
+  },
+  {
+    "name": "Круассан Шоколадный",
+    "slug": "kruassan-sokoladnyj",
+    "price": 240,
+    "currency": "RUB",
+    "description": "Круассан Шоколадный — слоёный французский круассан с хрустящей корочкой и воздушной серединой.",
+    "ingredients": [
+      "пшеничная мука",
+      "сливочное масло",
+      "молоко",
+      "дрожжи",
+      "сахар"
+    ],
+    "weightGrams": 120,
+    "allergens": [
+      "глютен",
+      "молоко",
+      "яйца"
+    ],
+    "category": "Выпечка",
+    "categoryKey": "bakery",
+    "image": "/images/products/bakery/kruassan-sokoladnyj.jpg",
+    "isAvailable": true,
+    "stockQuantity": 42
+  },
+  {
+    "name": "Круассан Сырный",
+    "slug": "kruassan-syrnyj",
+    "price": 240,
+    "currency": "RUB",
+    "description": "Круассан Сырный — слоёный французский круассан с хрустящей корочкой и воздушной серединой.",
+    "ingredients": [
+      "пшеничная мука",
+      "сливочное масло",
+      "молоко",
+      "дрожжи",
+      "сахар"
+    ],
+    "weightGrams": 120,
+    "allergens": [
+      "глютен",
+      "молоко",
+      "яйца"
+    ],
+    "category": "Выпечка",
+    "categoryKey": "bakery",
+    "image": "/images/products/bakery/kruassan-syrnyj.jpg",
+    "isAvailable": true,
+    "stockQuantity": 23
+  },
+  {
+    "name": "Круассан Фисташковый",
+    "slug": "kruassan-fistaskovyj",
+    "price": 260,
+    "currency": "RUB",
+    "description": "Круассан Фисташковый — слоёный французский круассан с хрустящей корочкой и воздушной серединой.",
+    "ingredients": [
+      "пшеничная мука",
+      "сливочное масло",
+      "молоко",
+      "дрожжи",
+      "сахар"
+    ],
+    "weightGrams": 120,
+    "allergens": [
+      "глютен",
+      "молоко",
+      "яйца"
+    ],
+    "category": "Выпечка",
+    "categoryKey": "bakery",
+    "image": "/images/products/bakery/kruassan-fistaskovyj.jpg",
+    "isAvailable": true,
+    "stockQuantity": 18
+  },
+  {
+    "name": "Булочка с корицей",
+    "slug": "bulocka-s-koricej",
+    "price": 220,
+    "currency": "RUB",
+    "description": "Булочка с корицей — мягкая свежая булочка с ароматной начинкой, выпекаемая каждый день.",
+    "ingredients": [
+      "пшеничная мука",
+      "сливочное масло",
+      "яйца",
+      "сахар",
+      "начинка"
+    ],
+    "weightGrams": 120,
+    "allergens": [
+      "глютен",
+      "молоко",
+      "яйца"
+    ],
+    "category": "Выпечка",
+    "categoryKey": "bakery",
+    "image": "/images/products/bakery/bulocka-s-koricej.jpg",
+    "isAvailable": true,
+    "stockQuantity": 37
+  },
+  {
+    "name": "Булочка с ягодами",
+    "slug": "bulocka-s-agodami",
+    "price": 240,
+    "currency": "RUB",
+    "description": "Булочка с ягодами — мягкая свежая булочка с ароматной начинкой, выпекаемая каждый день.",
+    "ingredients": [
+      "пшеничная мука",
+      "сливочное масло",
+      "яйца",
+      "сахар",
+      "начинка"
+    ],
+    "weightGrams": 120,
+    "allergens": [
+      "глютен",
+      "молоко",
+      "яйца"
+    ],
+    "category": "Выпечка",
+    "categoryKey": "bakery",
+    "image": "/images/products/bakery/bulocka-s-agodami.jpg",
+    "isAvailable": true,
+    "stockQuantity": 32
+  },
+  {
+    "name": "Булочка с яблоком",
+    "slug": "bulocka-s-ablokom",
+    "price": 220,
+    "currency": "RUB",
+    "description": "Булочка с яблоком — мягкая свежая булочка с ароматной начинкой, выпекаемая каждый день.",
+    "ingredients": [
+      "пшеничная мука",
+      "сливочное масло",
+      "яйца",
+      "сахар",
+      "начинка"
+    ],
+    "weightGrams": 120,
+    "allergens": [
+      "глютен",
+      "молоко",
+      "яйца"
+    ],
+    "category": "Выпечка",
+    "categoryKey": "bakery",
+    "image": "/images/products/bakery/bulocka-s-ablokom.jpg",
+    "isAvailable": true,
+    "stockQuantity": 25
+  },
+  {
+    "name": "Булочка с маком",
+    "slug": "bulocka-s-makom",
+    "price": 220,
+    "currency": "RUB",
+    "description": "Булочка с маком — мягкая свежая булочка с ароматной начинкой, выпекаемая каждый день.",
+    "ingredients": [
+      "пшеничная мука",
+      "сливочное масло",
+      "яйца",
+      "сахар",
+      "начинка"
+    ],
+    "weightGrams": 120,
+    "allergens": [
+      "глютен",
+      "молоко",
+      "яйца"
+    ],
+    "category": "Выпечка",
+    "categoryKey": "bakery",
+    "image": "/images/products/bakery/bulocka-s-makom.jpg",
+    "isAvailable": true,
+    "stockQuantity": 48
+  },
+  {
+    "name": "Булочка с творогом",
+    "slug": "bulocka-s-tvorogom",
+    "price": 240,
+    "currency": "RUB",
+    "description": "Булочка с творогом — мягкая свежая булочка с ароматной начинкой, выпекаемая каждый день.",
+    "ingredients": [
+      "пшеничная мука",
+      "сливочное масло",
+      "яйца",
+      "сахар",
+      "начинка"
+    ],
+    "weightGrams": 120,
+    "allergens": [
+      "глютен",
+      "молоко",
+      "яйца"
+    ],
+    "category": "Выпечка",
+    "categoryKey": "bakery",
+    "image": "/images/products/bakery/bulocka-s-tvorogom.jpg",
+    "isAvailable": true,
+    "stockQuantity": 43
+  },
+  {
+    "name": "Слойка с вишней",
+    "slug": "slojka-s-visnej",
+    "price": 240,
+    "currency": "RUB",
+    "description": "Слойка с вишней — хрустящая слоёная выпечка с сочной начинкой.",
+    "ingredients": [
+      "пшеничная мука",
+      "сливочное масло",
+      "яйца",
+      "сахар",
+      "начинка"
+    ],
+    "weightGrams": 120,
+    "allergens": [
+      "глютен",
+      "молоко",
+      "яйца"
+    ],
+    "category": "Выпечка",
+    "categoryKey": "bakery",
+    "image": "/images/products/bakery/slojka-s-visnej.jpg",
+    "isAvailable": true,
+    "stockQuantity": 22
+  },
+  {
+    "name": "Слойка с яблоком",
+    "slug": "slojka-s-ablokom",
+    "price": 230,
+    "currency": "RUB",
+    "description": "Слойка с яблоком — хрустящая слоёная выпечка с сочной начинкой.",
+    "ingredients": [
+      "пшеничная мука",
+      "сливочное масло",
+      "яйца",
+      "сахар",
+      "начинка"
+    ],
+    "weightGrams": 120,
+    "allergens": [
+      "глютен",
+      "молоко",
+      "яйца"
+    ],
+    "category": "Выпечка",
+    "categoryKey": "bakery",
+    "image": "/images/products/bakery/slojka-s-ablokom.jpg",
+    "isAvailable": true,
+    "stockQuantity": 28
+  },
+  {
+    "name": "Слойка с сыром",
+    "slug": "slojka-s-syrom",
+    "price": 230,
+    "currency": "RUB",
+    "description": "Слойка с сыром — хрустящая слоёная выпечка с сочной начинкой.",
+    "ingredients": [
+      "пшеничная мука",
+      "сливочное масло",
+      "яйца",
+      "сахар",
+      "начинка"
+    ],
+    "weightGrams": 120,
+    "allergens": [
+      "глютен",
+      "молоко",
+      "яйца"
+    ],
+    "category": "Выпечка",
+    "categoryKey": "bakery",
+    "image": "/images/products/bakery/slojka-s-syrom.jpg",
+    "isAvailable": true,
+    "stockQuantity": 11
+  },
+  {
+    "name": "Слойка с ветчиной и сыром",
+    "slug": "slojka-s-vetcinoj-i-syrom",
+    "price": 260,
+    "currency": "RUB",
+    "description": "Слойка с ветчиной и сыром — хрустящая слоёная выпечка с сочной начинкой.",
+    "ingredients": [
+      "пшеничная мука",
+      "сливочное масло",
+      "яйца",
+      "сахар",
+      "начинка"
+    ],
+    "weightGrams": 120,
+    "allergens": [
+      "глютен",
+      "молоко",
+      "яйца"
+    ],
+    "category": "Выпечка",
+    "categoryKey": "bakery",
+    "image": "/images/products/bakery/slojka-s-vetcinoj-i-syrom.jpg",
+    "isAvailable": true,
+    "stockQuantity": 22
+  },
+  {
+    "name": "Слойка со шпинатом",
+    "slug": "slojka-so-spinatom",
+    "price": 260,
+    "currency": "RUB",
+    "description": "Слойка со шпинатом — хрустящая слоёная выпечка с сочной начинкой.",
+    "ingredients": [
+      "пшеничная мука",
+      "сливочное масло",
+      "яйца",
+      "сахар",
+      "начинка"
+    ],
+    "weightGrams": 120,
+    "allergens": [
+      "глютен",
+      "молоко",
+      "яйца"
+    ],
+    "category": "Выпечка",
+    "categoryKey": "bakery",
+    "image": "/images/products/bakery/slojka-so-spinatom.jpg",
+    "isAvailable": true,
+    "stockQuantity": 10
+  },
+  {
+    "name": "Чиабатта",
+    "slug": "ciabatta",
+    "price": 180,
+    "currency": "RUB",
+    "description": "Чиабатта — свежая ароматная выпечка с румяной корочкой и мягким мякишем.",
+    "ingredients": [
+      "пшеничная мука",
+      "вода",
+      "дрожжи",
+      "соль"
+    ],
+    "weightGrams": 300,
+    "allergens": [
+      "глютен",
+      "молоко",
+      "яйца"
+    ],
+    "category": "Выпечка",
+    "categoryKey": "bakery",
+    "image": "/images/products/bakery/ciabatta.jpg",
+    "isAvailable": true,
+    "stockQuantity": 28
+  },
+  {
+    "name": "Багет",
+    "slug": "baget",
+    "price": 180,
+    "currency": "RUB",
+    "description": "Багет — свежая ароматная выпечка с румяной корочкой и мягким мякишем.",
+    "ingredients": [
+      "пшеничная мука",
+      "вода",
+      "дрожжи",
+      "соль"
+    ],
+    "weightGrams": 300,
+    "allergens": [
+      "глютен",
+      "молоко",
+      "яйца"
+    ],
+    "category": "Выпечка",
+    "categoryKey": "bakery",
+    "image": "/images/products/bakery/baget.jpg",
+    "isAvailable": true,
+    "stockQuantity": 33
+  },
+  {
+    "name": "Зерновой хлеб",
+    "slug": "zernovoj-hleb",
+    "price": 200,
+    "currency": "RUB",
+    "description": "Зерновой хлеб — свежая ароматная выпечка с румяной корочкой и мягким мякишем.",
+    "ingredients": [
+      "пшеничная мука",
+      "вода",
+      "дрожжи",
+      "соль"
+    ],
+    "weightGrams": 300,
+    "allergens": [
+      "глютен",
+      "молоко",
+      "яйца"
+    ],
+    "category": "Выпечка",
+    "categoryKey": "bakery",
+    "image": "/images/products/bakery/zernovoj-hleb.jpg",
+    "isAvailable": true,
+    "stockQuantity": 25
+  },
+  {
+    "name": "Хлеб Тостовый",
+    "slug": "hleb-tostovyj",
+    "price": 160,
+    "currency": "RUB",
+    "description": "Хлеб Тостовый — свежая ароматная выпечка с румяной корочкой и мягким мякишем.",
+    "ingredients": [
+      "пшеничная мука",
+      "вода",
+      "дрожжи",
+      "соль"
+    ],
+    "weightGrams": 300,
+    "allergens": [
+      "глютен",
+      "молоко",
+      "яйца"
+    ],
+    "category": "Выпечка",
+    "categoryKey": "bakery",
+    "image": "/images/products/bakery/hleb-tostovyj.jpg",
+    "isAvailable": true,
+    "stockQuantity": 12
+  },
+  {
+    "name": "Фокачча с розмарином",
+    "slug": "fokacca-s-rozmarinom",
+    "price": 240,
+    "currency": "RUB",
+    "description": "Фокачча с розмарином — свежая ароматная выпечка с румяной корочкой и мягким мякишем.",
+    "ingredients": [
+      "пшеничная мука",
+      "вода",
+      "дрожжи",
+      "соль"
+    ],
+    "weightGrams": 300,
+    "allergens": [
+      "глютен",
+      "молоко",
+      "яйца"
+    ],
+    "category": "Выпечка",
+    "categoryKey": "bakery",
+    "image": "/images/products/bakery/fokacca-s-rozmarinom.jpg",
+    "isAvailable": true,
+    "stockQuantity": 21
+  }
+]
