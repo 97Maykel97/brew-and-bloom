@@ -18,6 +18,10 @@
 		}
 	},
 	"auth": {
+		"form": {
+			"showPassword": "Показать пароль",
+			"hidePassword": "Скрыть пароль"
+		},
 		"login": {
 			"title": "Войти",
 			"email": "Email",

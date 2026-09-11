@@ -18,6 +18,10 @@
 		}
 	},
 	"auth": {
+		"form": {
+			"showPassword": "Show password",
+			"hidePassword": "Hide password"
+		},
 		"login": {
 			"title": "Sign in",
 			"email": "Email",

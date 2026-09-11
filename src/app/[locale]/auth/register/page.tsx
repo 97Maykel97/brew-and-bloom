@@ -5,7 +5,10 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
-import LanguageSwitcher from '@/components/UI/LanguageSwitcher';
+import AuthField from '@/components/auth/AuthField';
+import AuthShell from '@/components/auth/AuthShell';
+import AuthSubmitButton from '@/components/auth/AuthSubmitButton';
+import PasswordField from '@/components/auth/PasswordField';
 import {
 	getAuthErrorMessage,
 	getAuthValidationMessage,
@@ -38,6 +41,7 @@ function isValidBirthDate(value: string): boolean {
 export default function RegisterPage() {
 	const { locale } = useParams<{ locale: string }>();
 	const t = useTranslations('auth.register');
+	const formT = useTranslations('auth.form');
 
 	const [firstName, setFirstName] = useState<string>('');
 	const [lastName, setLastName] = useState<string>('');
@@ -136,40 +140,33 @@ export default function RegisterPage() {
 	}
 
 	return (
-		<main>
-			<div className='flex justify-end p-4'>
-				<LanguageSwitcher locale={locale} />
-			</div>
+		<AuthShell locale={locale} title={t('title')} wide>
+			<form onSubmit={handleSubmit} noValidate className='space-y-3.5 sm:space-y-4'>
+				<div className='grid gap-3.5 sm:grid-cols-2 sm:gap-4'>
+					<AuthField
+						id='first-name'
+						label={t('firstName')}
+						type='text'
+						value={firstName}
+						onChange={event => setFirstName(event.target.value)}
+						autoComplete='given-name'
+						required
+					/>
 
-			<h1>{t('title')}</h1>
+					<AuthField
+						id='last-name'
+						label={t('lastName')}
+						type='text'
+						value={lastName}
+						onChange={event => setLastName(event.target.value)}
+						autoComplete='family-name'
+						required
+					/>
+				</div>
 
-			<form onSubmit={handleSubmit} noValidate>
-				<label htmlFor='first-name'>{t('firstName')}</label>
-
-				<input
-					id='first-name'
-					type='text'
-					value={firstName}
-					onChange={event => setFirstName(event.target.value)}
-					autoComplete='given-name'
-					required
-				/>
-
-				<label htmlFor='last-name'>{t('lastName')}</label>
-
-				<input
-					id='last-name'
-					type='text'
-					value={lastName}
-					onChange={event => setLastName(event.target.value)}
-					autoComplete='family-name'
-					required
-				/>
-
-				<label htmlFor='birth-date'>{t('birthDate')}</label>
-
-				<input
+				<AuthField
 					id='birth-date'
+					label={t('birthDate')}
 					type='date'
 					value={birthDate}
 					onChange={event => setBirthDate(event.target.value)}
@@ -177,10 +174,9 @@ export default function RegisterPage() {
 					required
 				/>
 
-				<label htmlFor='phone'>{t('phone')}</label>
-
-				<input
+				<AuthField
 					id='phone'
+					label={t('phone')}
 					type='tel'
 					value={phone}
 					onChange={event => setPhone(event.target.value)}
@@ -189,10 +185,9 @@ export default function RegisterPage() {
 					required
 				/>
 
-				<label htmlFor='email'>{t('email')}</label>
-
-				<input
+				<AuthField
 					id='email'
+					label={t('email')}
 					type='email'
 					value={email}
 					onChange={event => setEmail(event.target.value)}
@@ -200,38 +195,54 @@ export default function RegisterPage() {
 					required
 				/>
 
-				<label htmlFor='password'>{t('password')}</label>
-
-				<input
+				<PasswordField
 					id='password'
-					type='password'
+					label={t('password')}
 					value={password}
 					onChange={event => setPassword(event.target.value)}
 					autoComplete='new-password'
 					minLength={6}
 					required
+					showPasswordLabel={formT('showPassword')}
+					hidePasswordLabel={formT('hidePassword')}
 				/>
 
-				<label htmlFor='confirm-password'>{t('confirmPassword')}</label>
-
-				<input
+				<PasswordField
 					id='confirm-password'
-					type='password'
+					label={t('confirmPassword')}
 					value={confirmPassword}
 					onChange={event => setConfirmPassword(event.target.value)}
 					autoComplete='new-password'
 					minLength={6}
 					required
+					showPasswordLabel={formT('showPassword')}
+					hidePasswordLabel={formT('hidePassword')}
 				/>
 
-				<button type='submit' disabled={isLoading}>
-					{isLoading ? t('loading') : t('submit')}
-				</button>
+				<AuthSubmitButton
+					label={t('submit')}
+					loadingLabel={t('loading')}
+					isLoading={isLoading}
+				/>
 			</form>
 
-			{message && <p>{message}</p>}
+			{message && (
+				<p
+					role='status'
+					className='mt-4 rounded-2xl bg-[var(--background)] px-4 py-3 text-center text-sm leading-5 text-[var(--accent)]'
+				>
+					{message}
+				</p>
+			)}
 
-			<Link href={`/${locale}/auth/login`}>{t('link')}</Link>
-		</main>
+			<div className='mt-5 text-center text-sm text-[var(--muted)]'>
+				<Link
+					href={`/${locale}/auth/login`}
+					className='underline-offset-4 transition hover:text-[var(--foreground)] hover:underline'
+				>
+					{t('link')}
+				</Link>
+			</div>
+		</AuthShell>
 	);
 }

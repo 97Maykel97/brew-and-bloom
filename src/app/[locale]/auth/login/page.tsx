@@ -5,7 +5,10 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
-import LanguageSwitcher from '@/components/UI/LanguageSwitcher';
+import AuthField from '@/components/auth/AuthField';
+import AuthShell from '@/components/auth/AuthShell';
+import AuthSubmitButton from '@/components/auth/AuthSubmitButton';
+import PasswordField from '@/components/auth/PasswordField';
 import {
 	getAuthErrorMessage,
 	getAuthValidationMessage,
@@ -15,6 +18,7 @@ import { createClient } from '@/lib/supabase/client';
 export default function LoginPage() {
 	const { locale } = useParams<{ locale: string }>();
 	const t = useTranslations('auth.login');
+	const formT = useTranslations('auth.form');
 
 	const [email, setEmail] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
@@ -60,18 +64,11 @@ export default function LoginPage() {
 	}
 
 	return (
-		<main>
-			<div className='flex justify-end p-4'>
-				<LanguageSwitcher locale={locale} />
-			</div>
-
-			<h1>{t('title')}</h1>
-
-			<form onSubmit={handleSubmit} noValidate>
-				<label htmlFor='email'>{t('email')}</label>
-
-				<input
+		<AuthShell locale={locale} title={t('title')}>
+			<form onSubmit={handleSubmit} noValidate className='space-y-3.5 sm:space-y-4'>
+				<AuthField
 					id='email'
+					label={t('email')}
 					type='email'
 					value={email}
 					onChange={event => setEmail(event.target.value)}
@@ -79,29 +76,48 @@ export default function LoginPage() {
 					required
 				/>
 
-				<label htmlFor='password'>{t('password')}</label>
-
-				<input
+				<PasswordField
 					id='password'
-					type='password'
+					label={t('password')}
 					value={password}
 					onChange={event => setPassword(event.target.value)}
 					autoComplete='current-password'
 					required
+					showPasswordLabel={formT('showPassword')}
+					hidePasswordLabel={formT('hidePassword')}
 				/>
 
-				<button type='submit' disabled={isLoading}>
-					{isLoading ? t('loading') : t('submit')}
-				</button>
+				<AuthSubmitButton
+					label={t('submit')}
+					loadingLabel={t('loading')}
+					isLoading={isLoading}
+				/>
 			</form>
 
-			{message && <p>{message}</p>}
+			{message && (
+				<p
+					role='status'
+					className='mt-4 rounded-2xl bg-[var(--background)] px-4 py-3 text-center text-sm leading-5 text-[var(--accent)]'
+				>
+					{message}
+				</p>
+			)}
 
-			<Link href={`/${locale}/auth/forgot-password`}>
+			<div className='mt-5 flex flex-col items-center gap-3 text-sm'>
+				<Link
+					href={`/${locale}/auth/forgot-password`}
+					className='font-medium text-[var(--accent)] underline-offset-4 transition hover:underline'
+				>
 				{t('forgotPassword')}
-			</Link>
+				</Link>
 
-			<Link href={`/${locale}/auth/register`}>{t('link')}</Link>
-		</main>
+				<Link
+					href={`/${locale}/auth/register`}
+					className='text-[var(--muted)] underline-offset-4 transition hover:text-[var(--foreground)] hover:underline'
+				>
+					{t('link')}
+				</Link>
+			</div>
+		</AuthShell>
 	);
 }

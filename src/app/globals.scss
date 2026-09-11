@@ -4,6 +4,9 @@
 :root {
 	--background: #{$color-background};
 	--foreground: #{$color-text};
+	--muted: #{$color-muted};
+	--accent: #{$color-accent};
+	--border: #{$color-border};
 }
 
 body {

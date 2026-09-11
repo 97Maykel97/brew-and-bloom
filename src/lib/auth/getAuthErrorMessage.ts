@@ -72,8 +72,7 @@ const errorMessages: Record<
 		emailProviderDisabled: 'Регистрация по email временно недоступна.',
 		emailNotAuthorized:
 			'На этот email пока нельзя отправить письмо. Обратитесь к администратору.',
-		emailRateLimit:
-			'Слишком много писем отправлено на этот адрес. Попробуйте позже.',
+		emailRateLimit: 'Лимит отправки писем исчерпан. Попробуйте позже.',
 		requestRateLimit:
 			'Слишком много запросов. Попробуйте через несколько минут.',
 		smsRateLimit:
@@ -112,7 +111,7 @@ const errorMessages: Record<
 		emailNotAuthorized:
 			'Emails cannot currently be sent to this address. Contact the administrator.',
 		emailRateLimit:
-			'Too many emails have been sent to this address. Please try again later.',
+			'The email sending limit has been reached. Please try again later.',
 		requestRateLimit:
 			'Too many requests. Please try again in a few minutes.',
 		smsRateLimit:
@@ -151,7 +150,7 @@ const errorMessages: Record<
 		emailProviderDisabled: 'ההרשמה באמצעות אימייל אינה זמינה כרגע.',
 		emailNotAuthorized:
 			'לא ניתן לשלוח כרגע הודעה לכתובת הזו. יש לפנות למנהל המערכת.',
-		emailRateLimit: 'נשלחו יותר מדי הודעות לכתובת הזו. נסה שוב מאוחר יותר.',
+		emailRateLimit: 'מכסת שליחת האימיילים מוצתה. יש לנסות שוב מאוחר יותר.',
 		requestRateLimit: 'נשלחו יותר מדי בקשות. נסה שוב בעוד כמה דקות.',
 		smsRateLimit: 'נשלחו יותר מדי הודעות SMS למספר הזה. נסה שוב מאוחר יותר.',
 		phoneAlreadyExists: 'כבר קיים חשבון עם מספר הטלפון הזה.',

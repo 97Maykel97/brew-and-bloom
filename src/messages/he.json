@@ -18,6 +18,10 @@
 		}
 	},
 	"auth": {
+		"form": {
+			"showPassword": "הצגת הסיסמה",
+			"hidePassword": "הסתרת הסיסמה"
+		},
 		"login": {
 			"title": "התחברות",
 			"email": "אימייל",
