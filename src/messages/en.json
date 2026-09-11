@@ -1,19 +1,20 @@
 {
-  "nav": {
-    "home": "Home",
-    "menu": "Menu",
-    "about": "About us",
-    "events": "Events",
-    "contacts": "Contacts"
-  },
-  "home": {
-    "hero": {
-      "eyebrow": "Brew & Bloom",
-      "title": "More than\na café",
-      "subtitle": "A place for warm moments",
-      "description": "Great coffee, a cozy atmosphere, and moments worth coming back to.",
-      "button": "Book a table",
-      "note": "Good ideas\nbegin here"
-    }
-  }
+	"nav": {
+		"home": "Home",
+		"menu": "Menu",
+		"about": "About us",
+		"events": "Events",
+		"contacts": "Contacts",
+		"search": "Search"
+	},
+	"home": {
+		"hero": {
+			"eyebrow": "Brew & Bloom",
+			"title": "More,\n than a café",
+			"subtitle": "A place for warm moments",
+			"description": "Great coffee, a cozy atmosphere, and moments worth coming back to.",
+			"button": "Book a table",
+			"note": "Good ideas\nbegin here"
+		}
+	}
 }

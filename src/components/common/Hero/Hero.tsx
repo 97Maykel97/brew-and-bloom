@@ -14,15 +14,16 @@ type THero = {
 
 type THeroProps = {
 	hero: THero;
+	isRtl?: boolean;
 };
 
-function Hero({ hero }: THeroProps) {
+function Hero({ hero, isRtl = false }: THeroProps) {
 	const { eyebrow, title, subtitle, descr, buttonText, note } = hero;
 	const noteLines = note.split('\n');
 	const lastNoteLineIndex = noteLines.length - 1;
 
 	return (
-		<section className={styles.hero}>
+		<section className={`${styles.hero} ${isRtl ? styles.rtl : ''}`}>
 			<Container>
 				<p className={styles.eyebrow}>{eyebrow}</p>
 				<h1 className={styles.title}>{title}</h1>
@@ -30,7 +31,7 @@ function Hero({ hero }: THeroProps) {
 				<p className={styles.descr}>{descr}</p>
 				<button type='button' className={styles.button}>
 					{buttonText}
-					<span aria-hidden='true'>&rarr;</span>
+					<span aria-hidden='true'>{isRtl ? <>&larr;</> : <>&rarr;</>}</span>
 				</button>
 				<p className={styles.note}>
 					{noteLines.map((line, index) => (

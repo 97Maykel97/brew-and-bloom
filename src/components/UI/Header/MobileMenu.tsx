@@ -14,9 +14,10 @@ type TMobileNavItem = {
 type TMobileMenuProps = {
   locale: string;
   items: TMobileNavItem[];
+  searchLabel: string;
 };
 
-function MobileMenu({ locale, items }: TMobileMenuProps) {
+function MobileMenu({ locale, items, searchLabel }: TMobileMenuProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
@@ -26,7 +27,7 @@ function MobileMenu({ locale, items }: TMobileMenuProps) {
         aria-label={isOpen ? "Close menu" : "Open menu"}
         aria-expanded={isOpen}
         onClick={() => setIsOpen(!isOpen)}
-        className="relative z-50 flex h-10 w-10 items-center justify-center text-[var(--foreground)]"
+        className="relative z-50 flex h-10 w-10 cursor-pointer items-center justify-center text-[var(--foreground)] transition-transform duration-200 hover:scale-110 active:scale-95"
       >
         {isOpen ? <X size={24} strokeWidth={1.8} /> : <Menu size={24} strokeWidth={1.8} />}
       </button>
@@ -47,12 +48,16 @@ function MobileMenu({ locale, items }: TMobileMenuProps) {
             </div>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
-              <SearchButton locale={locale} variant="menu" />
+              <SearchButton
+                locale={locale}
+                searchLabel={searchLabel}
+                variant="menu"
+              />
 
-              <Link href={`/${locale}/favorites`} aria-label="Favorites" onClick={() => setIsOpen(false)} className="flex h-10 w-10 shrink-0 items-center justify-center">
-                <Heart size={18} strokeWidth={1.8} />
+              <Link href={`/${locale}/favorites`} aria-label="Favorites" onClick={() => setIsOpen(false)} className="group flex h-10 w-10 shrink-0 items-center justify-center text-[var(--foreground)] transition-all duration-300 ease-out hover:scale-105 hover:text-[#A65345] active:scale-95">
+                <Heart className="transition-all duration-300 ease-out group-hover:fill-[#A65345] group-hover:stroke-[#A65345]" size={18} strokeWidth={1.8} />
               </Link>
-              <Link href={`/${locale}/profile`} aria-label="Profile" onClick={() => setIsOpen(false)} className="flex h-10 w-10 shrink-0 items-center justify-center">
+              <Link href={`/${locale}/profile`} aria-label="Profile" onClick={() => setIsOpen(false)} className="flex h-10 w-10 shrink-0 items-center justify-center transition-transform duration-200 hover:scale-110 active:scale-95">
                 <UserRound size={18} strokeWidth={1.8} />
               </Link>
             </div>

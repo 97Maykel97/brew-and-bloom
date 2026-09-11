@@ -9,9 +9,10 @@ import { type Locale, translations } from '@/i18n/translations';
 export default function HomeScreen() {
 	const [locale, setLocale] = useState<Locale>('ru');
 	const content = translations[locale];
+	const isRtl = locale === 'he';
 
-	function toggleLocale() {
-		setLocale(value => (value === 'ru' ? 'en' : 'ru'));
+	function handleLocaleChange(nextLocale: Locale) {
+		setLocale(nextLocale);
 	}
 
 	return (
@@ -19,25 +20,26 @@ export default function HomeScreen() {
 			<Header
 				locale={locale}
 				navItems={content.nav}
-				onLocaleChange={toggleLocale}
+				onLocaleChange={handleLocaleChange}
 				searchPlaceholder={content.searchPlaceholder}
 			/>
 
 			<View style={styles.content}>
-				<Text style={styles.eyebrow}>{content.hero.eyebrow}</Text>
-				<Text style={styles.title}>{content.hero.title}</Text>
-				<Text style={styles.subtitle}>{content.hero.subtitle}</Text>
-				<Text style={styles.description}>{content.hero.description}</Text>
-				<Text style={styles.note}>{content.hero.note}</Text>
+				<Text style={[styles.eyebrow, isRtl && styles.rtlText]}>{content.hero.eyebrow}</Text>
+				<Text style={[styles.title, isRtl && styles.rtlText]}>{content.hero.title}</Text>
+				<Text style={[styles.subtitle, isRtl && styles.rtlText]}>{content.hero.subtitle}</Text>
+				<Text style={[styles.description, isRtl && styles.rtlText]}>{content.hero.description}</Text>
+				<Text style={[styles.note, isRtl && styles.rtlText]}>{content.hero.note}</Text>
 				<Pressable
 					accessibilityRole='button'
 					style={({ pressed }) => [
 						styles.button,
+						isRtl && styles.rtlButton,
 						pressed && styles.buttonPressed,
 					]}
 				>
 					<Text style={styles.buttonText}>{content.hero.button}</Text>
-					<Text style={styles.buttonArrow}>→</Text>
+					<Text style={styles.buttonArrow}>{isRtl ? '←' : '→'}</Text>
 				</Pressable>
 			</View>
 		</SafeAreaView>
@@ -88,6 +90,9 @@ const styles = StyleSheet.create({
 		lineHeight: 23,
 		textAlign: 'center',
 	},
+	rtlText: {
+		writingDirection: 'rtl',
+	},
 	button: {
 		minHeight: 52,
 		marginTop: Spacing.xLarge,
@@ -102,6 +107,9 @@ const styles = StyleSheet.create({
 	buttonPressed: {
 		opacity: 0.82,
 		transform: [{ scale: 0.98 }],
+	},
+	rtlButton: {
+		flexDirection: 'row-reverse',
 	},
 	buttonText: {
 		color: Colors.white,

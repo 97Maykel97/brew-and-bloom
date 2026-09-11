@@ -21,8 +21,18 @@ type HeaderProps = {
   locale: Locale;
   navItems: string[];
   searchPlaceholder: string;
-  onLocaleChange: () => void;
+  onLocaleChange: (locale: Locale) => void;
 };
+
+const languageOptions: {
+  locale: Locale;
+  label: string;
+  name: string;
+}[] = [
+  { locale: 'ru', label: 'RU', name: 'Русский' },
+  { locale: 'en', label: 'EN', name: 'English' },
+  { locale: 'he', label: 'HE', name: 'עברית' },
+];
 
 export default function Header({
   locale,
@@ -31,13 +41,16 @@ export default function Header({
   onLocaleChange,
 }: HeaderProps) {
   const { height } = useWindowDimensions();
+  const isRtl = locale === 'he';
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
+  const [isLanguageOpen, setIsLanguageOpen] = useState<boolean>(false);
   const [query, setQuery] = useState<string>('');
 
   function toggleMenu() {
     setIsMenuOpen((value) => !value);
     setIsSearchOpen(false);
+    setIsLanguageOpen(false);
   }
 
   function toggleSearch() {
@@ -48,6 +61,7 @@ export default function Header({
 
     setIsSearchOpen(true);
     setIsMenuOpen(false);
+    setIsLanguageOpen(false);
   }
 
   function closeMenu() {
@@ -57,6 +71,21 @@ export default function Header({
   function closeSearch() {
     setIsSearchOpen(false);
     Keyboard.dismiss();
+  }
+
+  function toggleLanguage() {
+    setIsLanguageOpen((value) => !value);
+    setIsMenuOpen(false);
+    setIsSearchOpen(false);
+  }
+
+  function closeLanguage() {
+    setIsLanguageOpen(false);
+  }
+
+  function selectLanguage(nextLocale: Locale) {
+    onLocaleChange(nextLocale);
+    closeLanguage();
   }
 
   function handleSearchAction() {
@@ -124,13 +153,55 @@ export default function Header({
           <Pressable
             accessibilityLabel="Переключить язык"
             accessibilityRole="button"
-            onPress={onLocaleChange}
+            accessibilityState={{ expanded: isLanguageOpen }}
+            onPress={toggleLanguage}
             style={styles.languageButton}
           >
-            <Text style={styles.language}>{locale === 'ru' ? 'EN' : 'RU'}</Text>
+            <Text style={styles.language}>
+              {locale.toUpperCase()}
+            </Text>
           </Pressable>
         </View>
       </View>
+
+      {isLanguageOpen && (
+        <Modal
+          animationType='fade'
+          onRequestClose={closeLanguage}
+          transparent
+          visible={isLanguageOpen}
+        >
+          <Pressable style={styles.languageOverlay} onPress={closeLanguage}>
+            <Pressable
+              style={styles.languageMenu}
+              onPress={event => event.stopPropagation()}
+            >
+              {languageOptions
+                .filter(option => option.locale !== locale)
+                .map(option => (
+                  <Pressable
+                    accessibilityRole='button'
+                    key={option.locale}
+                    onPress={() => selectLanguage(option.locale)}
+                    style={({ pressed }) => [
+                      styles.languageOption,
+                      pressed && styles.menuItemPressed,
+                    ]}
+                  >
+                    <Text
+                      style={[
+                        styles.languageOptionText,
+                        option.locale === 'he' && styles.rtlText,
+                      ]}
+                    >
+                      {option.label} · {option.name}
+                    </Text>
+                  </Pressable>
+                ))}
+            </Pressable>
+          </Pressable>
+        </Modal>
+      )}
 
       {isSearchOpen && (
         <Modal
@@ -152,7 +223,7 @@ export default function Header({
                 onChangeText={setQuery}
                 placeholder={searchPlaceholder}
                 placeholderTextColor={Colors.muted}
-                style={styles.searchInput}
+                style={[styles.searchInput, isRtl && styles.rtlText]}
                 value={query}
               />
 
@@ -198,7 +269,7 @@ export default function Header({
                     pressed && styles.menuItemPressed,
                   ]}
                 >
-                  <Text style={styles.menuText}>{item}</Text>
+                  <Text style={[styles.menuText, isRtl && styles.rtlText]}>{item}</Text>
                 </Pressable>
               ))}
             </ScrollView>
@@ -256,8 +327,38 @@ const styles = StyleSheet.create({
   languageButton: {
     width: 36,
     height: 40,
+    marginRight: Spacing.small,
     alignItems: 'flex-end',
     justifyContent: 'center',
+  },
+  languageOverlay: {
+    flex: 1,
+    alignItems: 'flex-end',
+    paddingTop: 80,
+    paddingRight: Spacing.large,
+  },
+  languageMenu: {
+    minWidth: 168,
+    padding: Spacing.small,
+    borderRadius: 12,
+    backgroundColor: Colors.background,
+    shadowColor: Colors.foreground,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.14,
+    shadowRadius: 10,
+    elevation: 6,
+  },
+  languageOption: {
+    minHeight: 44,
+    paddingHorizontal: Spacing.small,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 8,
+  },
+  languageOptionText: {
+    color: Colors.foreground,
+    fontFamily: Fonts.sans,
+    fontSize: 14,
   },
   searchBar: {
     minHeight: 52,
@@ -285,6 +386,9 @@ const styles = StyleSheet.create({
     color: Colors.foreground,
     fontFamily: Fonts.sans,
     fontSize: 15,
+  },
+  rtlText: {
+    writingDirection: 'rtl',
   },
   clearButton: {
     width: 32,

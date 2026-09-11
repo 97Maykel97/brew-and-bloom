@@ -1,4 +1,6 @@
 .hero {
+	--hero-image: url('/home-hero-background.png');
+	--hero-gradient-direction: 90deg;
 	overflow: hidden;
 	padding-top: 50px;
 	position: relative;
@@ -6,7 +8,7 @@
 	background-color: var(--background);
 	background-image:
 		linear-gradient(
-			90deg,
+			var(--hero-gradient-direction),
 			rgba(245, 239, 231, 1) 0%,
 			rgba(245, 239, 231, 0.98) 25%,
 			rgba(245, 239, 231, 0.88) 40%,
@@ -14,7 +16,7 @@
 			rgba(245, 239, 231, 0.18) 68%,
 			rgba(245, 239, 231, 0) 82%
 		),
-		url('/home-hero-background.png');
+		var(--hero-image);
 	background-position:
 		center,
 		right center;
@@ -27,6 +29,44 @@
 .hero > div {
 	position: relative;
 	z-index: 1;
+}
+
+.rtl > div:first-child {
+	direction: rtl;
+}
+
+.rtl {
+	--hero-image: url('/home-hero-background-he.png');
+	--hero-gradient-direction: 270deg;
+}
+
+.rtl > div:first-child > .eyebrow,
+.rtl > div:first-child > .title,
+.rtl > div:first-child > .subtitle,
+.rtl > div:first-child > .descr {
+	width: min(100%, 500px);
+	margin-right: 0;
+	margin-left: auto;
+	text-align: right;
+}
+
+.rtl > div:first-child > .button {
+	display: flex;
+	width: max-content;
+	margin-right: 0;
+	margin-left: auto;
+	direction: rtl;
+}
+
+.rtl .title {
+	font-family: Arial, sans-serif;
+	font-weight: 700;
+	letter-spacing: 0;
+	line-height: 1.05;
+}
+
+.rtl .note {
+	direction: rtl;
 }
 
 .title {
@@ -278,20 +318,20 @@
 		opacity: 0.16;
 	}
 }
+
 @media (min-width: 1441px) {
 	.note {
-		right: 400px;
+		right: 300px;
 	}
 }
 
 @media (max-width: 1399px) {
-
 	.hero {
 		min-height: 580px;
 		padding-top: 44px;
 		background-image:
 			linear-gradient(
-				90deg,
+				var(--hero-gradient-direction),
 				rgba(245, 239, 231, 1) 0%,
 				rgba(245, 239, 231, 0.96) 24%,
 				rgba(245, 239, 231, 0.78) 36%,
@@ -299,7 +339,7 @@
 				rgba(245, 239, 231, 0.08) 60%,
 				rgba(245, 239, 231, 0) 72%
 			),
-			url('/home-hero-background.png');
+			var(--hero-image);
 		background-position:
 			center,
 			right center;
@@ -328,20 +368,19 @@
 }
 
 @media (max-width: 991px) {
-
 	.hero {
 		min-height: 560px;
 		padding-top: 40px;
 		background-image:
 			linear-gradient(
-				90deg,
+				var(--hero-gradient-direction),
 				rgba(245, 239, 231, 0.98) 0%,
 				rgba(245, 239, 231, 0.9) 28%,
 				rgba(245, 239, 231, 0.58) 42%,
 				rgba(245, 239, 231, 0.18) 56%,
 				rgba(245, 239, 231, 0) 70%
 			),
-			url('/home-hero-background.png');
+			var(--hero-image);
 		background-position:
 			center,
 			62% center;
@@ -371,20 +410,19 @@
 }
 
 @media (max-width: 767px) {
-
 	.hero {
 		min-height: 680px;
 		padding: 36px 0 48px;
 		background-image:
 			linear-gradient(
-				90deg,
+				var(--hero-gradient-direction),
 				rgba(245, 239, 231, 0.98) 0%,
 				rgba(245, 239, 231, 0.92) 32%,
 				rgba(245, 239, 231, 0.68) 48%,
 				rgba(245, 239, 231, 0.2) 65%,
 				rgba(245, 239, 231, 0) 82%
 			),
-			url('/home-hero-background.png');
+			var(--hero-image);
 		background-position:
 			center,
 			58% center;
@@ -450,7 +488,6 @@
 }
 
 @media (max-width: 639px) {
-
 	.hero {
 		min-height: 680px;
 		padding: 180px 0 180px;
@@ -462,7 +499,7 @@
 				rgba(245, 239, 231, 0.32) 52%,
 				rgba(245, 239, 231, 0) 70%
 			),
-			url('/home-hero-background.png');
+			var(--hero-image);
 		background-position:
 			center,
 			60% center;
@@ -508,7 +545,6 @@
 }
 
 @media (max-width: 479px) {
-
 	.hero {
 		min-height: 650px;
 		padding: 190px 0 190px;
@@ -560,5 +596,61 @@
 	.noteHeart {
 		width: 24px;
 		height: 24px;
+	}
+}
+
+.rtl .note {
+	right: auto;
+	left: 400px;
+}
+
+@media (min-width: 1441px) {
+	.rtl .note {
+		left: 300px;
+	}
+}
+
+@media (max-width: 1399px) {
+	.rtl .note {
+		left: clamp(180px, 25vw, 350px);
+	}
+}
+
+@media (max-width: 991px) {
+	.rtl .note {
+		left: clamp(80px, 11vw, 110px);
+	}
+}
+
+@media (max-width: 767px) {
+	.rtl .note {
+		left: 20px;
+	}
+}
+
+@media (max-width: 639px) {
+	.rtl > div:first-child {
+		align-items: center;
+		text-align: center;
+	}
+
+	.rtl > div:first-child > .eyebrow,
+	.rtl > div:first-child > .title,
+	.rtl > div:first-child > .subtitle,
+	.rtl > div:first-child > .descr {
+		margin-right: auto;
+		margin-left: auto;
+		text-align: center;
+	}
+
+	.rtl > div:first-child > .button {
+		margin-right: auto;
+		margin-left: auto;
+	}
+}
+
+@media (min-width: 640px) and (max-width: 1200px) {
+	.hero > div:first-child {
+		padding-top: clamp(80px, 12vh, 140px);
 	}
 }

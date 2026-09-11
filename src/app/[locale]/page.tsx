@@ -24,7 +24,7 @@ export default async function Page({ params }: TPageProps) {
 	return (
 		<>
 			<Header locale={locale} />
-			<Hero hero={hero} />
+			<Hero hero={hero} isRtl={locale === 'he'} />
 		</>
 	);
 }
