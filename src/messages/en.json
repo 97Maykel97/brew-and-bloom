@@ -16,5 +16,57 @@
 			"button": "Book a table",
 			"note": "Good ideas\nbegin here"
 		}
+	},
+	"auth": {
+		"login": {
+			"title": "Sign in",
+			"email": "Email",
+			"password": "Password",
+			"submit": "Sign in",
+			"loading": "Signing in...",
+			"success": "You have successfully signed in",
+			"forgotPassword": "Forgot your password?",
+			"link": "Don't have an account? Create one"
+		},
+		"register": {
+			"title": "Create an account",
+			"firstName": "First name",
+			"lastName": "Last name",
+			"birthDate": "Date of birth",
+			"phone": "Phone",
+			"email": "Email",
+			"password": "Password",
+			"confirmPassword": "Confirm password",
+			"submit": "Create account",
+			"loading": "Creating account...",
+			"success": "Account created successfully",
+			"confirmEmail": "Account created. Check your email to confirm your address",
+			"passwordLength": "Password must contain at least 6 characters",
+			"passwordMismatch": "Passwords do not match",
+			"invalidBirthDate": "Enter a valid date of birth",
+			"link": "Already have an account? Sign in"
+		},
+		"forgotPassword": {
+			"title": "Reset your password",
+			"description": "Enter the email address you used to register. We'll send you a password reset link.",
+			"email": "Email",
+			"submit": "Send reset link",
+			"loading": "Sending...",
+			"success": "If an account with this email exists, a password reset link has been sent.",
+			"backToLogin": "Back to sign in"
+		},
+		"updatePassword": {
+			"title": "Set a new password",
+			"description": "Enter a new password for your account.",
+			"password": "New password",
+			"confirmPassword": "Confirm new password",
+			"submit": "Save password",
+			"loading": "Saving...",
+			"success": "Your password has been changed. You can now sign in.",
+			"passwordLength": "Password must contain at least 6 characters",
+			"passwordMismatch": "Passwords do not match",
+			"invalidLink": "This link is invalid or has expired. Request a new one.",
+			"backToLogin": "Back to sign in"
+		}
 	}
 }

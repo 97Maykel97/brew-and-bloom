@@ -1,4 +1,6 @@
 import type { ReactNode } from 'react';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 
 type TLocaleLayoutProps = {
 	children: ReactNode;
@@ -12,15 +14,18 @@ export default async function LocaleLayout({
 	params,
 }: TLocaleLayoutProps) {
 	const { locale } = await params;
+	const messages = await getMessages();
 	const isRtl = locale === 'he';
 
 	return (
-		<div
-			lang={locale}
-			dir={isRtl ? 'rtl' : 'ltr'}
-			className='flex min-h-full min-w-0 flex-1 flex-col'
-		>
-			{children}
-		</div>
+		<NextIntlClientProvider locale={locale} messages={messages}>
+			<div
+				lang={locale}
+				dir={isRtl ? 'rtl' : 'ltr'}
+				className='flex min-h-full min-w-0 flex-1 flex-col'
+			>
+				{children}
+			</div>
+		</NextIntlClientProvider>
 	);
 }

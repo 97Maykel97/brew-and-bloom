@@ -57,7 +57,7 @@ function MobileMenu({ locale, items, searchLabel }: TMobileMenuProps) {
               <Link href={`/${locale}/favorites`} aria-label="Favorites" onClick={() => setIsOpen(false)} className="group flex h-10 w-10 shrink-0 items-center justify-center text-[var(--foreground)] transition-all duration-300 ease-out hover:scale-105 hover:text-[#A65345] active:scale-95">
                 <Heart className="transition-all duration-300 ease-out group-hover:fill-[#A65345] group-hover:stroke-[#A65345]" size={18} strokeWidth={1.8} />
               </Link>
-              <Link href={`/${locale}/profile`} aria-label="Profile" onClick={() => setIsOpen(false)} className="flex h-10 w-10 shrink-0 items-center justify-center transition-transform duration-200 hover:scale-110 active:scale-95">
+              <Link href={`/${locale}/auth/login`} aria-label="Profile" onClick={() => setIsOpen(false)} className="flex h-10 w-10 shrink-0 items-center justify-center transition-transform duration-200 hover:scale-110 active:scale-95">
                 <UserRound size={18} strokeWidth={1.8} />
               </Link>
             </div>

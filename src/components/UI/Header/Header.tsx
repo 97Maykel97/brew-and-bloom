@@ -76,7 +76,7 @@ async function Header({ locale }: THeaderProps) {
               <Heart className="transition-all duration-300 ease-out group-hover:fill-[#A65345] group-hover:stroke-[#A65345]" size={18} strokeWidth={1.8} />
             </Link>
 
-            <Link href={`/${locale}/profile`} aria-label="Profile" className="flex h-10 w-10 shrink-0 items-center justify-center transition-transform duration-200 hover:scale-110 active:scale-95">
+            <Link href={`/${locale}/auth/login`} aria-label="Profile" className="flex h-10 w-10 shrink-0 items-center justify-center transition-transform duration-200 hover:scale-110 active:scale-95">
               <UserRound size={18} strokeWidth={1.8} />
             </Link>
 
