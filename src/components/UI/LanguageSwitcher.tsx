@@ -50,6 +50,7 @@ export default function LanguageSwitcher({
 						<Link
 							key={option.code}
 							href={getLocalizedPath(pathname, option.code)}
+							replace
 							className='flex min-h-9 items-center justify-between gap-3 whitespace-nowrap rounded-lg px-3 text-sm text-[var(--foreground)] transition-colors hover:bg-black/5'
 						>
 							<span>{option.label}</span>

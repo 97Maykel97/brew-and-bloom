@@ -64,7 +64,10 @@ export default function LoginPage() {
 	}
 
 	return (
-		<AuthShell locale={locale} title={t('title')}>
+		<AuthShell
+			locale={locale}
+			title={t('title')}
+		>
 			<form onSubmit={handleSubmit} noValidate className='space-y-3.5 sm:space-y-4'>
 				<AuthField
 					id='email'

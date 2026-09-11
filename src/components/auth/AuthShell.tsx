@@ -1,7 +1,10 @@
 'use client';
 
-import type { ReactNode } from 'react';
+import { useEffect, type ReactNode } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 import LanguageSwitcher from '@/components/UI/LanguageSwitcher';
 
@@ -20,10 +23,31 @@ export default function AuthShell({
 	children,
 	wide = false,
 }: TAuthShellProps) {
-	const isHebrew = locale === 'he';
+	const pathname = usePathname() ?? '/' + locale;
+	const pathLocale = pathname.split('/')[1];
+	const currentLocale = ['ru', 'en', 'he'].includes(pathLocale)
+		? pathLocale
+		: locale;
+	const isHebrew = currentLocale === 'he';
+	const backLabel =
+		currentLocale === 'he'
+			? 'חזרה'
+			: currentLocale === 'en'
+				? 'Back'
+				: 'Назад';
+	const backHref = '/' + currentLocale;
 	const backgroundImage = isHebrew
 		? '/home-hero-background-he.png'
 		: '/home-hero-background.png';
+
+	useEffect(() => {
+		function handleBrowserBack() {
+			window.location.replace('/' + currentLocale);
+		}
+
+		window.addEventListener('popstate', handleBrowserBack);
+		return () => window.removeEventListener('popstate', handleBrowserBack);
+	}, [currentLocale]);
 
 	return (
 		<main
@@ -44,16 +68,31 @@ export default function AuthShell({
 			</div>
 
 			<div className='relative z-10 min-h-[100svh] px-0 py-2 sm:px-6 sm:py-6 lg:px-8'>
-				<div className='mx-auto flex w-full max-w-[1180px] justify-end px-3 sm:px-0'>
-					<LanguageSwitcher locale={locale} />
-				</div>
-
-				<div className='mx-auto flex min-h-[calc(100svh-4.5rem)] w-full max-w-[1180px] items-start justify-center py-4 sm:py-8'>
-					<section
+				<div className='mx-auto flex min-h-[calc(100svh-1rem)] w-full max-w-[1180px] items-center justify-center py-3 sm:min-h-[calc(100svh-3rem)] sm:py-6'>
+					<div
 						className={
-							'my-auto w-[calc(100%_-_1.5rem)] rounded-[24px] border border-white/70 bg-[#fcf8f2]/94 p-4 shadow-[0_18px_45px_rgba(55,39,28,0.18)] backdrop-blur-md sm:w-full sm:rounded-[28px] sm:p-8 sm:shadow-[0_24px_70px_rgba(55,39,28,0.22)] ' +
+							'flex w-[calc(100%_-_1.5rem)] flex-col gap-2 sm:w-full ' +
 							(wide ? 'max-w-[540px]' : 'max-w-[440px]')
 						}
+					>
+						<div className='flex min-h-10 items-center justify-between px-1'>
+							<Link
+								href={backHref}
+								aria-label={backLabel}
+								className='flex h-10 cursor-pointer items-center gap-1 rounded-full px-2 text-sm font-medium text-[var(--foreground)] transition duration-200 hover:scale-105 hover:bg-white/45 active:scale-95'
+							>
+								{isHebrew ? (
+									<ArrowRight size={17} strokeWidth={1.8} />
+								) : (
+									<ArrowLeft size={17} strokeWidth={1.8} />
+								)}
+								<span>{backLabel}</span>
+							</Link>
+							<LanguageSwitcher locale={locale} />
+						</div>
+
+					<section
+						className='w-full rounded-[24px] border border-white/70 bg-[#fcf8f2]/94 p-4 shadow-[0_18px_45px_rgba(55,39,28,0.18)] backdrop-blur-md sm:rounded-[28px] sm:p-8 sm:shadow-[0_24px_70px_rgba(55,39,28,0.22)]'
 					>
 						<div className='mb-5 text-center sm:mb-7'>
 							<Image
@@ -76,6 +115,7 @@ export default function AuthShell({
 
 						{children}
 					</section>
+					</div>
 				</div>
 			</div>
 		</main>

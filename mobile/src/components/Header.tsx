@@ -1,5 +1,6 @@
 import { Feather } from '@expo/vector-icons';
 import { Image } from 'expo-image';
+import { router } from 'expo-router';
 import { useState } from 'react';
 import {
   Keyboard,
@@ -145,6 +146,12 @@ export default function Header({
           <Pressable
             accessibilityLabel="Профиль"
             accessibilityRole="button"
+            onPress={() =>
+              router.push({
+                pathname: '/auth/login',
+                params: { locale },
+              })
+            }
             style={styles.iconButton}
           >
             <Feather name="user" size={20} color={Colors.foreground} />

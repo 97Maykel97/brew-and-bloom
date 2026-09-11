@@ -140,7 +140,11 @@ export default function RegisterPage() {
 	}
 
 	return (
-		<AuthShell locale={locale} title={t('title')} wide>
+		<AuthShell
+			locale={locale}
+			title={t('title')}
+			wide
+		>
 			<form onSubmit={handleSubmit} noValidate className='space-y-3.5 sm:space-y-4'>
 				<div className='grid gap-3.5 sm:grid-cols-2 sm:gap-4'>
 					<AuthField
