@@ -1,6 +1,6 @@
-import type { Locale } from './translations';
+import type { TLocale } from './translations';
 
-export type AuthTranslations = {
+export type TAuthTranslations = {
 	login: {
 		title: string;
 		email: string;
@@ -63,7 +63,7 @@ export type AuthTranslations = {
 	};
 };
 
-export const authTranslations: Record<Locale, AuthTranslations> = {
+export const authTranslations: Record<TLocale, TAuthTranslations> = {
 	ru: {
 		login: {
 			title: 'Войти',

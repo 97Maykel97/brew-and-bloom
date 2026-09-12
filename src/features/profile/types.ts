@@ -1,0 +1,20 @@
+export type TProfileLocale = 'ru' | 'en' | 'he';
+
+export type TProfileTab =
+	| 'profile'
+	| 'orders'
+	| 'bookings'
+	| 'favorites'
+	| 'bonuses'
+	| 'settings';
+
+export type TOrderStatus = 'all' | 'processing' | 'ready' | 'completed';
+
+export type TProfileViewModel = {
+	fullName: string;
+	displayName: string;
+	email: string;
+	phone: string;
+	birthDate: string;
+	bonusPoints: number;
+};

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
+import AuthMessage from '@/components/auth/AuthMessage';
 import AuthShell from '@/components/auth/AuthShell';
 import AuthSubmitButton from '@/components/auth/AuthSubmitButton';
 import PasswordField from '@/components/auth/PasswordField';
@@ -110,14 +111,7 @@ export default function UpdatePasswordPage() {
 				</form>
 			)}
 
-			{message && (
-				<p
-					role='status'
-					className='mt-4 rounded-2xl bg-[var(--background)] px-4 py-3 text-center text-sm leading-5 text-[var(--accent)]'
-				>
-					{message}
-				</p>
-			)}
+			{message && <AuthMessage>{message}</AuthMessage>}
 
 			<div className='mt-5 text-center text-sm text-[var(--muted)]'>
 				<Link

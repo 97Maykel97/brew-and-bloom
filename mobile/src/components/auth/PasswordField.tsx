@@ -5,7 +5,7 @@ import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import { Colors, Fonts, Spacing } from '@/constants/theme';
 
-type PasswordFieldProps = TextInputProps & {
+type TPasswordFieldProps = TextInputProps & {
 	label: string;
 	isRtl: boolean;
 	showPasswordLabel: string;
@@ -19,8 +19,10 @@ export default function PasswordField({
 	hidePasswordLabel,
 	style,
 	...inputProps
-}: PasswordFieldProps) {
+}: TPasswordFieldProps) {
 	const [isVisible, setIsVisible] = useState<boolean>(false);
+	const [isFocused, setIsFocused] = useState<boolean>(false);
+	const { onBlur, onFocus } = inputProps;
 
 	return (
 		<View style={styles.field}>
@@ -29,9 +31,22 @@ export default function PasswordField({
 				<TextInput
 					{...inputProps}
 					secureTextEntry={!isVisible}
-					style={[styles.input, isRtl && styles.rtlInput, style]}
+					style={[
+						styles.input,
+						isFocused && styles.inputFocused,
+						isRtl && styles.rtlInput,
+						style,
+					]}
 					textAlign={isRtl ? 'right' : 'left'}
 					placeholderTextColor={Colors.muted}
+					onFocus={event => {
+						setIsFocused(true);
+						onFocus?.(event);
+					}}
+					onBlur={event => {
+						setIsFocused(false);
+						onBlur?.(event);
+					}}
 				/>
 				<Pressable
 					accessibilityRole='button'
@@ -76,6 +91,10 @@ const styles = StyleSheet.create({
 		color: Colors.foreground,
 		fontFamily: Fonts.sans,
 		fontSize: 15,
+	},
+	inputFocused: {
+		borderColor: Colors.accent,
+		backgroundColor: '#EFE5DA',
 	},
 	rtlInput: {
 		writingDirection: 'rtl',

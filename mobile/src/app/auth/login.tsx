@@ -1,14 +1,18 @@
-import { router, useLocalSearchParams } from 'expo-router';
+import {
+	router,
+	useLocalSearchParams,
+} from 'expo-router';
 import { useState } from 'react';
-import { Pressable, StyleSheet, Text } from 'react-native';
 
 import AuthField from '@/components/auth/AuthField';
+import AuthMessage from '@/components/auth/AuthMessage';
 import AuthScreen from '@/components/auth/AuthScreen';
 import AuthSubmitButton from '@/components/auth/AuthSubmitButton';
+import AuthTextLink from '@/components/auth/AuthTextLink';
 import PasswordField from '@/components/auth/PasswordField';
-import { Colors, Fonts, Spacing } from '@/constants/theme';
 import { authTranslations } from '@/i18n/authTranslations';
 import { getLocale } from '@/i18n/locale';
+import { createLocalizedHref } from '@/lib/createLocalizedHref';
 import { getAuthErrorMessage } from '@/lib/auth/getAuthErrorMessage';
 import { supabase } from '@/lib/supabase';
 
@@ -55,7 +59,7 @@ export default function LoginScreen() {
 
 			setEmail('');
 			setPassword('');
-			router.replace({ pathname: '/', params: { locale } });
+			router.replace(createLocalizedHref('/profile', locale));
 		} catch (error: unknown) {
 			setMessage(getAuthErrorMessage(error, locale));
 		} finally {
@@ -95,69 +99,29 @@ export default function LoginScreen() {
 				onPress={handleLogin}
 			/>
 
-			{message ? (
-				<Text style={[styles.message, isRtl && styles.rtlText]}>
-					{message}
-				</Text>
-			) : null}
+			{message ? <AuthMessage isRtl={isRtl}>{message}</AuthMessage> : null}
 
-			<Pressable
+			<AuthTextLink
+				isRtl={isRtl}
+				label={content.login.forgotPassword}
 				onPress={() =>
 					router.push({
 						pathname: '/auth/forgot-password',
 						params: { locale },
 					})
 				}
-				style={styles.linkButton}
-			>
-				<Text style={[styles.link, isRtl && styles.rtlText]}>
-					{content.login.forgotPassword}
-				</Text>
-			</Pressable>
-			<Pressable
+			/>
+			<AuthTextLink
+				isRtl={isRtl}
+				label={content.login.registerLink}
 				onPress={() =>
 					router.push({
 						pathname: '/auth/register',
 						params: { locale },
 					})
 				}
-				style={styles.linkButton}
-			>
-				<Text style={[styles.mutedLink, isRtl && styles.rtlText]}>
-					{content.login.registerLink}
-				</Text>
-			</Pressable>
+				tone='muted'
+			/>
 		</AuthScreen>
 	);
 }
-
-const styles = StyleSheet.create({
-	message: {
-		padding: Spacing.medium,
-		borderRadius: 14,
-		backgroundColor: '#EFE5DA',
-		color: Colors.accent,
-		fontFamily: Fonts.sans,
-		fontSize: 13,
-		lineHeight: 19,
-		textAlign: 'center',
-	},
-	linkButton: {
-		alignItems: 'center',
-	},
-	link: {
-		color: Colors.accent,
-		fontFamily: Fonts.sans,
-		fontSize: 14,
-		fontWeight: '600',
-	},
-	mutedLink: {
-		color: Colors.muted,
-		fontFamily: Fonts.sans,
-		fontSize: 14,
-	},
-	rtlText: {
-		writingDirection: 'rtl',
-		textAlign: 'right',
-	},
-});

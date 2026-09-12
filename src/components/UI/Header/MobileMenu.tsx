@@ -38,7 +38,7 @@ function MobileMenu({ locale, items, searchLabel }: TMobileMenuProps) {
             <div className="flex items-center justify-center">
               <Link href={`/${locale}`} onClick={() => setIsOpen(false)}>
                 <Image
-                  src="/brand-logo.png"
+                  src="/brew-and-bloom-logo.png"
                   alt="Brew & Bloom"
                   width={170}
                   height={57}

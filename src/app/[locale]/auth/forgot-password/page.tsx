@@ -6,6 +6,7 @@ import { useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
 import AuthField from '@/components/auth/AuthField';
+import AuthMessage from '@/components/auth/AuthMessage';
 import AuthShell from '@/components/auth/AuthShell';
 import AuthSubmitButton from '@/components/auth/AuthSubmitButton';
 import {
@@ -88,14 +89,7 @@ export default function ForgotPasswordPage() {
 				/>
 			</form>
 
-			{message && (
-				<p
-					role='status'
-					className='mt-4 rounded-2xl bg-[var(--background)] px-4 py-3 text-center text-sm leading-5 text-[var(--accent)]'
-				>
-					{message}
-				</p>
-			)}
+			{message && <AuthMessage>{message}</AuthMessage>}
 
 			<div className='mt-5 text-center text-sm text-[var(--muted)]'>
 				<Link

@@ -1,8 +1,8 @@
-import type { Locale } from '@/i18n/translations';
+import type { TLocale } from '@/i18n/translations';
 
 export function getAuthErrorMessage(
 	error: unknown,
-	locale: Locale,
+	locale: TLocale,
 ): string {
 	const message =
 		typeof error === 'object' && error !== null && 'message' in error

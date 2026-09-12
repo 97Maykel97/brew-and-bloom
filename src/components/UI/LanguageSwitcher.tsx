@@ -3,27 +3,20 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ChevronDown } from 'lucide-react';
-
-type TLocale = 'ru' | 'en' | 'he';
+import {
+	isSupportedLocale,
+	languageOptions,
+	type TLocale,
+} from '@/i18n/languages';
 
 type TLanguageSwitcherProps = {
 	locale: string;
 };
 
-const languageOptions: Array<{
-	code: TLocale;
-	label: string;
-	name: string;
-}> = [
-	{ code: 'ru', label: 'RU', name: '\u0420\u0443\u0441\u0441\u043a\u0438\u0439' },
-	{ code: 'en', label: 'EN', name: 'English' },
-	{ code: 'he', label: 'HE', name: '\u05e2\u05d1\u05e8\u05d9\u05ea' },
-];
-
 function getLocalizedPath(pathname: string, locale: TLocale): string {
 	const segments = pathname.split('/');
 
-	if (languageOptions.some(option => option.code === segments[1])) {
+	if (isSupportedLocale(segments[1])) {
 		segments[1] = locale;
 		return segments.join('/') || `/${locale}`;
 	}

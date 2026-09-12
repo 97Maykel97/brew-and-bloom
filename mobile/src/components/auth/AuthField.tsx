@@ -1,9 +1,10 @@
 import type { KeyboardTypeOptions, TextInputProps } from 'react-native';
+import { useState } from 'react';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 
 import { Colors, Fonts, Spacing } from '@/constants/theme';
 
-type AuthFieldProps = TextInputProps & {
+type TAuthFieldProps = TextInputProps & {
 	label: string;
 	isRtl: boolean;
 	keyboardType?: KeyboardTypeOptions;
@@ -15,9 +16,11 @@ export default function AuthField({
 	keyboardType,
 	style,
 	...inputProps
-}: AuthFieldProps) {
+}: TAuthFieldProps) {
+	const [isFocused, setIsFocused] = useState<boolean>(false);
 	const isLtr =
 		keyboardType === 'email-address' || keyboardType === 'phone-pad';
+	const { onBlur, onFocus } = inputProps;
 
 	return (
 		<View style={styles.field}>
@@ -25,9 +28,22 @@ export default function AuthField({
 			<TextInput
 				{...inputProps}
 				keyboardType={keyboardType}
-				style={[styles.input, isRtl && !isLtr && styles.rtlInput, style]}
+				style={[
+					styles.input,
+					isFocused && styles.inputFocused,
+					isRtl && !isLtr && styles.rtlInput,
+					style,
+				]}
 				textAlign={isLtr ? 'left' : isRtl ? 'right' : 'left'}
 				placeholderTextColor={Colors.muted}
+				onFocus={event => {
+					setIsFocused(true);
+					onFocus?.(event);
+				}}
+				onBlur={event => {
+					setIsFocused(false);
+					onBlur?.(event);
+				}}
 			/>
 		</View>
 	);
@@ -53,6 +69,10 @@ const styles = StyleSheet.create({
 		color: Colors.foreground,
 		fontFamily: Fonts.sans,
 		fontSize: 15,
+	},
+	inputFocused: {
+		borderColor: Colors.accent,
+		backgroundColor: '#EFE5DA',
 	},
 	rtlInput: {
 		writingDirection: 'rtl',

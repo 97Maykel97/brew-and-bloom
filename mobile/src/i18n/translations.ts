@@ -1,6 +1,8 @@
-export type Locale = 'ru' | 'en' | 'he';
+import type { TLocale } from './languages';
 
-export type HeroTranslations = {
+export type { TLocale } from './languages';
+
+export type THeroTranslations = {
 	eyebrow: string;
 	title: string;
 	subtitle: string;
@@ -9,13 +11,13 @@ export type HeroTranslations = {
 	note: string;
 };
 
-export type AppTranslations = {
+export type TAppTranslations = {
 	nav: string[];
 	searchPlaceholder: string;
-	hero: HeroTranslations;
+	hero: THeroTranslations;
 };
 
-export const translations: Record<Locale, AppTranslations> = {
+export const translations: Record<TLocale, TAppTranslations> = {
 	ru: {
 		nav: ['Главная', 'Меню', 'О нас', 'События', 'Контакты'],
 		searchPlaceholder: 'Поиск',

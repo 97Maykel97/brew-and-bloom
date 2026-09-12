@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Linking, Pressable, StyleSheet, Text } from 'react-native';
+import { Linking } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 
+import AuthMessage from '@/components/auth/AuthMessage';
 import AuthScreen from '@/components/auth/AuthScreen';
 import AuthSubmitButton from '@/components/auth/AuthSubmitButton';
+import AuthTextLink from '@/components/auth/AuthTextLink';
 import PasswordField from '@/components/auth/PasswordField';
-import { Colors, Fonts, Spacing } from '@/constants/theme';
 import { authTranslations } from '@/i18n/authTranslations';
 import { getLocale } from '@/i18n/locale';
 import { getAuthErrorMessage } from '@/lib/auth/getAuthErrorMessage';
@@ -160,51 +161,18 @@ export default function UpdatePasswordScreen() {
 				onPress={handleUpdatePassword}
 			/>
 
-			{message ? (
-				<Text style={[styles.message, isRtl && styles.rtlText]}>
-					{message}
-				</Text>
-			) : null}
+			{message ? <AuthMessage isRtl={isRtl}>{message}</AuthMessage> : null}
 
-			<Pressable
+			<AuthTextLink
+				isRtl={isRtl}
+				label={content.updatePassword.backToLogin}
 				onPress={() =>
 					router.replace({
 						pathname: '/auth/login',
 						params: { locale },
 					})
 				}
-				style={styles.linkButton}
-			>
-				<Text style={[styles.link, isRtl && styles.rtlText]}>
-					{content.updatePassword.backToLogin}
-				</Text>
-			</Pressable>
+			/>
 		</AuthScreen>
 	);
 }
-
-const styles = StyleSheet.create({
-	message: {
-		padding: Spacing.medium,
-		borderRadius: 14,
-		backgroundColor: '#EFE5DA',
-		color: Colors.accent,
-		fontFamily: Fonts.sans,
-		fontSize: 13,
-		lineHeight: 19,
-		textAlign: 'center',
-	},
-	linkButton: {
-		alignItems: 'center',
-	},
-	link: {
-		color: Colors.accent,
-		fontFamily: Fonts.sans,
-		fontSize: 14,
-		fontWeight: '600',
-	},
-	rtlText: {
-		writingDirection: 'rtl',
-		textAlign: 'right',
-	},
-});

@@ -1,9 +1,10 @@
-import type { Locale } from './translations';
+import {
+	isSupportedLocale,
+	type TLocale,
+} from './languages';
 
-export function getLocale(value: unknown): Locale {
-	if (value === 'en' || value === 'he') {
-		return value;
-	}
-
-	return 'ru';
+export function getLocale(value: unknown): TLocale {
+	return typeof value === 'string' && isSupportedLocale(value)
+		? value
+		: 'ru';
 }

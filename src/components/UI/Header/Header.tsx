@@ -4,6 +4,8 @@ import { getTranslations } from "next-intl/server";
 import { ChevronDown, Heart, UserRound } from "lucide-react";
 
 import Container from "@/components/common/Container";
+import { languageOptions } from "@/i18n/languages";
+import { createClient } from "@/lib/supabase/server";
 import MobileMenu from "./MobileMenu";
 import SearchButton from "./SearchButton";
 import NavLinks from "./NavLinks";
@@ -16,12 +18,6 @@ type TNavItem = {
   key: "home" | "menu" | "about" | "events" | "contacts";
   href: string;
 };
-
-const languageOptions = [
-  { code: "ru", label: "RU", name: "Русский" },
-  { code: "en", label: "EN", name: "English" },
-  { code: "he", label: "HE", name: "עברית" },
-];
 
 const navItems: TNavItem[] = [
   { key: "home", href: "/" },
@@ -38,6 +34,13 @@ async function Header({ locale }: THeaderProps) {
     href: item.href,
   }));
   const searchLabel = t("search");
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  const profileHref = user
+    ? `/${locale}/profile`
+    : `/${locale}/auth/login`;
 
   return (
     <header className="bg-[var(--background)]">
@@ -57,7 +60,7 @@ async function Header({ locale }: THeaderProps) {
             aria-label="Brew & Bloom home"
           >
             <Image
-              src="/brand-logo.png"
+              src="/brew-and-bloom-logo.png"
               alt="Brew & Bloom"
               width={170}
               height={57}
@@ -76,7 +79,7 @@ async function Header({ locale }: THeaderProps) {
               <Heart className="transition-all duration-300 ease-out group-hover:fill-[#A65345] group-hover:stroke-[#A65345]" size={18} strokeWidth={1.8} />
             </Link>
 
-            <Link href={`/${locale}/auth/login`} aria-label="Profile" className="flex h-10 w-10 shrink-0 items-center justify-center transition-transform duration-200 hover:scale-110 active:scale-95">
+            <Link href={profileHref} aria-label="Profile" className="flex h-10 w-10 shrink-0 items-center justify-center transition-transform duration-200 hover:scale-110 active:scale-95">
               <UserRound size={18} strokeWidth={1.8} />
             </Link>
 

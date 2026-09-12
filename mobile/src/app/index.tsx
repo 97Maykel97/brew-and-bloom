@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '@/components/Header';
 import { Colors, Fonts, Spacing } from '@/constants/theme';
 import { getLocale } from '@/i18n/locale';
-import { type Locale, translations } from '@/i18n/translations';
+import { type TLocale, translations } from '@/i18n/translations';
 
 export default function HomeScreen() {
 	const params = useLocalSearchParams<{ locale?: string }>();
@@ -13,7 +13,7 @@ export default function HomeScreen() {
 	const content = translations[locale];
 	const isRtl = locale === 'he';
 
-	function handleLocaleChange(nextLocale: Locale) {
+	function handleLocaleChange(nextLocale: TLocale) {
 		router.setParams({ locale: nextLocale });
 	}
 

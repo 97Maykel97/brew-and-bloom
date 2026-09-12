@@ -1,4 +1,7 @@
-type TLocale = 'ru' | 'en' | 'he';
+import {
+	isSupportedLocale,
+	type TLocale,
+} from '@/i18n/languages';
 
 type TAuthError = {
 	code?: string;
@@ -222,11 +225,7 @@ const errorCodeToMessageKey: Partial<
 };
 
 function getLocale(locale: string): TLocale {
-	if (locale === 'en' || locale === 'he') {
-		return locale;
-	}
-
-	return 'ru';
+	return isSupportedLocale(locale) ? locale : 'ru';
 }
 
 export function getAuthValidationMessage(

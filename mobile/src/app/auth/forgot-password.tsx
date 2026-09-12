@@ -1,12 +1,12 @@
 import { router, useLocalSearchParams } from 'expo-router';
 import * as Linking from 'expo-linking';
 import { useState } from 'react';
-import { Pressable, StyleSheet, Text } from 'react-native';
 
 import AuthField from '@/components/auth/AuthField';
+import AuthMessage from '@/components/auth/AuthMessage';
 import AuthScreen from '@/components/auth/AuthScreen';
 import AuthSubmitButton from '@/components/auth/AuthSubmitButton';
-import { Colors, Fonts, Spacing } from '@/constants/theme';
+import AuthTextLink from '@/components/auth/AuthTextLink';
 import { authTranslations } from '@/i18n/authTranslations';
 import { getLocale } from '@/i18n/locale';
 import { getAuthErrorMessage } from '@/lib/auth/getAuthErrorMessage';
@@ -86,51 +86,18 @@ export default function ForgotPasswordScreen() {
 				onPress={handleForgotPassword}
 			/>
 
-			{message ? (
-				<Text style={[styles.message, isRtl && styles.rtlText]}>
-					{message}
-				</Text>
-			) : null}
+			{message ? <AuthMessage isRtl={isRtl}>{message}</AuthMessage> : null}
 
-			<Pressable
+			<AuthTextLink
+				isRtl={isRtl}
+				label={content.forgotPassword.backToLogin}
 				onPress={() =>
 					router.replace({
 						pathname: '/auth/login',
 						params: { locale },
 					})
 				}
-				style={styles.linkButton}
-			>
-				<Text style={[styles.link, isRtl && styles.rtlText]}>
-					{content.forgotPassword.backToLogin}
-				</Text>
-			</Pressable>
+			/>
 		</AuthScreen>
 	);
 }
-
-const styles = StyleSheet.create({
-	message: {
-		padding: Spacing.medium,
-		borderRadius: 14,
-		backgroundColor: '#EFE5DA',
-		color: Colors.accent,
-		fontFamily: Fonts.sans,
-		fontSize: 13,
-		lineHeight: 19,
-		textAlign: 'center',
-	},
-	linkButton: {
-		alignItems: 'center',
-	},
-	link: {
-		color: Colors.accent,
-		fontFamily: Fonts.sans,
-		fontSize: 14,
-		fontWeight: '600',
-	},
-	rtlText: {
-		writingDirection: 'rtl',
-		textAlign: 'right',
-	},
-});

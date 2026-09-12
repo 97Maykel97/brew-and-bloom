@@ -1,5 +1,5 @@
 .hero {
-	--hero-image: url('/home-hero-background.png');
+	--hero-image: url('/cafe-hero-background.png');
 	--hero-gradient-direction: 90deg;
 	overflow: hidden;
 	padding-top: 50px;
@@ -36,7 +36,7 @@
 }
 
 .rtl {
-	--hero-image: url('/home-hero-background-he.png');
+	--hero-image: url('/cafe-hero-background-rtl.png');
 	--hero-gradient-direction: 270deg;
 }
 

@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 import LanguageSwitcher from '@/components/UI/LanguageSwitcher';
+import { isSupportedLocale } from '@/i18n/languages';
 
 type TAuthShellProps = {
 	locale: string;
@@ -24,8 +25,8 @@ export default function AuthShell({
 	wide = false,
 }: TAuthShellProps) {
 	const pathname = usePathname() ?? '/' + locale;
-	const pathLocale = pathname.split('/')[1];
-	const currentLocale = ['ru', 'en', 'he'].includes(pathLocale)
+	const pathLocale = pathname.split('/')[1] ?? '';
+	const currentLocale = isSupportedLocale(pathLocale)
 		? pathLocale
 		: locale;
 	const isHebrew = currentLocale === 'he';
@@ -45,8 +46,8 @@ export default function AuthShell({
 	const authHref = '/' + currentLocale + '/auth/login';
 	const homeHref = '/' + currentLocale;
 	const backgroundImage = isHebrew
-		? '/home-hero-background-he.png'
-		: '/home-hero-background.png';
+		? '/cafe-hero-background-rtl.png'
+		: '/cafe-hero-background.png';
 
 	useEffect(() => {
 		function handleBrowserBack() {
@@ -118,7 +119,7 @@ export default function AuthShell({
 						<section className='w-full rounded-[24px] border border-white/70 bg-[#fcf8f2]/94 p-4 shadow-[0_18px_45px_rgba(55,39,28,0.18)] backdrop-blur-md sm:rounded-[28px] sm:p-8 sm:shadow-[0_24px_70px_rgba(55,39,28,0.22)]'>
 							<div className='mb-5 text-center sm:mb-7'>
 								<Image
-									src='/brand-logo.png'
+									src='/brew-and-bloom-logo.png'
 									alt='Brew & Bloom'
 									width={150}
 									height={50}

@@ -2,7 +2,7 @@ import { ActivityIndicator, Pressable, StyleSheet, Text } from 'react-native';
 
 import { Colors, Fonts, Spacing } from '@/constants/theme';
 
-type AuthSubmitButtonProps = {
+type TAuthSubmitButtonProps = {
 	label: string;
 	loadingLabel: string;
 	isLoading: boolean;
@@ -14,7 +14,7 @@ export default function AuthSubmitButton({
 	loadingLabel,
 	isLoading,
 	onPress,
-}: AuthSubmitButtonProps) {
+}: TAuthSubmitButtonProps) {
 	return (
 		<Pressable
 			accessibilityRole='button'

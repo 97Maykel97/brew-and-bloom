@@ -1,145 +1,40 @@
-import DateTimePicker from '@react-native-community/datetimepicker';
-import { router, useLocalSearchParams } from 'expo-router';
-import { createElement, useState, type ChangeEvent } from 'react';
 import {
-	Modal,
-	Platform,
-	Pressable,
-	StyleSheet,
-	Text,
-	View,
-} from 'react-native';
-
+	router,
+	useLocalSearchParams,
+} from 'expo-router';
+import { useState } from 'react';
 import AuthField from '@/components/auth/AuthField';
+import AuthMessage from '@/components/auth/AuthMessage';
 import AuthScreen from '@/components/auth/AuthScreen';
 import AuthSubmitButton from '@/components/auth/AuthSubmitButton';
+import AuthTextLink from '@/components/auth/AuthTextLink';
+import BirthDateField from '@/components/auth/BirthDateField';
 import PasswordField from '@/components/auth/PasswordField';
-import { Colors, Fonts, Spacing } from '@/constants/theme';
 import { authTranslations } from '@/i18n/authTranslations';
 import { getLocale } from '@/i18n/locale';
+import { createLocalizedHref } from '@/lib/createLocalizedHref';
+import { isValidBirthDate } from '@/lib/auth/birthDate';
 import { getAuthErrorMessage } from '@/lib/auth/getAuthErrorMessage';
 import { normalizePhone } from '@/lib/auth/normalizePhone';
 import { supabase } from '@/lib/supabase';
 
-function isValidBirthDate(value: string): boolean {
-	const [year, month, day] = value.split('-').map(Number);
-	const birthDate = new Date(year, month - 1, day);
-	const today = new Date();
-	const oldestAllowedDate = new Date(
-		today.getFullYear() - 120,
-		today.getMonth(),
-		today.getDate(),
-	);
-
-	return (
-		Number.isInteger(year) &&
-		Number.isInteger(month) &&
-		Number.isInteger(day) &&
-		birthDate.getFullYear() === year &&
-		birthDate.getMonth() === month - 1 &&
-		birthDate.getDate() === day &&
-		birthDate <= today &&
-		birthDate >= oldestAllowedDate
-	);
-}
-
-function formatDateForSupabase(date: Date): string {
-	const year = date.getFullYear();
-	const month = String(date.getMonth() + 1).padStart(2, '0');
-	const day = String(date.getDate()).padStart(2, '0');
-	return [year, month, day].join('-');
-}
-
-function formatDateForDisplay(value: string, locale: string): string {
-	const [year, month, day] = value.split('-');
-	if (!year || !month || !day) return '';
-	return locale === 'en'
-		? [month, day, year].join('/')
-		: [day, month, year].join('.');
-}
-
-type WebDateInputProps = {
-	label: string;
-	isRtl: boolean;
-	value: string;
-	minimumDate: string;
-	maximumDate: string;
-	onChange: (value: string) => void;
-};
-
-function WebDateInput({
-	label,
-	isRtl,
-	value,
-	minimumDate,
-	maximumDate,
-	onChange,
-}: WebDateInputProps) {
-	const inputStyle = {
-		width: '100%',
-		height: 50,
-		padding: '0 16px',
-		border: '1px solid #D8CEC3',
-		borderRadius: 16,
-		backgroundColor: 'rgba(255, 255, 255, 0.78)',
-		color: '#2B211B',
-		fontFamily: 'system-ui',
-		fontSize: 15,
-		boxSizing: 'border-box' as const,
-		textAlign: isRtl ? 'right' : 'left',
-	};
-
-	return createElement('input', {
-		type: 'date',
-		'aria-label': label,
-		dir: isRtl ? 'rtl' : 'ltr',
-		min: minimumDate,
-		max: maximumDate,
-		value,
-		onChange: (event: ChangeEvent<HTMLInputElement>) =>
-			onChange(event.target.value),
-		style: inputStyle,
-	});
-}
-
 export default function RegisterScreen() {
 	const params = useLocalSearchParams<{ locale?: string }>();
 	const locale = getLocale(params.locale);
+	const content = authTranslations[locale];
+	const isRtl = locale === 'he';
 	const [firstName, setFirstName] = useState<string>('');
 	const [lastName, setLastName] = useState<string>('');
 	const [birthDate, setBirthDate] = useState<string>('');
-	const [selectedDate, setSelectedDate] = useState<Date>(
-		new Date(2000, 0, 1),
-	);
-	const [isDatePickerOpen, setIsDatePickerOpen] = useState<boolean>(false);
 	const [phone, setPhone] = useState<string>('');
 	const [email, setEmail] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
 	const [confirmPassword, setConfirmPassword] = useState<string>('');
 	const [message, setMessage] = useState<string>('');
 	const [isLoading, setIsLoading] = useState<boolean>(false);
-	const content = authTranslations[locale];
-	const isRtl = locale === 'he';
-	const today = new Date();
-	const minimumBirthDate = new Date(
-		today.getFullYear() - 120,
-		today.getMonth(),
-		today.getDate(),
-	);
 
 	function handleLocaleChange(nextLocale: typeof locale) {
 		router.setParams({ locale: nextLocale });
-	}
-
-	function handleDateChange(_: unknown, date?: Date) {
-		if (Platform.OS === 'android') {
-			setIsDatePickerOpen(false);
-		}
-
-		if (date) {
-			setSelectedDate(date);
-			setBirthDate(formatDateForSupabase(date));
-		}
 	}
 
 	async function handleRegister() {
@@ -183,14 +78,19 @@ export default function RegisterScreen() {
 		setIsLoading(true);
 
 		try {
-			const displayName = [firstName.trim(), lastName.trim()].join(' ');
+			const normalizedFirstName = firstName.trim();
+			const normalizedLastName = lastName.trim();
+			const displayName = [
+				normalizedFirstName,
+				normalizedLastName,
+			].join(' ');
 			const { data, error } = await supabase.auth.signUp({
 				email: normalizedEmail,
 				password,
 				options: {
 					data: {
-						first_name: firstName.trim(),
-						last_name: lastName.trim(),
+						first_name: normalizedFirstName,
+						last_name: normalizedLastName,
 						full_name: displayName,
 						display_name: displayName,
 						birth_date: birthDate,
@@ -214,7 +114,7 @@ export default function RegisterScreen() {
 				return;
 			}
 
-			router.replace({ pathname: '/', params: { locale } });
+			router.replace(createLocalizedHref('/profile', locale));
 		} catch (error: unknown) {
 			setMessage(getAuthErrorMessage(error, locale));
 		} finally {
@@ -242,41 +142,12 @@ export default function RegisterScreen() {
 				value={lastName}
 				onChangeText={setLastName}
 			/>
-			<View style={styles.dateField}>
-				<Text style={[styles.dateLabel, isRtl && styles.rtlText]}>
-					{content.register.birthDate}
-				</Text>
-				{Platform.OS === 'web' ? (
-					<WebDateInput
-						label={content.register.birthDate}
-						isRtl={isRtl}
-						value={birthDate}
-						minimumDate={formatDateForSupabase(minimumBirthDate)}
-						maximumDate={formatDateForSupabase(today)}
-						onChange={setBirthDate}
-					/>
-				) : (
-					<Pressable
-						accessibilityRole='button'
-						accessibilityLabel={content.register.birthDate}
-						onPress={() => setIsDatePickerOpen(true)}
-						style={({ pressed }) => [
-							styles.dateButton,
-							pressed && styles.pressed,
-						]}
-					>
-						<Text
-							style={[
-								styles.dateText,
-								!birthDate && styles.datePlaceholder,
-								isRtl && styles.rtlText,
-							]}
-						>
-							{formatDateForDisplay(birthDate, locale) || 'DD.MM.YYYY'}
-						</Text>
-					</Pressable>
-				)}
-			</View>
+			<BirthDateField
+				label={content.register.birthDate}
+				locale={locale}
+				value={birthDate}
+				onChange={setBirthDate}
+			/>
 			<AuthField
 				label={content.register.phone}
 				isRtl={isRtl}
@@ -320,142 +191,19 @@ export default function RegisterScreen() {
 				onPress={handleRegister}
 			/>
 
-			{message ? (
-				<Text style={[styles.message, isRtl && styles.rtlText]}>
-					{message}
-				</Text>
-			) : null}
+			{message ? <AuthMessage isRtl={isRtl}>{message}</AuthMessage> : null}
 
-			<Pressable
+			<AuthTextLink
+				isRtl={isRtl}
+				label={content.register.loginLink}
 				onPress={() =>
 					router.replace({
 						pathname: '/auth/login',
 						params: { locale },
 					})
 				}
-				style={styles.linkButton}
-			>
-				<Text style={[styles.mutedLink, isRtl && styles.rtlText]}>
-					{content.register.loginLink}
-				</Text>
-			</Pressable>
-
-			<Modal
-				animationType='fade'
-				transparent
-				visible={isDatePickerOpen}
-				onRequestClose={() => setIsDatePickerOpen(false)}
-			>
-				<Pressable
-					style={styles.pickerBackdrop}
-					onPress={() => setIsDatePickerOpen(false)}
-				>
-					<Pressable
-						style={styles.pickerCard}
-						onPress={event => event.stopPropagation()}
-					>
-						<DateTimePicker
-							value={selectedDate}
-							mode='date'
-							display={Platform.OS === 'ios' ? 'spinner' : 'calendar'}
-							minimumDate={minimumBirthDate}
-							maximumDate={today}
-							onChange={handleDateChange}
-						/>
-						{Platform.OS === 'ios' ? (
-							<Pressable
-								onPress={() => setIsDatePickerOpen(false)}
-								style={({ pressed }) => [
-									styles.doneButton,
-									pressed && styles.pressed,
-								]}
-							>
-								<Text style={styles.doneButtonText}>Done</Text>
-							</Pressable>
-						) : null}
-					</Pressable>
-				</Pressable>
-			</Modal>
+				tone='muted'
+			/>
 		</AuthScreen>
 	);
 }
-
-const styles = StyleSheet.create({
-	message: {
-		padding: Spacing.medium,
-		borderRadius: 14,
-		backgroundColor: '#EFE5DA',
-		color: Colors.accent,
-		fontFamily: Fonts.sans,
-		fontSize: 13,
-		lineHeight: 19,
-		textAlign: 'center',
-	},
-	linkButton: {
-		alignItems: 'center',
-	},
-	dateField: {
-		gap: 6,
-	},
-	dateLabel: {
-		color: Colors.foreground,
-		fontFamily: Fonts.sans,
-		fontSize: 14,
-		fontWeight: '600',
-	},
-	dateButton: {
-		height: 50,
-		paddingHorizontal: Spacing.medium,
-		justifyContent: 'center',
-		borderWidth: 1,
-		borderColor: '#D8CEC3',
-		borderRadius: 16,
-		backgroundColor: 'rgba(255, 255, 255, 0.78)',
-	},
-	dateText: {
-		color: Colors.foreground,
-		fontFamily: Fonts.sans,
-		fontSize: 15,
-	},
-	datePlaceholder: {
-		color: Colors.muted,
-	},
-	pickerBackdrop: {
-		flex: 1,
-		justifyContent: 'flex-end',
-		backgroundColor: 'rgba(43, 33, 27, 0.28)',
-	},
-	pickerCard: {
-		padding: Spacing.large,
-		alignItems: 'center',
-		borderTopLeftRadius: 24,
-		borderTopRightRadius: 24,
-		backgroundColor: Colors.background,
-	},
-	doneButton: {
-		minHeight: 46,
-		paddingHorizontal: Spacing.xLarge,
-		alignItems: 'center',
-		justifyContent: 'center',
-		borderRadius: 999,
-		backgroundColor: Colors.accent,
-	},
-	doneButtonText: {
-		color: Colors.white,
-		fontFamily: Fonts.sans,
-		fontSize: 15,
-		fontWeight: '700',
-	},
-	pressed: {
-		opacity: 0.55,
-	},
-	mutedLink: {
-		color: Colors.muted,
-		fontFamily: Fonts.sans,
-		fontSize: 14,
-	},
-	rtlText: {
-		writingDirection: 'rtl',
-		textAlign: 'right',
-	},
-});
