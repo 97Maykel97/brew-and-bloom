@@ -1,5 +1,5 @@
 import { Image } from 'expo-image';
-import { router, useFocusEffect } from 'expo-router';
+import { router, useFocusEffect, usePathname } from 'expo-router';
 import {
 	useCallback,
 	useEffect,
@@ -48,11 +48,26 @@ export default function AuthScreen({
 }: AuthScreenProps) {
 	const [isLanguageOpen, setIsLanguageOpen] = useState<boolean>(false);
 	const isRtl = locale === 'he';
+	const pathname = usePathname();
+	const isLoginScreen = pathname.endsWith('/auth/login');
 	const imageSource = isRtl ? backgroundImageHe : backgroundImage;
+	const navigationLabels =
+		locale === 'he'
+			? { auth: 'חזרה להתחברות', home: 'חזרה לדף הבית' }
+			: locale === 'en'
+				? { auth: 'Back to sign in', home: 'Back to home' }
+				: { auth: 'К авторизации', home: 'На главную' };
 
 	const handleBack = useCallback(() => {
 		router.replace({
 			pathname: '/',
+			params: { locale },
+		});
+	}, [locale]);
+
+	const handleAuthBack = useCallback(() => {
+		router.replace({
+			pathname: '/auth/login',
 			params: { locale },
 		});
 	}, [locale]);
@@ -100,18 +115,39 @@ export default function AuthScreen({
 					keyboardShouldPersistTaps='handled'
 					showsVerticalScrollIndicator={false}
 				>
-					<View style={styles.topBar}>
-						<Pressable
-							accessibilityRole='button'
-							accessibilityLabel='Go back'
-							onPress={handleBack}
-							style={({ pressed }) => [
-								styles.backButton,
-								pressed && styles.pressed,
-							]}
-						>
-							<Text style={styles.backArrow}>{isRtl ? '›' : '‹'}</Text>
-						</Pressable>
+					<View style={[styles.topBar, isRtl && styles.topBarRtl]}>
+						<View style={styles.navigationActions}>
+							{!isLoginScreen && (
+								<Pressable
+									accessibilityRole='button'
+									accessibilityLabel={navigationLabels.auth}
+									onPress={handleAuthBack}
+									style={({ pressed }) => [
+										styles.backButton,
+										pressed && styles.pressed,
+									]}
+								>
+									<Text style={styles.backArrow}>{isRtl ? '›' : '‹'}</Text>
+									<Text style={[styles.backText, isRtl && styles.rtlText]}>
+										{navigationLabels.auth}
+									</Text>
+								</Pressable>
+							)}
+							<Pressable
+								accessibilityRole='button'
+								accessibilityLabel={navigationLabels.home}
+								onPress={handleBack}
+								style={({ pressed }) => [
+									styles.backButton,
+									pressed && styles.pressed,
+								]}
+							>
+								<Text style={styles.backArrow}>{isRtl ? '›' : '‹'}</Text>
+								<Text style={[styles.backText, isRtl && styles.rtlText]}>
+									{navigationLabels.home}
+								</Text>
+							</Pressable>
+						</View>
 						<Pressable
 							accessibilityRole='button'
 							accessibilityLabel='Change language'
@@ -211,9 +247,20 @@ const styles = StyleSheet.create({
 		paddingHorizontal: Spacing.medium,
 		paddingTop: Spacing.small,
 	},
+	topBarRtl: {
+		flexDirection: 'row-reverse',
+	},
+	navigationActions: {
+		flexShrink: 1,
+		flexDirection: 'row',
+		alignItems: 'center',
+		flexWrap: 'wrap',
+		gap: 2,
+	},
 	backButton: {
 		minHeight: 40,
-		paddingHorizontal: Spacing.small,
+		maxWidth: 180,
+		paddingHorizontal: 6,
 		flexDirection: 'row',
 		alignItems: 'center',
 		gap: 4,
@@ -223,6 +270,13 @@ const styles = StyleSheet.create({
 		fontFamily: Fonts.sans,
 		fontSize: 25,
 		lineHeight: 25,
+	},
+	backText: {
+		flexShrink: 1,
+		color: Colors.foreground,
+		fontFamily: Fonts.sans,
+		fontSize: 12,
+		fontWeight: '600',
 	},
 	languageButton: {
 		minHeight: 40,
@@ -269,7 +323,7 @@ const styles = StyleSheet.create({
 		height: StyleSheet.hairlineWidth,
 		marginTop: Spacing.medium,
 		alignSelf: 'center',
-			backgroundColor: '#D8CEC3',
+		backgroundColor: '#D8CEC3',
 	},
 	title: {
 		marginTop: Spacing.medium,

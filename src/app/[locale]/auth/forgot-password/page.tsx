@@ -55,6 +55,7 @@ export default function ForgotPasswordPage() {
 				return;
 			}
 
+			setEmail('');
 			setMessage(t('success'));
 		} catch (error: unknown) {
 			setMessage(getAuthErrorMessage(error, locale));

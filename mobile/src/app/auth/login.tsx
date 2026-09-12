@@ -53,6 +53,8 @@ export default function LoginScreen() {
 				return;
 			}
 
+			setEmail('');
+			setPassword('');
 			router.replace({ pathname: '/', params: { locale } });
 		} catch (error: unknown) {
 			setMessage(getAuthErrorMessage(error, locale));

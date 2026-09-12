@@ -58,6 +58,8 @@ export default function UpdatePasswordPage() {
 				return;
 			}
 
+			setPassword('');
+			setConfirmPassword('');
 			await supabase.auth.signOut();
 			setIsComplete(true);
 			setMessage(t('success'));

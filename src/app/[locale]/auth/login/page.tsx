@@ -2,7 +2,7 @@
 
 import { SubmitEvent, useState } from 'react';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
 import AuthField from '@/components/auth/AuthField';
@@ -17,6 +17,7 @@ import { createClient } from '@/lib/supabase/client';
 
 export default function LoginPage() {
 	const { locale } = useParams<{ locale: string }>();
+	const router = useRouter();
 	const t = useTranslations('auth.login');
 	const formT = useTranslations('auth.form');
 
@@ -55,7 +56,9 @@ export default function LoginPage() {
 				return;
 			}
 
-			setMessage(t('success'));
+			setEmail('');
+			setPassword('');
+			router.replace('/' + locale);
 		} catch (error: unknown) {
 			setMessage(getAuthErrorMessage(error, locale));
 		} finally {

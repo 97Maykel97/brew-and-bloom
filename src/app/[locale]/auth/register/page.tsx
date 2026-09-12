@@ -2,7 +2,7 @@
 
 import { SubmitEvent, useState } from 'react';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
 import AuthField from '@/components/auth/AuthField';
@@ -40,6 +40,7 @@ function isValidBirthDate(value: string): boolean {
 
 export default function RegisterPage() {
 	const { locale } = useParams<{ locale: string }>();
+	const router = useRouter();
 	const t = useTranslations('auth.register');
 	const formT = useTranslations('auth.form');
 
@@ -131,7 +132,14 @@ export default function RegisterPage() {
 				return;
 			}
 
-			setMessage(t('success'));
+			setFirstName('');
+			setLastName('');
+			setBirthDate('');
+			setPhone('');
+			setEmail('');
+			setPassword('');
+			setConfirmPassword('');
+			router.replace('/' + locale);
 		} catch (error: unknown) {
 			setMessage(getAuthErrorMessage(error, locale));
 		} finally {

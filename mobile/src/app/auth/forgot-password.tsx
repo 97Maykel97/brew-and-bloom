@@ -53,6 +53,7 @@ export default function ForgotPasswordScreen() {
 				return;
 			}
 
+			setEmail('');
 			setMessage(content.forgotPassword.success);
 		} catch (error: unknown) {
 			setMessage(getAuthErrorMessage(error, locale));
