@@ -16,51 +16,58 @@ type TProfileSidebarProps = {
 	locale: TProfileLocale;
 	activeTab: TProfileTab;
 	copy: TProfileCopy;
+	onTabChange: (tab: TProfileTab) => void;
 };
 
 export default function ProfileSidebar({
 	locale,
 	activeTab,
 	copy,
+	onTabChange,
 }: TProfileSidebarProps) {
 	const navigationItems = [
 		{
 			label: copy.sidebar.profile,
-			href: '?tab=profile#profile',
+			tab: 'profile',
 			icon: UserRound,
 			active: activeTab === 'profile',
 		},
 		{
 			label: copy.sidebar.orders,
-			href: '?tab=orders#orders',
+			tab: 'orders',
 			icon: ShoppingBag,
 			active: activeTab === 'orders',
 		},
 		{
 			label: copy.bookings,
-			href: '?tab=bookings#bookings',
+			tab: 'bookings',
 			icon: CalendarDays,
 			active: activeTab === 'bookings',
 		},
 		{
 			label: copy.sidebar.favorites,
-			href: '?tab=favorites#favorites',
+			tab: 'favorites',
 			icon: Heart,
 			active: activeTab === 'favorites',
 		},
 		{
 			label: copy.sidebar.bonuses,
-			href: '?tab=bonuses#bonuses',
+			tab: 'bonuses',
 			icon: Gift,
 			active: activeTab === 'bonuses',
 		},
 		{
 			label: copy.sidebar.settings,
-			href: '?tab=settings#settings',
+			tab: 'settings',
 			icon: Settings,
 			active: activeTab === 'settings',
 		},
-	];
+	] satisfies {
+		label: string;
+		tab: TProfileTab;
+		icon: typeof UserRound;
+		active: boolean;
+	}[];
 
 	return (
 		<aside className='hidden w-[230px] shrink-0 flex-col bg-[linear-gradient(160deg,#30231d,#4a3224)] p-5 text-white lg:flex'>
@@ -79,11 +86,12 @@ export default function ProfileSidebar({
 					const Icon = item.icon;
 
 					return (
-						<a
+						<button
 							key={item.label}
-							href={item.href}
+							type='button'
+							onClick={() => onTabChange(item.tab)}
 							className={
-								'group flex min-h-11 items-center gap-3 rounded-xl px-3 text-sm transition-colors ' +
+								'group flex min-h-11 w-full cursor-pointer items-center gap-3 rounded-xl px-3 text-sm transition-colors ' +
 								(item.active
 									? 'bg-white/14 font-semibold'
 									: 'text-white/68 hover:bg-white/10 hover:text-white')
@@ -91,7 +99,7 @@ export default function ProfileSidebar({
 						>
 							<Icon size={17} strokeWidth={1.7} />
 							<span>{item.label}</span>
-						</a>
+						</button>
 					);
 				})}
 			</nav>

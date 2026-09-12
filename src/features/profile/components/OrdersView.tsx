@@ -9,12 +9,14 @@ type TOrdersViewProps = {
 	locale: TProfileLocale;
 	activeStatus: TOrderStatus;
 	copy: TProfileCopy;
+	onStatusChange: (status: TOrderStatus) => void;
 };
 
 export default function OrdersView({
 	locale,
 	activeStatus,
 	copy,
+	onStatusChange,
 }: TOrdersViewProps) {
 	const statusItems = [
 		{ value: 'all', label: copy.allOrders },
@@ -27,19 +29,20 @@ export default function OrdersView({
 		<>
 			<div className='mt-5 flex gap-2 overflow-x-auto rounded-xl bg-[#efe4d8] p-1'>
 				{statusItems.map(item => (
-					<Link
+					<button
 						key={item.value}
-						href={'?tab=orders&status=' + item.value + '#orders'}
+						type='button'
+						onClick={() => onStatusChange(item.value)}
 						aria-current={activeStatus === item.value ? 'page' : undefined}
 						className={
-							'inline-flex min-h-9 shrink-0 items-center justify-center rounded-lg px-4 text-xs font-medium transition ' +
+							'inline-flex min-h-9 shrink-0 cursor-pointer items-center justify-center rounded-lg px-4 text-xs font-medium transition ' +
 							(activeStatus === item.value
 								? 'bg-[#f8f3ec] text-[var(--foreground)] shadow-sm'
 								: 'text-[var(--muted)] hover:text-[var(--foreground)]')
 						}
 					>
 						{item.label}
-					</Link>
+					</button>
 				))}
 			</div>
 

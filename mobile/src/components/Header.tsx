@@ -8,11 +8,9 @@ import {
 	StyleSheet,
 	Text,
 	View,
-	useWindowDimensions,
 } from 'react-native';
 import brandLogo from '../../assets/images/brand-logo.png';
 import HeaderLanguageMenu from '@/components/header/HeaderLanguageMenu';
-import HeaderNavigationMenu from '@/components/header/HeaderNavigationMenu';
 import HeaderSearchModal from '@/components/header/HeaderSearchModal';
 import { Colors, Fonts, Spacing } from '@/constants/theme';
 import type { TLocale } from '@/i18n/translations';
@@ -21,7 +19,6 @@ import { supabase } from '@/lib/supabase';
 
 type THeaderProps = {
 	locale: TLocale;
-	navItems: string[];
 	searchPlaceholder: string;
 	onLocaleChange: (locale: TLocale) => void;
 	homeLabel?: string;
@@ -31,30 +28,17 @@ type THeaderProps = {
 
 export default function Header({
 	locale,
-	navItems,
 	searchPlaceholder,
 	onLocaleChange,
 	homeLabel,
 	onHome,
 	variant = 'default',
 }: THeaderProps) {
-	const { height } = useWindowDimensions();
 	const isRtl = locale === 'he';
 	const isProfileHeader = variant === 'profile';
-	const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 	const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
 	const [isLanguageOpen, setIsLanguageOpen] = useState<boolean>(false);
 	const [query, setQuery] = useState<string>('');
-
-	function toggleMenu() {
-		setIsMenuOpen(value => !value);
-		setIsSearchOpen(false);
-		setIsLanguageOpen(false);
-	}
-
-	function closeMenu() {
-		setIsMenuOpen(false);
-	}
 
 	function closeSearch() {
 		setIsSearchOpen(false);
@@ -68,7 +52,6 @@ export default function Header({
 		}
 
 		setIsSearchOpen(true);
-		setIsMenuOpen(false);
 		setIsLanguageOpen(false);
 	}
 
@@ -87,7 +70,6 @@ export default function Header({
 
 	function toggleLanguage() {
 		setIsLanguageOpen(value => !value);
-		setIsMenuOpen(false);
 		setIsSearchOpen(false);
 	}
 
@@ -108,20 +90,6 @@ export default function Header({
 	return (
 		<View style={styles.wrapper}>
 			<View style={styles.header}>
-				<Pressable
-					accessibilityLabel={isMenuOpen ? 'Close menu' : 'Open menu'}
-					accessibilityRole='button'
-					accessibilityState={{ expanded: isMenuOpen }}
-					onPress={toggleMenu}
-					style={styles.menuButton}
-				>
-					<Feather
-						name={isMenuOpen ? 'x' : 'menu'}
-						size={24}
-						color={Colors.foreground}
-					/>
-				</Pressable>
-
 				<View style={styles.logoWrapper}>
 					<Image
 						source={brandLogo}
@@ -221,13 +189,6 @@ export default function Header({
 				onClose={closeSearch}
 				onAction={handleSearchAction}
 			/>
-			<HeaderNavigationMenu
-				visible={isMenuOpen}
-				height={Math.max(height - 72, 0)}
-				isRtl={isRtl}
-				items={navItems}
-				onClose={closeMenu}
-			/>
 		</View>
 	);
 }
@@ -244,16 +205,11 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		backgroundColor: Colors.background,
 	},
-	menuButton: {
-		width: 40,
-		height: 40,
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
 	logoWrapper: {
 		flex: 1,
 		minWidth: 0,
-		alignItems: 'center',
+		alignItems: 'flex-start',
+		paddingLeft: 4,
 	},
 	logo: {
 		width: 140,

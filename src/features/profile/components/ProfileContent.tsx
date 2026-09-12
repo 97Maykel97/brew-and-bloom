@@ -17,6 +17,7 @@ type TProfileContentProps = {
 	activeTab: TProfileTab;
 	activeOrderStatus: TOrderStatus;
 	copy: TProfileCopy;
+	onOrderStatusChange: (status: TOrderStatus) => void;
 	profile: TProfileViewModel;
 };
 
@@ -25,6 +26,7 @@ export default function ProfileContent({
 	activeTab,
 	activeOrderStatus,
 	copy,
+	onOrderStatusChange,
 	profile,
 }: TProfileContentProps) {
 	if (activeTab === 'orders') {
@@ -33,6 +35,7 @@ export default function ProfileContent({
 				locale={locale}
 				activeStatus={activeOrderStatus}
 				copy={copy}
+				onStatusChange={onOrderStatusChange}
 			/>
 		);
 	}

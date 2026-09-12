@@ -1,15 +1,16 @@
-import Link from 'next/link';
 import type { TProfileCopy } from '../profile-copy';
 import type { TProfileTab } from '../types';
 
 type TProfileSectionTabsProps = {
 	activeTab: TProfileTab;
 	copy: TProfileCopy;
+	onTabChange: (tab: TProfileTab) => void;
 };
 
 export default function ProfileSectionTabs({
 	activeTab,
 	copy,
+	onTabChange,
 }: TProfileSectionTabsProps) {
 	if (activeTab !== 'orders' && activeTab !== 'favorites') {
 		return null;
@@ -26,18 +27,19 @@ export default function ProfileSectionTabs({
 			className='mt-8 hidden items-center gap-6 border-b border-[#e2d7cc] lg:flex'
 		>
 			{items.map(item => (
-				<Link
+				<button
 					key={item.tab}
-					href={'?tab=' + item.tab + '#' + item.tab}
+					type='button'
+					onClick={() => onTabChange(item.tab)}
 					className={
-						'border-b-2 pb-3 text-sm ' +
+						'cursor-pointer border-b-2 pb-3 text-sm ' +
 						(activeTab === item.tab
 							? 'border-[var(--accent)] font-semibold'
 							: 'border-transparent text-[var(--muted)] transition hover:text-[var(--foreground)]')
 					}
 				>
 					{item.label}
-				</Link>
+				</button>
 			))}
 		</div>
 	);

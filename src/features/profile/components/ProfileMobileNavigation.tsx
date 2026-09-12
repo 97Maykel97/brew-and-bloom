@@ -1,49 +1,53 @@
-import Link from 'next/link';
-
 import type { TProfileCopy } from '../profile-copy';
 import type { TProfileTab } from '../types';
 
 type TProfileMobileNavigationProps = {
 	activeTab: TProfileTab;
 	copy: TProfileCopy;
+	onTabChange: (tab: TProfileTab) => void;
 };
 
 export default function ProfileMobileNavigation({
 	activeTab,
 	copy,
+	onTabChange,
 }: TProfileMobileNavigationProps) {
 	const navigationItems = [
 		{
 			label: copy.sidebar.profile,
-			href: '?tab=profile#profile',
+			tab: 'profile',
 			active: activeTab === 'profile',
 		},
 		{
 			label: copy.sidebar.orders,
-			href: '?tab=orders#orders',
+			tab: 'orders',
 			active: activeTab === 'orders',
 		},
 		{
 			label: copy.bookings,
-			href: '?tab=bookings#bookings',
+			tab: 'bookings',
 			active: activeTab === 'bookings',
 		},
 		{
 			label: copy.sidebar.favorites,
-			href: '?tab=favorites#favorites',
+			tab: 'favorites',
 			active: activeTab === 'favorites',
 		},
 		{
 			label: copy.sidebar.bonuses,
-			href: '?tab=bonuses#bonuses',
+			tab: 'bonuses',
 			active: activeTab === 'bonuses',
 		},
 		{
 			label: copy.sidebar.settings,
-			href: '?tab=settings#settings',
+			tab: 'settings',
 			active: activeTab === 'settings',
 		},
-	];
+	] satisfies {
+		label: string;
+		tab: TProfileTab;
+		active: boolean;
+	}[];
 
 	return (
 		<nav
@@ -51,18 +55,19 @@ export default function ProfileMobileNavigation({
 			className='mt-6 grid grid-cols-3 gap-1 border-b border-[#e2d7cc] lg:hidden'
 		>
 			{navigationItems.map(item => (
-				<Link
+				<button
 					key={item.label}
-					href={item.href}
+					type='button'
+					onClick={() => onTabChange(item.tab)}
 					className={
-						'flex min-h-11 items-center justify-center border-b-2 px-1.5 pb-2 text-center text-[11px] leading-tight transition sm:px-3 sm:text-sm ' +
+						'flex min-h-11 cursor-pointer items-center justify-center border-b-2 px-1.5 pb-2 text-center text-[11px] leading-tight transition sm:px-3 sm:text-sm ' +
 						(item.active
 							? 'border-[var(--accent)] font-semibold text-[var(--foreground)]'
 							: 'border-transparent text-[var(--muted)] hover:text-[var(--foreground)]')
 					}
 				>
 					{item.label}
-				</Link>
+				</button>
 			))}
 		</nav>
 	);

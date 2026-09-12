@@ -125,7 +125,6 @@ export default function ProfileScreen() {
 		<SafeAreaView style={styles.screen}>
 			<Header
 				locale={locale}
-				navItems={appContent.nav}
 				onLocaleChange={changeLocale}
 				homeLabel={copy.home}
 				onHome={goHome}

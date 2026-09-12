@@ -4,11 +4,13 @@ import type { TProfileCopy } from '../profile-copy';
 type TBonusCardProps = {
 	copy: TProfileCopy;
 	bonusPoints: number;
+	onOpen: () => void;
 };
 
 export default function BonusCard({
 	copy,
 	bonusPoints,
+	onOpen,
 }: TBonusCardProps) {
 	return (
 		<div
@@ -33,14 +35,15 @@ export default function BonusCard({
 					</div>
 				</div>
 
-				<a
-					href='?tab=bonuses#bonuses'
+				<button
+					type='button'
+					onClick={onOpen}
 					aria-label={copy.bonusLink}
-					className='flex min-h-10 min-w-10 shrink-0 items-center justify-center gap-1 text-xs text-[var(--muted)] transition hover:text-[var(--foreground)]'
+					className='flex min-h-10 min-w-10 shrink-0 cursor-pointer items-center justify-center gap-1 text-xs text-[var(--muted)] transition hover:text-[var(--foreground)]'
 				>
 					<span className='hidden sm:inline'>{copy.bonusLink}</span>
 					<ChevronRight className='rtl:rotate-180' size={15} />
-				</a>
+				</button>
 			</div>
 		</div>
 	);

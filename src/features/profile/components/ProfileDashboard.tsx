@@ -1,3 +1,7 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+
 import type { TProfileCopy } from '../profile-copy';
 import type {
 	TOrderStatus,
@@ -5,6 +9,10 @@ import type {
 	TProfileTab,
 	TProfileViewModel,
 } from '../types';
+import {
+	getOrderStatus,
+	getProfileTab,
+} from '../lib/profile-formatters';
 import BonusCard from './BonusCard';
 import ProfileContent from './ProfileContent';
 import ProfileHeader from './ProfileHeader';
@@ -23,11 +31,58 @@ type TProfileDashboardProps = {
 
 export default function ProfileDashboard({
 	locale,
-	activeTab,
-	activeOrderStatus,
+	activeTab: initialActiveTab,
+	activeOrderStatus: initialOrderStatus,
 	copy,
 	profile,
 }: TProfileDashboardProps) {
+	const [activeTab, setActiveTab] =
+		useState<TProfileTab>(initialActiveTab);
+	const [activeOrderStatus, setActiveOrderStatus] =
+		useState<TOrderStatus>(initialOrderStatus);
+
+	useEffect(() => {
+		function syncStateWithUrl() {
+			const searchParams = new URLSearchParams(window.location.search);
+
+			setActiveTab(getProfileTab(searchParams.get('tab') ?? undefined));
+			setActiveOrderStatus(
+				getOrderStatus(searchParams.get('status') ?? undefined),
+			);
+		}
+
+		window.addEventListener('popstate', syncStateWithUrl);
+		return () => window.removeEventListener('popstate', syncStateWithUrl);
+	}, []);
+
+	function updateUrl(tab: TProfileTab, status: TOrderStatus) {
+		const url = new URL(window.location.href);
+
+		url.searchParams.set('tab', tab);
+		if (tab === 'orders' && status !== 'all') {
+			url.searchParams.set('status', status);
+		} else {
+			url.searchParams.delete('status');
+		}
+		url.hash = tab;
+
+		window.history.pushState(null, '', url);
+	}
+
+	function changeTab(tab: TProfileTab) {
+		if (tab === activeTab) return;
+
+		setActiveTab(tab);
+		updateUrl(tab, activeOrderStatus);
+	}
+
+	function changeOrderStatus(status: TOrderStatus) {
+		if (status === activeOrderStatus) return;
+
+		setActiveOrderStatus(status);
+		updateUrl('orders', status);
+	}
+
 	return (
 		<main
 			dir={locale === 'he' ? 'rtl' : 'ltr'}
@@ -38,6 +93,7 @@ export default function ProfileDashboard({
 					locale={locale}
 					activeTab={activeTab}
 					copy={copy}
+					onTabChange={changeTab}
 				/>
 
 				<section className='min-w-0 flex-1 bg-[#f8f3ec]'>
@@ -50,18 +106,29 @@ export default function ProfileDashboard({
 						<ProfileHeader
 							copy={copy}
 							displayName={profile.displayName}
+							onEdit={() => changeTab('profile')}
 						/>
-						<BonusCard copy={copy} bonusPoints={profile.bonusPoints} />
+						<BonusCard
+							copy={copy}
+							bonusPoints={profile.bonusPoints}
+							onOpen={() => changeTab('bonuses')}
+						/>
 						<ProfileMobileNavigation
 							activeTab={activeTab}
 							copy={copy}
+							onTabChange={changeTab}
 						/>
-						<ProfileSectionTabs activeTab={activeTab} copy={copy} />
+						<ProfileSectionTabs
+							activeTab={activeTab}
+							copy={copy}
+							onTabChange={changeTab}
+						/>
 						<ProfileContent
 							locale={locale}
 							activeTab={activeTab}
 							activeOrderStatus={activeOrderStatus}
 							copy={copy}
+							onOrderStatusChange={changeOrderStatus}
 							profile={profile}
 						/>
 					</div>
