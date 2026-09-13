@@ -1,23 +1,36 @@
+'use client';
+
 import {
 	ChevronRight,
 	LockKeyhole,
 	Mail,
 	Phone,
-	Trash2,
 	UserRound,
 } from 'lucide-react';
 import { getInitials } from '../lib/profile-formatters';
 import type { TProfileCopy } from '../profile-copy';
-import type { TProfileViewModel } from '../types';
+import type { TProfileLocale, TProfileViewModel } from '../types';
+import DeleteAccountButton from './DeleteAccountButton';
+import ProfileEditForm from './ProfileEditForm';
 
 type TProfileDetailsProps = {
 	copy: TProfileCopy;
+	locale: TProfileLocale;
+	isEditing: boolean;
 	profile: TProfileViewModel;
+	onCancelEdit: () => void;
+	onProfileSaved: (profile: TProfileViewModel) => void;
+	onOpenSettings: () => void;
 };
 
 export default function ProfileDetails({
 	copy,
+	locale,
+	isEditing,
 	profile,
+	onCancelEdit,
+	onProfileSaved,
+	onOpenSettings,
 }: TProfileDetailsProps) {
 	const initials = getInitials(profile.fullName);
 
@@ -38,38 +51,51 @@ export default function ProfileDetails({
 						</div>
 						<div className='mt-2 flex items-center gap-2 text-sm text-[var(--muted)]'>
 							<Phone size={17} className='shrink-0' strokeWidth={1.7} />
-							<span>{profile.phone}</span>
+							<bdi dir='ltr'>{profile.phone}</bdi>
 						</div>
 					</div>
 				</div>
 
-				<div className='mt-6 rounded-xl bg-[#fcfaf7] px-3 py-2 shadow-[0_8px_30px_rgba(55,39,28,0.035)] sm:mt-8 sm:px-6'>
-					<div className='flex min-h-14 items-center gap-3 border-b border-[#eee5dc]'>
-						<UserRound
-							size={19}
-							className='shrink-0 text-[var(--accent)]'
-							strokeWidth={1.7}
-						/>
-						<span className='text-sm font-semibold'>{copy.personalData}</span>
-						<ChevronRight className='ms-auto rtl:rotate-180' size={18} />
+				{isEditing ? (
+					<ProfileEditForm
+						copy={copy}
+						locale={locale}
+						profile={profile}
+						onCancel={onCancelEdit}
+						onSaved={onProfileSaved}
+					/>
+				) : (
+					<div className='mt-6 rounded-xl bg-[#fcfaf7] px-3 py-2 shadow-[0_8px_30px_rgba(55,39,28,0.035)] sm:mt-8 sm:px-6'>
+						<div className='flex min-h-14 items-center gap-3 border-b border-[#eee5dc]'>
+							<UserRound
+								size={19}
+								className='shrink-0 text-[var(--accent)]'
+								strokeWidth={1.7}
+							/>
+							<span className='text-sm font-semibold'>{copy.personalData}</span>
+							<ChevronRight className='ms-auto rtl:rotate-180' size={18} />
+						</div>
+						<dl className='grid grid-cols-[minmax(72px,0.65fr)_minmax(0,1.35fr)] gap-x-3 gap-y-4 py-5 text-sm sm:grid-cols-[minmax(130px,0.75fr)_minmax(0,1.25fr)] sm:gap-x-5'>
+							<dt className='text-[var(--muted)]'>{copy.name}</dt>
+							<dd className='truncate font-medium'>{profile.displayName}</dd>
+							<dt className='text-[var(--muted)]'>{copy.email}</dt>
+							<dd className='truncate font-medium'>{profile.email}</dd>
+							<dt className='text-[var(--muted)]'>{copy.phone}</dt>
+							<dd className='font-medium'>
+								<bdi dir='ltr'>{profile.phone}</bdi>
+							</dd>
+							<dt className='text-[var(--muted)]'>{copy.birthDate}</dt>
+							<dd className='font-medium'>{profile.birthDate}</dd>
+						</dl>
 					</div>
-					<dl className='grid grid-cols-[minmax(72px,0.65fr)_minmax(0,1.35fr)] gap-x-3 gap-y-4 py-5 text-sm sm:grid-cols-[minmax(130px,0.75fr)_minmax(0,1.25fr)] sm:gap-x-5'>
-						<dt className='text-[var(--muted)]'>{copy.name}</dt>
-						<dd className='truncate font-medium'>{profile.displayName}</dd>
-						<dt className='text-[var(--muted)]'>{copy.email}</dt>
-						<dd className='truncate font-medium'>{profile.email}</dd>
-						<dt className='text-[var(--muted)]'>{copy.phone}</dt>
-						<dd className='font-medium'>{profile.phone}</dd>
-						<dt className='text-[var(--muted)]'>{copy.birthDate}</dt>
-						<dd className='font-medium'>{profile.birthDate}</dd>
-					</dl>
-				</div>
+				)}
 			</div>
 
 			<div id='settings' className='scroll-mt-4 space-y-4'>
-				<a
-					href='#personal-data'
-					className='flex min-h-14 items-center gap-3 rounded-xl border border-[#e5dcd3] bg-white/70 px-4 text-sm font-semibold transition hover:bg-white sm:px-5'
+				<button
+					type='button'
+					onClick={onOpenSettings}
+					className='flex min-h-14 w-full cursor-pointer items-center gap-3 rounded-xl border border-[#e5dcd3] bg-white/70 px-4 text-sm font-semibold transition hover:bg-white sm:px-5'
 				>
 					<LockKeyhole
 						size={19}
@@ -78,15 +104,8 @@ export default function ProfileDetails({
 					/>
 					<span>{copy.changePassword}</span>
 					<ChevronRight className='ms-auto rtl:rotate-180' size={18} />
-				</a>
-				<a
-					href='#personal-data'
-					className='flex min-h-14 items-center gap-3 rounded-xl border border-red-100 bg-red-50/45 px-4 text-sm font-semibold text-red-500 transition hover:bg-red-50 sm:px-5'
-				>
-					<Trash2 size={19} strokeWidth={1.7} />
-					<span>{copy.deleteAccount}</span>
-					<ChevronRight className='ms-auto rtl:rotate-180' size={18} />
-				</a>
+				</button>
+				<DeleteAccountButton copy={copy} locale={locale} />
 			</div>
 		</div>
 	);

@@ -26,14 +26,14 @@ export default function LogoutButton({
 
 		setIsLoading(true);
 		const supabase = createClient();
-		const { error } = await supabase.auth.signOut();
+		const { error } = await supabase.auth.signOut({ scope: 'local' });
 
 		if (error) {
 			setIsLoading(false);
 			return;
 		}
 
-		router.replace('/' + locale);
+		router.replace('/' + locale + '/auth/login');
 	}
 
 	return (

@@ -14,6 +14,7 @@ import { authTranslations } from '@/i18n/authTranslations';
 import { getLocale } from '@/i18n/locale';
 import { createLocalizedHref } from '@/lib/createLocalizedHref';
 import { getAuthErrorMessage } from '@/lib/auth/getAuthErrorMessage';
+import { registerCurrentMobileDevice } from '@/lib/auth/registerCurrentDevice';
 import { supabase } from '@/lib/supabase';
 
 export default function LoginScreen() {
@@ -57,6 +58,7 @@ export default function LoginScreen() {
 				return;
 			}
 
+			await registerCurrentMobileDevice();
 			setEmail('');
 			setPassword('');
 			router.replace(createLocalizedHref('/profile', locale));

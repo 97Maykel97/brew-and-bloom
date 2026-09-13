@@ -14,6 +14,7 @@ export type TProfileOrderStatus =
 
 export type TMobileProfileData = {
 	birthDate: string;
+	birthDateValue: string;
 	bonusPoints: number;
 	displayName: string;
 	email: string;

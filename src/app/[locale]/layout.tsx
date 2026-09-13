@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import SessionGuard from '@/components/auth/SessionGuard';
 
 type TLocaleLayoutProps = {
 	children: ReactNode;
@@ -19,6 +20,7 @@ export default async function LocaleLayout({
 
 	return (
 		<NextIntlClientProvider locale={locale} messages={messages}>
+			<SessionGuard locale={locale} />
 			<div
 				lang={locale}
 				dir={isRtl ? 'rtl' : 'ltr'}

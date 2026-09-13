@@ -1,18 +1,21 @@
-import Link from 'next/link';
-import { LockKeyhole, Settings } from 'lucide-react';
+import { Settings } from 'lucide-react';
 
 import type { TProfileCopy } from '../profile-copy';
 import type { TProfileLocale } from '../types';
+import ActiveSessions from './ActiveSessions';
+import ChangePasswordForm from './ChangePasswordForm';
 import LogoutButton from './LogoutButton';
 
 type TSettingsViewProps = {
 	copy: TProfileCopy;
 	locale: TProfileLocale;
+	openChangePassword?: boolean;
 };
 
 export default function SettingsView({
 	copy,
 	locale,
+	openChangePassword = false,
 }: TSettingsViewProps) {
 	return (
 		<section
@@ -34,17 +37,13 @@ export default function SettingsView({
 			</div>
 
 			<div className='mt-6 space-y-3'>
-				<Link
-					href={'/' + locale + '/auth/forgot-password'}
-					className='flex min-h-14 items-center gap-3 rounded-xl border border-[#e5dcd3] bg-[#fcfaf7] px-4 text-sm font-semibold transition hover:bg-white sm:px-5'
-				>
-					<LockKeyhole
-						size={19}
-						className='text-[var(--accent)]'
-						strokeWidth={1.7}
-					/>
-					<span>{copy.changePassword}</span>
-				</Link>
+				<ChangePasswordForm
+					copy={copy}
+					initialOpen={openChangePassword}
+					locale={locale}
+				/>
+
+				<ActiveSessions copy={copy} locale={locale} />
 
 				<LogoutButton
 					label={copy.sidebar.logout}

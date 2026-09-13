@@ -89,7 +89,7 @@ async function Header({ locale }: THeaderProps) {
                 <ChevronDown size={13} strokeWidth={1.8} />
               </summary>
               <div
-                className="absolute top-full z-30 min-w-40 max-w-[calc(100vw-1rem)] overflow-hidden rounded-xl bg-[var(--background)] p-1 shadow-md ring-1 ring-black/10"
+                className="absolute top-full z-50 w-40 min-w-40 max-w-[calc(100vw-1rem)] overflow-hidden rounded-xl bg-[var(--background)] p-1 shadow-md ring-1 ring-black/10"
                 style={{
                   left: locale === "he" ? 0 : undefined,
                   right: locale === "he" ? undefined : 0,

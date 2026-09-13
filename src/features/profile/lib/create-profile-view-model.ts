@@ -42,9 +42,12 @@ export function createProfileViewModel({
 	return {
 		fullName,
 		displayName: fullName || copy.welcomeFallback,
+		firstName,
+		lastName,
 		email: email || '—',
 		phone: phone ? formatPhoneNumber(phone) : '—',
 		birthDate: birthDate ? formatBirthDate(birthDate, locale) : '—',
+		birthDateValue: birthDate,
 		bonusPoints:
 			typeof metadata.bonus_points === 'number'
 				? metadata.bonus_points

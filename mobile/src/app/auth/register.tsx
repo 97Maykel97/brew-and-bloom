@@ -16,6 +16,7 @@ import { createLocalizedHref } from '@/lib/createLocalizedHref';
 import { isValidBirthDate } from '@/lib/auth/birthDate';
 import { getAuthErrorMessage } from '@/lib/auth/getAuthErrorMessage';
 import { normalizePhone } from '@/lib/auth/normalizePhone';
+import { formatPhoneInput } from '@/lib/auth/phoneMask';
 import { supabase } from '@/lib/supabase';
 
 export default function RegisterScreen() {
@@ -109,12 +110,14 @@ export default function RegisterScreen() {
 				return;
 			}
 
-			if (!data.session) {
-				setMessage(content.register.confirmEmail);
-				return;
-			}
-
-			router.replace(createLocalizedHref('/profile', locale));
+			setFirstName('');
+			setLastName('');
+			setBirthDate('');
+			setPhone('');
+			setEmail('');
+			setPassword('');
+			setConfirmPassword('');
+			router.replace(createLocalizedHref('/auth/login', locale));
 		} catch (error: unknown) {
 			setMessage(getAuthErrorMessage(error, locale));
 		} finally {
@@ -152,9 +155,12 @@ export default function RegisterScreen() {
 				label={content.register.phone}
 				isRtl={isRtl}
 				keyboardType='phone-pad'
-				placeholder='+972 50 123 4567'
+				autoComplete='tel'
+				maxLength={17}
+				placeholder='+972 50-123-4567'
+				returnKeyType='done'
 				value={phone}
-				onChangeText={setPhone}
+				onChangeText={value => setPhone(formatPhoneInput(value))}
 			/>
 			<AuthField
 				label={content.register.email}

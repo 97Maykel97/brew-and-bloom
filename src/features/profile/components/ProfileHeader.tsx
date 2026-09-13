@@ -5,12 +5,14 @@ type TProfileHeaderProps = {
 	copy: TProfileCopy;
 	displayName: string;
 	onEdit: () => void;
+	showEdit: boolean;
 };
 
 export default function ProfileHeader({
 	copy,
 	displayName,
 	onEdit,
+	showEdit,
 }: TProfileHeaderProps) {
 	return (
 		<div
@@ -35,14 +37,16 @@ export default function ProfileHeader({
 				</p>
 			</div>
 
-			<button
-				type='button'
-				onClick={onEdit}
-				className='inline-flex min-h-11 w-full items-center justify-center gap-2 self-start rounded-full bg-[var(--accent)] px-5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:shadow-lg sm:min-h-10 sm:w-auto sm:self-auto'
-			>
-				<Pencil size={15} strokeWidth={1.8} />
-				<span>{copy.edit}</span>
-			</button>
+			{showEdit ? (
+				<button
+					type='button'
+					onClick={onEdit}
+					className='inline-flex min-h-11 w-full cursor-pointer items-center justify-center gap-2 self-start rounded-full bg-[var(--accent)] px-5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:shadow-lg sm:min-h-10 sm:w-auto sm:self-auto'
+				>
+					<Pencil size={15} strokeWidth={1.8} />
+					<span>{copy.edit}</span>
+				</button>
+			) : null}
 		</div>
 	);
 }

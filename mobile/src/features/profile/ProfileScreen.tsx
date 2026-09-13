@@ -26,6 +26,7 @@ export default function ProfileScreen() {
 	const [activeTab, setActiveTab] = useState<TProfileTab>('profile');
 	const [activeStatus, setActiveStatus] =
 		useState<TProfileOrderStatus>('all');
+	const [isEditing, setIsEditing] = useState<boolean>(false);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 
 	useFocusEffect(
@@ -74,6 +75,7 @@ export default function ProfileScreen() {
 
 				setProfile({
 					birthDate: formatBirthDate(birthDate, locale),
+					birthDateValue: birthDate,
 					bonusPoints,
 					displayName,
 					email: user.email || '',
@@ -106,19 +108,20 @@ export default function ProfileScreen() {
 		});
 	}
 
-	function changePassword() {
-		router.push({
-			pathname: '/auth/forgot-password',
-			params: { locale },
-		});
-	}
-
 	async function signOut() {
-		await supabase.auth.signOut();
+		await supabase.auth.signOut({ scope: 'local' });
 		router.replace({
 			pathname: '/auth/login',
 			params: { locale },
 		});
+	}
+
+	async function signOutAll() {
+		const { error } = await supabase.auth.signOut({ scope: 'others' });
+
+		if (error) {
+			throw error;
+		}
 	}
 
 	return (
@@ -141,9 +144,19 @@ export default function ProfileScreen() {
 				<ProfileContent
 					activeStatus={activeStatus}
 					activeTab={activeTab}
+					isEditing={isEditing}
 					locale={locale}
-					onChangePassword={changePassword}
+					onEdit={() => {
+						setActiveTab('profile');
+						setIsEditing(true);
+					}}
+					onCancelEdit={() => setIsEditing(false)}
+					onProfileSaved={updatedProfile => {
+						setProfile(updatedProfile);
+						setIsEditing(false);
+					}}
 					onLogout={signOut}
+					onLogoutAll={signOutAll}
 					onStatusChange={setActiveStatus}
 					onTabChange={setActiveTab}
 					profile={profile}

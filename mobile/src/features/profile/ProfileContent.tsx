@@ -1,5 +1,7 @@
 import { Feather } from '@expo/vector-icons';
 import {
+	KeyboardAvoidingView,
+	Platform,
 	Pressable,
 	ScrollView,
 	StyleSheet,
@@ -13,7 +15,11 @@ import type {
 	TProfileTab,
 	TMobileProfileData,
 } from './types';
+import ActiveSessions from './ActiveSessions';
+import ChangePasswordForm from './ChangePasswordForm';
 import { getInitials } from './profileFormatters';
+import DeleteAccountButton from './DeleteAccountButton';
+import ProfileEditForm from './ProfileEditForm';
 import {
 	profileTranslations,
 	type TProfileTranslations,
@@ -23,8 +29,12 @@ type TProfileContentProps = {
 	activeStatus: TProfileOrderStatus;
 	activeTab: TProfileTab;
 	locale: keyof typeof profileTranslations;
-	onChangePassword: () => void;
+	isEditing: boolean;
+	onEdit: () => void;
+	onCancelEdit: () => void;
+	onProfileSaved: (profile: TMobileProfileData) => void;
 	onLogout: () => void;
+	onLogoutAll: () => Promise<void>;
 	onStatusChange: (status: TProfileOrderStatus) => void;
 	onTabChange: (tab: TProfileTab) => void;
 	profile: TMobileProfileData;
@@ -34,8 +44,12 @@ export default function ProfileContent({
 	activeStatus,
 	activeTab,
 	locale,
-	onChangePassword,
+	isEditing,
+	onEdit,
+	onCancelEdit,
+	onProfileSaved,
 	onLogout,
+	onLogoutAll,
 	onStatusChange,
 	onTabChange,
 	profile,
@@ -44,52 +58,71 @@ export default function ProfileContent({
 	const isRtl = locale === 'he';
 
 	return (
-		<ScrollView
-			contentContainerStyle={styles.content}
-			showsVerticalScrollIndicator={false}
+		<KeyboardAvoidingView
+			behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+			style={styles.keyboardAvoiding}
 		>
-			<ProfileGreeting
-				copy={copy}
-				isRtl={isRtl}
-				profile={profile}
-			/>
-			<BonusCard
-				bonusPoints={profile.bonusPoints}
-				copy={copy}
-				isRtl={isRtl}
-				onPress={() => onTabChange('bonuses')}
-			/>
-			<ProfileTabs
-				activeTab={activeTab}
-				copy={copy}
-				isRtl={isRtl}
-				onTabChange={onTabChange}
-			/>
+			<ScrollView
+				automaticallyAdjustKeyboardInsets={Platform.OS === 'ios'}
+				contentContainerStyle={styles.content}
+				contentInsetAdjustmentBehavior='automatic'
+				keyboardDismissMode={Platform.OS === 'ios' ? 'interactive' : 'on-drag'}
+				keyboardShouldPersistTaps='handled'
+				showsVerticalScrollIndicator={false}
+			>
+				<ProfileGreeting
+					copy={copy}
+					isRtl={isRtl}
+					onEdit={onEdit}
+					profile={profile}
+					showEdit={activeTab === 'profile'}
+				/>
+				<BonusCard
+					bonusPoints={profile.bonusPoints}
+					copy={copy}
+					isRtl={isRtl}
+					onPress={() => onTabChange('bonuses')}
+				/>
+				<ProfileTabs
+					activeTab={activeTab}
+					copy={copy}
+					isRtl={isRtl}
+					onTabChange={onTabChange}
+				/>
 
-			<ProfileTabContent
-				activeStatus={activeStatus}
-				activeTab={activeTab}
-				copy={copy}
-				isRtl={isRtl}
-				onChangePassword={onChangePassword}
-				onLogout={onLogout}
-				onStatusChange={onStatusChange}
-				profile={profile}
-			/>
-		</ScrollView>
+				<ProfileTabContent
+					activeStatus={activeStatus}
+					activeTab={activeTab}
+					copy={copy}
+					isRtl={isRtl}
+					locale={locale}
+					isEditing={isEditing}
+					onCancelEdit={onCancelEdit}
+					onProfileSaved={onProfileSaved}
+					onLogout={onLogout}
+					onLogoutAll={onLogoutAll}
+					onStatusChange={onStatusChange}
+					profile={profile}
+				/>
+			</ScrollView>
+		</KeyboardAvoidingView>
 	);
 }
 
 type TProfileGreetingProps = {
 	copy: TProfileTranslations;
 	isRtl: boolean;
+	onEdit: () => void;
 	profile: TMobileProfileData;
+	showEdit: boolean;
 };
 
 function ProfileGreeting({
 	copy,
 	isRtl,
+	onEdit,
 	profile,
+	showEdit,
 }: TProfileGreetingProps) {
 	return (
 		<View style={styles.greeting}>
@@ -103,6 +136,16 @@ function ProfileGreeting({
 			<Text style={[styles.greetingText, isRtl && styles.rtlText]}>
 				{copy.greeting}
 			</Text>
+			{showEdit ? (
+				<Pressable
+					accessibilityRole='button'
+					onPress={onEdit}
+					style={({ pressed }) => [styles.editButton, pressed && styles.pressed]}
+				>
+					<Feather name='edit-3' size={15} color={Colors.white} />
+					<Text style={styles.editButtonText}>{copy.edit}</Text>
+				</Pressable>
+			) : null}
 		</View>
 	);
 }
@@ -205,8 +248,12 @@ type TProfileTabContentProps = {
 	activeTab: TProfileTab;
 	copy: TProfileTranslations;
 	isRtl: boolean;
-	onChangePassword: () => void;
+	locale: keyof typeof profileTranslations;
+	isEditing: boolean;
+	onCancelEdit: () => void;
+	onProfileSaved: (profile: TMobileProfileData) => void;
 	onLogout: () => void;
+	onLogoutAll: () => Promise<void>;
 	onStatusChange: (status: TProfileOrderStatus) => void;
 	profile: TMobileProfileData;
 };
@@ -216,8 +263,12 @@ function ProfileTabContent({
 	activeTab,
 	copy,
 	isRtl,
-	onChangePassword,
+	locale,
+	isEditing,
+	onCancelEdit,
+	onProfileSaved,
 	onLogout,
+	onLogoutAll,
 	onStatusChange,
 	profile,
 }: TProfileTabContentProps) {
@@ -226,6 +277,10 @@ function ProfileTabContent({
 			<ProfileDetails
 				copy={copy}
 				isRtl={isRtl}
+				isEditing={isEditing}
+				locale={locale}
+				onCancelEdit={onCancelEdit}
+				onProfileSaved={onProfileSaved}
 				profile={profile}
 			/>
 		);
@@ -246,8 +301,9 @@ function ProfileTabContent({
 			<ProfileSettings
 				copy={copy}
 				isRtl={isRtl}
-				onChangePassword={onChangePassword}
+				locale={locale}
 				onLogout={onLogout}
+				onLogoutAll={onLogoutAll}
 			/>
 		);
 	}
@@ -266,14 +322,34 @@ function ProfileTabContent({
 type TProfileDetailsProps = {
 	copy: TProfileTranslations;
 	isRtl: boolean;
+	isEditing: boolean;
+	locale: keyof typeof profileTranslations;
+	onCancelEdit: () => void;
+	onProfileSaved: (profile: TMobileProfileData) => void;
 	profile: TMobileProfileData;
 };
 
 function ProfileDetails({
 	copy,
 	isRtl,
+	isEditing,
+	locale,
+	onCancelEdit,
+	onProfileSaved,
 	profile,
 }: TProfileDetailsProps) {
+	if (isEditing) {
+		return (
+			<ProfileEditForm
+				copy={copy}
+				locale={locale}
+				profile={profile}
+				onCancel={onCancelEdit}
+				onSaved={onProfileSaved}
+			/>
+		);
+	}
+
 	const initials = getInitials(profile.firstName, profile.lastName);
 	const rows = [
 		{ icon: 'user' as const, label: copy.name, value: profile.displayName },
@@ -299,7 +375,13 @@ function ProfileDetails({
 					<Text style={[styles.identityEmail, isRtl && styles.rtlText]}>
 						{profile.email}
 					</Text>
-					<Text style={[styles.identityPhone, isRtl && styles.rtlText]}>
+					<Text
+						style={[
+							styles.identityPhone,
+							isRtl && styles.rtlText,
+							styles.ltrText,
+						]}
+					>
 						{profile.phone}
 					</Text>
 				</View>
@@ -317,7 +399,11 @@ function ProfileDetails({
 						</Text>
 						<Text
 							numberOfLines={1}
-							style={[styles.rowValue, isRtl && styles.rtlText]}
+							style={[
+								styles.rowValue,
+								isRtl && styles.rtlText,
+								row.icon === 'phone' && styles.ltrText,
+							]}
 						>
 							{row.value}
 						</Text>
@@ -352,15 +438,17 @@ function BonusDetails({
 type TProfileSettingsProps = {
 	copy: TProfileTranslations;
 	isRtl: boolean;
-	onChangePassword: () => void;
+	locale: keyof typeof profileTranslations;
 	onLogout: () => void;
+	onLogoutAll: () => Promise<void>;
 };
 
 function ProfileSettings({
 	copy,
 	isRtl,
-	onChangePassword,
+	locale,
 	onLogout,
+	onLogoutAll,
 }: TProfileSettingsProps) {
 	const chevron = isRtl ? 'chevron-left' : 'chevron-right';
 
@@ -373,21 +461,18 @@ function ProfileSettings({
 				{copy.settingsDescription}
 			</Text>
 
-			<Pressable
-				accessibilityRole='button'
-				onPress={onChangePassword}
-				style={({ pressed }) => [
-					styles.actionRow,
-					isRtl && styles.rowRtl,
-					pressed && styles.pressed,
-				]}
-			>
-				<Feather name='lock' size={18} color={Colors.accent} />
-				<Text style={[styles.actionText, isRtl && styles.rtlText]}>
-					{copy.changePassword}
-				</Text>
-				<Feather name={chevron} size={18} color={Colors.foreground} />
-			</Pressable>
+			<ChangePasswordForm
+				copy={copy}
+				isRtl={isRtl}
+				locale={locale}
+			/>
+
+			<ActiveSessions
+				copy={copy}
+				isRtl={isRtl}
+				locale={locale}
+				onSignOutAll={onLogoutAll}
+			/>
 
 			<Pressable
 				accessibilityRole='button'
@@ -405,6 +490,8 @@ function ProfileSettings({
 				</Text>
 				<Feather name={chevron} size={18} color='#C95C52' />
 			</Pressable>
+
+			<DeleteAccountButton copy={copy} locale={locale} />
 		</View>
 	);
 }
@@ -529,6 +616,9 @@ function EmptyProfileState({
 }
 
 const styles = StyleSheet.create({
+	keyboardAvoiding: {
+		flex: 1,
+	},
 	content: {
 		padding: Spacing.medium,
 		paddingBottom: Spacing.xLarge,
@@ -552,6 +642,24 @@ const styles = StyleSheet.create({
 		color: Colors.muted,
 		fontFamily: Fonts.sans,
 		fontSize: 14,
+	},
+	editButton: {
+		minHeight: 42,
+		marginTop: Spacing.small,
+		paddingHorizontal: Spacing.medium,
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'center',
+		gap: 6,
+		alignSelf: 'flex-start',
+		borderRadius: 999,
+		backgroundColor: Colors.accent,
+	},
+	editButtonText: {
+		color: Colors.white,
+		fontFamily: Fonts.sans,
+		fontSize: 14,
+		fontWeight: '700',
 	},
 	bonusCard: {
 		marginTop: Spacing.large,
@@ -811,5 +919,8 @@ const styles = StyleSheet.create({
 	rtlText: {
 		writingDirection: 'rtl',
 		textAlign: 'right',
+	},
+	ltrText: {
+		writingDirection: 'ltr',
 	},
 });

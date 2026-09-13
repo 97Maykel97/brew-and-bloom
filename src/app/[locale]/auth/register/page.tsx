@@ -107,11 +107,6 @@ export default function RegisterPage() {
 				return;
 			}
 
-			if (!data.session) {
-				setMessage(t('confirmEmail'));
-				return;
-			}
-
 			setFirstName('');
 			setLastName('');
 			setBirthDate('');
@@ -119,7 +114,7 @@ export default function RegisterPage() {
 			setEmail('');
 			setPassword('');
 			setConfirmPassword('');
-			router.replace('/' + locale + '/profile');
+			router.replace('/' + locale + '/auth/login');
 		} catch (error: unknown) {
 			setMessage(getAuthErrorMessage(error, locale));
 		} finally {

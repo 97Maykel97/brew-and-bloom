@@ -17,7 +17,12 @@ type TProfileContentProps = {
 	activeTab: TProfileTab;
 	activeOrderStatus: TOrderStatus;
 	copy: TProfileCopy;
+	isEditing: boolean;
 	onOrderStatusChange: (status: TOrderStatus) => void;
+	onCancelEdit: () => void;
+	onProfileSaved: (profile: TProfileViewModel) => void;
+	onOpenSettings: () => void;
+	openChangePassword: boolean;
 	profile: TProfileViewModel;
 };
 
@@ -26,7 +31,12 @@ export default function ProfileContent({
 	activeTab,
 	activeOrderStatus,
 	copy,
+	isEditing,
 	onOrderStatusChange,
+	onCancelEdit,
+	onProfileSaved,
+	onOpenSettings,
+	openChangePassword,
 	profile,
 }: TProfileContentProps) {
 	if (activeTab === 'orders') {
@@ -71,8 +81,24 @@ export default function ProfileContent({
 	}
 
 	if (activeTab === 'settings') {
-		return <SettingsView copy={copy} locale={locale} />;
+		return (
+			<SettingsView
+				copy={copy}
+				locale={locale}
+				openChangePassword={openChangePassword}
+			/>
+		);
 	}
 
-	return <ProfileDetails copy={copy} profile={profile} />;
+	return (
+		<ProfileDetails
+			copy={copy}
+			locale={locale}
+			isEditing={isEditing}
+			profile={profile}
+			onCancelEdit={onCancelEdit}
+			onProfileSaved={onProfileSaved}
+			onOpenSettings={onOpenSettings}
+		/>
+	);
 }

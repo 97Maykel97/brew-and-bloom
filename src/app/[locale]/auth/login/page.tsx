@@ -14,6 +14,7 @@ import {
 	getAuthErrorMessage,
 	getAuthValidationMessage,
 } from '@/lib/auth/getAuthErrorMessage';
+import { registerCurrentWebDevice } from '@/lib/auth/register-current-device';
 import { createClient } from '@/lib/supabase/client';
 
 export default function LoginPage() {
@@ -57,6 +58,7 @@ export default function LoginPage() {
 				return;
 			}
 
+			await registerCurrentWebDevice();
 			setEmail('');
 			setPassword('');
 			router.replace('/' + locale + '/profile');

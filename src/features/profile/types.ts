@@ -13,8 +13,11 @@ export type TOrderStatus = 'all' | 'processing' | 'ready' | 'completed';
 export type TProfileViewModel = {
 	fullName: string;
 	displayName: string;
+	firstName: string;
+	lastName: string;
 	email: string;
 	phone: string;
 	birthDate: string;
+	birthDateValue: string;
 	bonusPoints: number;
 };

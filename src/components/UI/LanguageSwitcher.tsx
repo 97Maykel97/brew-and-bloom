@@ -36,7 +36,12 @@ export default function LanguageSwitcher({
 				<ChevronDown size={13} strokeWidth={1.8} />
 			</summary>
 
-			<div className='absolute top-full right-0 z-30 min-w-40 max-w-[calc(100vw-1rem)] overflow-hidden rounded-xl bg-[var(--background)] p-1 shadow-md ring-1 ring-black/10'>
+			<div
+				className={
+					'absolute top-full z-50 w-40 min-w-40 max-w-[calc(100vw-1rem)] overflow-hidden rounded-xl bg-[var(--background)] p-1 shadow-md ring-1 ring-black/10 ' +
+					(locale === 'he' ? 'left-0' : 'right-0')
+				}
+			>
 				{languageOptions
 					.filter(option => option.code !== locale)
 					.map(option => (

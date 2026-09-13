@@ -36,10 +36,14 @@ export default function ProfileDashboard({
 	copy,
 	profile,
 }: TProfileDashboardProps) {
+	const [currentProfile, setCurrentProfile] =
+		useState<TProfileViewModel>(profile);
 	const [activeTab, setActiveTab] =
 		useState<TProfileTab>(initialActiveTab);
 	const [activeOrderStatus, setActiveOrderStatus] =
 		useState<TOrderStatus>(initialOrderStatus);
+	const [isEditing, setIsEditing] = useState(false);
+	const [openChangePassword, setOpenChangePassword] = useState(false);
 
 	useEffect(() => {
 		function syncStateWithUrl() {
@@ -73,6 +77,9 @@ export default function ProfileDashboard({
 		if (tab === activeTab) return;
 
 		setActiveTab(tab);
+		if (tab !== 'settings') {
+			setOpenChangePassword(false);
+		}
 		updateUrl(tab, activeOrderStatus);
 	}
 
@@ -105,12 +112,16 @@ export default function ProfileDashboard({
 					<div className='mx-auto max-w-[920px] px-4 py-5 sm:px-8 sm:py-10 lg:px-12 lg:py-12'>
 						<ProfileHeader
 							copy={copy}
-							displayName={profile.displayName}
-							onEdit={() => changeTab('profile')}
+							displayName={currentProfile.displayName}
+							showEdit={activeTab === 'profile'}
+							onEdit={() => {
+								changeTab('profile');
+								setIsEditing(true);
+							}}
 						/>
 						<BonusCard
 							copy={copy}
-							bonusPoints={profile.bonusPoints}
+							bonusPoints={currentProfile.bonusPoints}
 							onOpen={() => changeTab('bonuses')}
 						/>
 						<ProfileMobileNavigation
@@ -128,8 +139,19 @@ export default function ProfileDashboard({
 							activeTab={activeTab}
 							activeOrderStatus={activeOrderStatus}
 							copy={copy}
+							isEditing={isEditing}
 							onOrderStatusChange={changeOrderStatus}
-							profile={profile}
+							onCancelEdit={() => setIsEditing(false)}
+							onOpenSettings={() => {
+								setOpenChangePassword(true);
+								changeTab('settings');
+							}}
+							openChangePassword={openChangePassword}
+							onProfileSaved={updatedProfile => {
+								setCurrentProfile(updatedProfile);
+								setIsEditing(false);
+							}}
+							profile={currentProfile}
 						/>
 					</div>
 				</section>
