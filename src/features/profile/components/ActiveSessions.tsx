@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 
 import { createClient } from '@/lib/supabase/client';
-import { registerCurrentWebDevice } from '@/lib/auth/register-current-device';
+import { registerCurrentWebDevice } from '@/features/auth/lib/register-current-device';
 import {
 	formatSessionDate,
 	getSessionDeviceInfo,

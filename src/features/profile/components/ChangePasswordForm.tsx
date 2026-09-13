@@ -4,7 +4,11 @@ import { SubmitEvent, useState } from 'react';
 import { ChevronDown, LockKeyhole } from 'lucide-react';
 
 import PasswordField from '@/components/auth/PasswordField';
-import { getAuthErrorMessage } from '@/lib/auth/getAuthErrorMessage';
+import { getAuthErrorMessage } from '@/features/auth/lib/auth-errors';
+import {
+	doPasswordsMatch,
+	isPasswordLongEnough,
+} from '@/features/auth/lib/auth-validation';
 import { createClient } from '@/lib/supabase/client';
 import type { TProfileCopy } from '../profile-copy';
 import type { TProfileLocale } from '../types';
@@ -32,12 +36,12 @@ export default function ChangePasswordForm({
 		setMessage('');
 		setIsSuccess(false);
 
-		if (newPassword.length < 6) {
+		if (!isPasswordLongEnough(newPassword)) {
 			setMessage(copy.passwordLength);
 			return;
 		}
 
-		if (newPassword !== confirmPassword) {
+		if (!doPasswordsMatch(newPassword, confirmPassword)) {
 			setMessage(copy.passwordMismatch);
 			return;
 		}

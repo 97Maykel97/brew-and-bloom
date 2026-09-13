@@ -2,7 +2,9 @@ import { getWebDeviceRegistration } from '@/features/profile/lib/session-formatt
 import { createClient } from '@/lib/supabase/client';
 
 export async function registerCurrentWebDevice(): Promise<void> {
-	if (typeof navigator === 'undefined') return;
+	if (typeof navigator === 'undefined') {
+		return;
+	}
 
 	const device = getWebDeviceRegistration(navigator.userAgent);
 	const supabase = createClient();

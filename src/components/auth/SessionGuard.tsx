@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-import { registerCurrentWebDevice } from '@/lib/auth/register-current-device';
+import { registerCurrentWebDevice } from '@/features/auth/lib/register-current-device';
 import { createClient } from '@/lib/supabase/client';
 
 const SESSION_CHECK_INTERVAL_MS = 3000;

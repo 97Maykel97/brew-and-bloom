@@ -1,7 +1,4 @@
-import {
-	isSupportedLocale,
-	type TLocale,
-} from '@/i18n/languages';
+import { isSupportedLocale, type TLocale } from '@/i18n/languages';
 
 type TAuthError = {
 	code?: string;

@@ -1,5 +1,4 @@
-import { redirect } from 'next/navigation';
-
+import { requireUser } from '@/features/auth/server';
 import {
 	createProfileViewModel,
 	getOrderStatus,
@@ -8,7 +7,6 @@ import {
 	ProfileDashboard,
 	profileCopy,
 } from '@/features/profile';
-import { createClient } from '@/lib/supabase/server';
 
 type TProfilePageProps = {
 	params: Promise<{
@@ -32,14 +30,7 @@ export default async function ProfilePage({
 	const activeTab = getProfileTab(tab);
 	const activeOrderStatus = getOrderStatus(status);
 	const copy = profileCopy[currentLocale];
-	const supabase = await createClient();
-	const {
-		data: { user },
-	} = await supabase.auth.getUser();
-
-	if (!user) {
-		redirect('/' + currentLocale + '/auth/login');
-	}
+	const { supabase, user } = await requireUser(currentLocale);
 
 	const { data: profile } = await supabase
 		.from('profiles')

@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 
-import { isValidBirthDate } from '@/lib/auth/birthDate';
-import { normalizePhone } from '@/lib/auth/normalizePhone';
+import { isValidBirthDate } from '@/features/auth/lib/birth-date';
+import { normalizePhone } from '@/features/auth/lib/normalize-phone';
 import { createClient } from '@/lib/supabase/client';
 import type { TProfileCopy } from '../profile-copy';
 import { formatBirthDate, formatPhoneNumber } from '../lib/profile-formatters';

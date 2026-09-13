@@ -1,5 +1,5 @@
-export function normalizePhone(phone: string): string {
-	const digits = phone.replace(/\D/g, '');
+export function normalizePhone(phoneValue: string): string {
+	const digits = phoneValue.replace(/\D/g, '');
 
 	if (digits.startsWith('9720')) {
 		return `972${digits.slice(4)}`;

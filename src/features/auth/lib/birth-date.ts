@@ -1,5 +1,5 @@
-export function isValidBirthDate(value: string): boolean {
-	const [year, month, day] = value.split('-').map(Number);
+export function isValidBirthDate(birthDateValue: string): boolean {
+	const [year, month, day] = birthDateValue.split('-').map(Number);
 	const birthDate = new Date(year, month - 1, day);
 	const today = new Date();
 	const oldestAllowedDate = new Date(

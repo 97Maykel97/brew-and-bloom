@@ -8,6 +8,10 @@ import { Colors, Fonts, Spacing } from '@/constants/theme';
 import type { TLocale } from '@/i18n/languages';
 import { getAuthErrorMessage } from '@/lib/auth/getAuthErrorMessage';
 import { supabase } from '@/lib/supabase';
+import {
+	doPasswordsMatch,
+	isPasswordLongEnough,
+} from '@/features/auth/lib/auth-validation';
 import type { TProfileTranslations } from '../profileTranslations';
 
 type TChangePasswordFormProps = {
@@ -32,12 +36,12 @@ export default function ChangePasswordForm({
 		setMessage('');
 		setIsSuccess(false);
 
-		if (newPassword.length < 6) {
+		if (!isPasswordLongEnough(newPassword)) {
 			setMessage(copy.passwordLength);
 			return;
 		}
 
-		if (newPassword !== confirmPassword) {
+		if (!doPasswordsMatch(newPassword, confirmPassword)) {
 			setMessage(copy.passwordMismatch);
 			return;
 		}
