@@ -3,7 +3,7 @@
 import { useEffect, type ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 import LanguageSwitcher from '@/components/UI/LanguageSwitcher';
@@ -24,6 +24,7 @@ export default function AuthShell({
 	children,
 	wide = false,
 }: TAuthShellProps) {
+	const router = useRouter();
 	const pathname = usePathname() ?? '/' + locale;
 	const pathLocale = pathname.split('/')[1] ?? '';
 	const currentLocale = isSupportedLocale(pathLocale)
@@ -51,12 +52,12 @@ export default function AuthShell({
 
 	useEffect(() => {
 		function handleBrowserBack() {
-			window.location.replace(homeHref);
+			router.replace(homeHref);
 		}
 
 		window.addEventListener('popstate', handleBrowserBack);
 		return () => window.removeEventListener('popstate', handleBrowserBack);
-	}, [homeHref]);
+	}, [homeHref, router]);
 
 	return (
 		<main

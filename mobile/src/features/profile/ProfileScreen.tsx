@@ -100,7 +100,7 @@ export default function ProfileScreen() {
 	}
 
 	function goHome() {
-		router.replace({
+		router.navigate({
 			pathname: '/',
 			params: { locale },
 		});

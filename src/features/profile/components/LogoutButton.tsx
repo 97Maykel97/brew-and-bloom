@@ -34,7 +34,6 @@ export default function LogoutButton({
 		}
 
 		router.replace('/' + locale);
-		router.refresh();
 	}
 
 	return (

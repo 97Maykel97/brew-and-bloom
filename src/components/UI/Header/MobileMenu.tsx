@@ -3,7 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Heart, Menu, UserRound, X } from "lucide-react";
+import { Heart, Menu, X } from "lucide-react";
+import ProfileButton from "./ProfileButton";
 import SearchButton from "./SearchButton";
 
 type TMobileNavItem = {
@@ -14,10 +15,16 @@ type TMobileNavItem = {
 type TMobileMenuProps = {
   locale: string;
   items: TMobileNavItem[];
+  profileHref: string;
   searchLabel: string;
 };
 
-function MobileMenu({ locale, items, searchLabel }: TMobileMenuProps) {
+function MobileMenu({
+  locale,
+  items,
+  profileHref,
+  searchLabel,
+}: TMobileMenuProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
@@ -57,9 +64,10 @@ function MobileMenu({ locale, items, searchLabel }: TMobileMenuProps) {
               <Link href={`/${locale}/favorites`} aria-label="Favorites" onClick={() => setIsOpen(false)} className="group flex h-10 w-10 shrink-0 items-center justify-center text-[var(--foreground)] transition-all duration-300 ease-out hover:scale-105 hover:text-[#A65345] active:scale-95">
                 <Heart className="transition-all duration-300 ease-out group-hover:fill-[#A65345] group-hover:stroke-[#A65345]" size={18} strokeWidth={1.8} />
               </Link>
-              <Link href={`/${locale}/auth/login`} aria-label="Profile" onClick={() => setIsOpen(false)} className="flex h-10 w-10 shrink-0 items-center justify-center transition-transform duration-200 hover:scale-110 active:scale-95">
-                <UserRound size={18} strokeWidth={1.8} />
-              </Link>
+              <ProfileButton
+                href={profileHref}
+                onNavigate={() => setIsOpen(false)}
+              />
             </div>
 
             <nav className="mt-16 flex w-full min-w-0 flex-1 flex-col items-center gap-8">

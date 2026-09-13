@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
-import { ChevronDown, Heart, UserRound } from "lucide-react";
+import { ChevronDown, Heart } from "lucide-react";
 
 import Container from "@/components/common/Container";
 import { languageOptions } from "@/i18n/languages";
 import { createClient } from "@/lib/supabase/server";
 import MobileMenu from "./MobileMenu";
+import ProfileButton from "./ProfileButton";
 import SearchButton from "./SearchButton";
 import NavLinks from "./NavLinks";
 
@@ -50,6 +51,7 @@ async function Header({ locale }: THeaderProps) {
             <MobileMenu
               locale={locale}
               items={translatedNavItems}
+              profileHref={profileHref}
               searchLabel={searchLabel}
             />
           </div>
@@ -79,9 +81,7 @@ async function Header({ locale }: THeaderProps) {
               <Heart className="transition-all duration-300 ease-out group-hover:fill-[#A65345] group-hover:stroke-[#A65345]" size={18} strokeWidth={1.8} />
             </Link>
 
-            <Link href={profileHref} aria-label="Profile" className="flex h-10 w-10 shrink-0 items-center justify-center transition-transform duration-200 hover:scale-110 active:scale-95">
-              <UserRound size={18} strokeWidth={1.8} />
-            </Link>
+            <ProfileButton href={profileHref} />
 
             <details className="relative shrink-0">
               <summary className="flex h-10 cursor-pointer list-none items-center gap-1 px-1 text-sm font-medium text-[var(--foreground)] transition-transform duration-200 hover:scale-105 [&::-webkit-details-marker]:hidden">

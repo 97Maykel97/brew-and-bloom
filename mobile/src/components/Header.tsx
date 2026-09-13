@@ -84,7 +84,7 @@ export default function Header({
 		} = await supabase.auth.getSession();
 
 		const pathname = session ? '/profile' : '/auth/login';
-		router.push(createLocalizedHref(pathname, locale));
+		router.navigate(createLocalizedHref(pathname, locale));
 	}
 
 	return (
