@@ -1,0 +1,193 @@
+import { StyleSheet } from 'react-native';
+
+import { Colors, Fonts, Spacing } from '@/constants/theme';
+
+export const activeSessionsStyles = StyleSheet.create({
+	card: {
+		marginVertical: Spacing.small,
+		overflow: 'hidden',
+		borderWidth: 1,
+		borderColor: '#E5DCD3',
+		borderRadius: 16,
+		backgroundColor: '#FCFAF7',
+	},
+	header: {
+		padding: 14,
+		flexDirection: 'row',
+		alignItems: 'flex-start',
+		gap: 10,
+		borderBottomWidth: StyleSheet.hairlineWidth,
+		borderBottomColor: '#E5DCD3',
+	},
+	headerIcon: {
+		width: 40,
+		height: 40,
+		alignItems: 'center',
+		justifyContent: 'center',
+		borderRadius: 20,
+		backgroundColor: '#EFE4D8',
+	},
+	headerCopy: {
+		flex: 1,
+		gap: 4,
+	},
+	titleRow: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		gap: 7,
+	},
+	title: {
+		color: Colors.foreground,
+		fontFamily: Fonts.sans,
+		fontSize: 15,
+		fontWeight: '700',
+	},
+	countBadge: {
+		minWidth: 24,
+		height: 22,
+		paddingHorizontal: 7,
+		alignItems: 'center',
+		justifyContent: 'center',
+		borderRadius: 11,
+		backgroundColor: '#EFE4D8',
+	},
+	countText: {
+		color: Colors.accent,
+		fontFamily: Fonts.sans,
+		fontSize: 11,
+		fontWeight: '700',
+	},
+	description: {
+		color: Colors.muted,
+		fontFamily: Fonts.sans,
+		fontSize: 12,
+		lineHeight: 17,
+	},
+	sessionList: {
+		paddingHorizontal: 14,
+	},
+	loading: {
+		minHeight: 62,
+		flexDirection: 'row',
+		alignItems: 'center',
+		gap: 8,
+	},
+	mutedText: {
+		color: Colors.muted,
+		fontFamily: Fonts.sans,
+		fontSize: 12,
+	},
+	emptyText: {
+		paddingVertical: 18,
+		color: Colors.muted,
+		fontFamily: Fonts.sans,
+		fontSize: 12,
+	},
+	session: {
+		minHeight: 76,
+		paddingVertical: 12,
+		flexDirection: 'row',
+		alignItems: 'center',
+		gap: 10,
+	},
+	sessionDivider: {
+		borderBottomWidth: StyleSheet.hairlineWidth,
+		borderBottomColor: '#E5DCD3',
+	},
+	deviceIcon: {
+		width: 38,
+		height: 38,
+		alignItems: 'center',
+		justifyContent: 'center',
+		borderWidth: StyleSheet.hairlineWidth,
+		borderColor: '#E5DCD3',
+		borderRadius: 12,
+		backgroundColor: Colors.white,
+	},
+	sessionCopy: {
+		flex: 1,
+		minWidth: 0,
+		gap: 2,
+	},
+	deviceTitleRow: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		gap: 6,
+	},
+	deviceName: {
+		flexShrink: 1,
+		color: Colors.foreground,
+		fontFamily: Fonts.sans,
+		fontSize: 13,
+		fontWeight: '700',
+	},
+	currentBadge: {
+		paddingHorizontal: 7,
+		paddingVertical: 3,
+		borderRadius: 999,
+		backgroundColor: '#E7F5EC',
+	},
+	currentBadgeText: {
+		color: '#287A48',
+		fontFamily: Fonts.sans,
+		fontSize: 9,
+		fontWeight: '700',
+	},
+	deviceDetails: {
+		color: Colors.muted,
+		fontFamily: Fonts.sans,
+		fontSize: 11,
+	},
+	lastActive: {
+		color: Colors.muted,
+		fontFamily: Fonts.sans,
+		fontSize: 10,
+	},
+	error: {
+		paddingHorizontal: 14,
+		paddingTop: 12,
+		color: '#C95C52',
+		fontFamily: Fonts.sans,
+		fontSize: 12,
+	},
+	success: {
+		paddingHorizontal: 14,
+		paddingTop: 12,
+		color: '#287A48',
+		fontFamily: Fonts.sans,
+		fontSize: 12,
+	},
+	signOutAllButton: {
+		minHeight: 46,
+		margin: 14,
+		paddingHorizontal: 12,
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'center',
+		gap: 8,
+		borderWidth: 1,
+		borderColor: '#F0C9C4',
+		borderRadius: 12,
+		backgroundColor: '#FFF5F3',
+	},
+	signOutAllText: {
+		color: '#C95C52',
+		fontFamily: Fonts.sans,
+		fontSize: 13,
+		fontWeight: '700',
+		textAlign: 'center',
+	},
+	rowRtl: {
+		flexDirection: 'row-reverse',
+	},
+	rtlText: {
+		writingDirection: 'rtl',
+		textAlign: 'right',
+	},
+	pressed: {
+		opacity: 0.65,
+	},
+	disabled: {
+		opacity: 0.55,
+	},
+});

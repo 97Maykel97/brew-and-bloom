@@ -8,7 +8,7 @@ import { Colors, Fonts, Spacing } from '@/constants/theme';
 import type { TLocale } from '@/i18n/languages';
 import { getAuthErrorMessage } from '@/lib/auth/getAuthErrorMessage';
 import { supabase } from '@/lib/supabase';
-import type { TProfileTranslations } from './profileTranslations';
+import type { TProfileTranslations } from '../profileTranslations';
 
 type TChangePasswordFormProps = {
 	copy: TProfileTranslations;

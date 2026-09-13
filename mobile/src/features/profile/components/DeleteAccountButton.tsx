@@ -15,7 +15,7 @@ import AuthSubmitButton from '@/components/auth/AuthSubmitButton';
 import { Colors, Fonts, Spacing } from '@/constants/theme';
 import { supabase } from '@/lib/supabase';
 import type { TLocale } from '@/i18n/translations';
-import type { TProfileTranslations } from './profileTranslations';
+import type { TProfileTranslations } from '../profileTranslations';
 
 type TDeleteAccountButtonProps = {
 	copy: TProfileTranslations;

@@ -1,0 +1,27 @@
+@import 'tailwindcss';
+
+:root {
+	--background: #f5efe7;
+	--foreground: #2b211b;
+	--muted: #6f6258;
+	--accent: #4a382c;
+	--border: #d8cec3;
+}
+
+body {
+	background: var(--background);
+	color: var(--foreground);
+	font-family: var(--font-body), sans-serif;
+}
+
+html,
+body {
+	max-width: 100%;
+	overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}

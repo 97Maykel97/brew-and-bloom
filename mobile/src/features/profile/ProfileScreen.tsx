@@ -7,7 +7,11 @@ import Header from '@/components/Header';
 import { Colors, Spacing } from '@/constants/theme';
 import { getLocale } from '@/i18n/locale';
 import { translations } from '@/i18n/translations';
-import { formatBirthDate, formatPhoneNumber, getString } from './profileFormatters';
+import {
+	formatBirthDate,
+	formatPhoneNumber,
+	getString,
+} from './lib/profile-formatters';
 import ProfileContent from './ProfileContent';
 import { profileTranslations } from './profileTranslations';
 import type {

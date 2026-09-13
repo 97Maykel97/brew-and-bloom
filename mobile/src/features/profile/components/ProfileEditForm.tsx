@@ -11,8 +11,12 @@ import { normalizePhone } from '@/lib/auth/normalizePhone';
 import { formatPhoneInput } from '@/lib/auth/phoneMask';
 import { supabase } from '@/lib/supabase';
 import type { TLocale } from '@/i18n/translations';
-import type { TMobileProfileData } from './types';
-import type { TProfileTranslations } from './profileTranslations';
+import {
+	formatBirthDate,
+	formatPhoneNumber,
+} from '../lib/profile-formatters';
+import type { TMobileProfileData } from '../types';
+import type { TProfileTranslations } from '../profileTranslations';
 
 type TProfileEditFormProps = {
 	copy: TProfileTranslations;
@@ -179,26 +183,6 @@ export default function ProfileEditForm({
 			</Pressable>
 		</View>
 	);
-}
-
-function formatPhoneNumber(value: string): string {
-	const digits = value.replace(/\D/g, '');
-	if (digits.startsWith('972') && digits.length === 12) {
-		const localNumber = digits.slice(3);
-		return `+972 ${localNumber.slice(0, 2)}-${localNumber.slice(2, 5)}-${localNumber.slice(5)}`;
-	}
-	return value;
-}
-
-function formatBirthDate(value: string, locale: TLocale): string {
-	const [year, month, day] = value.split('-').map(Number);
-	const dateLocale = locale === 'ru' ? 'ru-RU' : locale === 'he' ? 'he-IL' : 'en-GB';
-	return new Intl.DateTimeFormat(dateLocale, {
-		day: '2-digit',
-		month: '2-digit',
-		year: 'numeric',
-		timeZone: 'UTC',
-	}).format(new Date(Date.UTC(year, month - 1, day)));
 }
 
 const styles = StyleSheet.create({
