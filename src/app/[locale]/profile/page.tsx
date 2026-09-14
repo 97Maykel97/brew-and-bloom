@@ -1,4 +1,4 @@
-import { requireUser } from '@/features/auth/server';
+import { getCurrentUserRole, requireUser } from '@/features/auth/server';
 import {
 	createProfileViewModel,
 	getOrderStatus,
@@ -31,6 +31,7 @@ export default async function ProfilePage({
 	const activeOrderStatus = getOrderStatus(status);
 	const copy = profileCopy[currentLocale];
 	const { supabase, user } = await requireUser(currentLocale);
+	const role = await getCurrentUserRole();
 
 	const { data: profile } = await supabase
 		.from('profiles')
@@ -53,6 +54,7 @@ export default async function ProfilePage({
 	return (
 		<ProfileDashboard
 			locale={currentLocale}
+			isAdmin={role === 'admin'}
 			activeTab={activeTab}
 			activeOrderStatus={activeOrderStatus}
 			copy={copy}

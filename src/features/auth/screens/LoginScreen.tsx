@@ -53,7 +53,7 @@ export default function LoginScreen() {
 
 		try {
 			const supabase = createClient();
-			const { error } = await supabase.auth.signInWithPassword({
+			const { data, error } = await supabase.auth.signInWithPassword({
 				email: normalizedEmail,
 				password,
 			});
@@ -64,9 +64,18 @@ export default function LoginScreen() {
 			}
 
 			await registerCurrentWebDevice();
+			const { data: profile } = await supabase
+				.from('profiles')
+				.select('role')
+				.eq('id', data.user.id)
+				.maybeSingle();
+			const destination =
+				profile?.role === 'admin' ? '/admin' : '/profile';
+
 			setEmail('');
 			setPassword('');
-			router.replace('/' + locale + '/profile');
+			router.replace('/' + locale + destination);
+			router.refresh();
 		} catch (error: unknown) {
 			setMessage(getAuthErrorMessage(error, locale));
 		} finally {

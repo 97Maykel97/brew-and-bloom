@@ -23,6 +23,7 @@ import ProfileTopBar from './ProfileTopBar';
 
 type TProfileDashboardProps = {
 	locale: TProfileLocale;
+	isAdmin: boolean;
 	activeTab: TProfileTab;
 	activeOrderStatus: TOrderStatus;
 	copy: TProfileCopy;
@@ -31,6 +32,7 @@ type TProfileDashboardProps = {
 
 export default function ProfileDashboard({
 	locale,
+	isAdmin,
 	activeTab: initialActiveTab,
 	activeOrderStatus: initialOrderStatus,
 	copy,
@@ -98,6 +100,7 @@ export default function ProfileDashboard({
 			<div className='mx-auto flex min-h-screen max-w-[1320px] overflow-hidden bg-[#f8f3ec] sm:min-h-[calc(100svh-3rem)] sm:rounded-[32px] sm:shadow-[0_24px_80px_rgba(55,39,28,0.18)]'>
 				<ProfileSidebar
 					locale={locale}
+					isAdmin={isAdmin}
 					activeTab={activeTab}
 					copy={copy}
 					onTabChange={changeTab}
@@ -105,7 +108,9 @@ export default function ProfileDashboard({
 
 				<section className='min-w-0 flex-1 bg-[#f8f3ec]'>
 					<ProfileTopBar
+						adminLabel={copy.adminPanel}
 						homeLabel={copy.home}
+						isAdmin={isAdmin}
 						locale={locale}
 					/>
 

@@ -1,16 +1,20 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ShieldCheck } from 'lucide-react';
 import LanguageSwitcher from '@/components/UI/LanguageSwitcher';
 import type { TProfileLocale } from '../types';
 
 type TProfileTopBarProps = {
+	adminLabel: string;
 	homeLabel: string;
+	isAdmin: boolean;
 	locale: TProfileLocale;
 };
 
 export default function ProfileTopBar({
+	adminLabel,
 	homeLabel,
+	isAdmin,
 	locale,
 }: TProfileTopBarProps) {
 	return (
@@ -43,7 +47,19 @@ export default function ProfileTopBar({
 				</Link>
 			</div>
 
-			<LanguageSwitcher locale={locale} />
+			<div className='flex shrink-0 items-center gap-1 sm:gap-2'>
+				{isAdmin ? (
+					<Link
+						href={'/' + locale + '/admin'}
+						aria-label={adminLabel}
+						title={adminLabel}
+						className='inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-[var(--foreground)] transition hover:bg-[#efe4d8] lg:hidden'
+					>
+						<ShieldCheck size={19} strokeWidth={1.8} />
+					</Link>
+				) : null}
+				<LanguageSwitcher locale={locale} />
+			</div>
 		</div>
 	);
 }

@@ -5,6 +5,7 @@ import {
 	Gift,
 	Heart,
 	Settings,
+	ShieldCheck,
 	ShoppingBag,
 	UserRound,
 } from 'lucide-react';
@@ -14,6 +15,7 @@ import LogoutButton from './LogoutButton';
 
 type TProfileSidebarProps = {
 	locale: TProfileLocale;
+	isAdmin: boolean;
 	activeTab: TProfileTab;
 	copy: TProfileCopy;
 	onTabChange: (tab: TProfileTab) => void;
@@ -21,6 +23,7 @@ type TProfileSidebarProps = {
 
 export default function ProfileSidebar({
 	locale,
+	isAdmin,
 	activeTab,
 	copy,
 	onTabChange,
@@ -104,7 +107,16 @@ export default function ProfileSidebar({
 				})}
 			</nav>
 
-			<div className='mt-auto border-t border-white/12 pt-5'>
+			<div className='mt-auto space-y-1.5 border-t border-white/12 pt-5'>
+				{isAdmin ? (
+					<Link
+						href={'/' + locale + '/admin'}
+						className='flex min-h-11 w-full cursor-pointer items-center gap-3 rounded-xl px-3 text-sm text-white/70 transition hover:bg-white/10 hover:text-white'
+					>
+						<ShieldCheck size={17} strokeWidth={1.7} />
+						<span>{copy.adminPanel}</span>
+					</Link>
+				) : null}
 				<LogoutButton
 					locale={locale}
 					label={copy.sidebar.logout}

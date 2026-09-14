@@ -52,7 +52,7 @@ export async function requireAdmin(locale: TLocale) {
 	const role = await getCurrentUserRole();
 
 	if (role !== 'admin') {
-		redirect('/' + locale);
+		redirect('/' + locale + '/auth/login');
 	}
 
 	return {
