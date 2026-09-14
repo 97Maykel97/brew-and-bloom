@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import { isValidBirthDate } from '@/features/auth/lib/birth-date';
 import { normalizePhone } from '@/features/auth/lib/normalize-phone';
+import { formatPhoneInput } from '@/features/auth/lib/phone-mask';
 import { createClient } from '@/lib/supabase/client';
 import type { TProfileCopy } from '../profile-copy';
 import { formatBirthDate, formatPhoneNumber } from '../lib/profile-formatters';
@@ -26,7 +27,7 @@ export default function ProfileEditForm({
 }: TProfileEditFormProps) {
 	const [firstName, setFirstName] = useState(profile.firstName);
 	const [lastName, setLastName] = useState(profile.lastName);
-	const [phone, setPhone] = useState(profile.phone.replace(/\D/g, ''));
+	const [phone, setPhone] = useState(formatPhoneInput(profile.phone));
 	const [birthDate, setBirthDate] = useState(profile.birthDateValue);
 	const [message, setMessage] = useState('');
 	const [isSaving, setIsSaving] = useState(false);
@@ -151,9 +152,12 @@ export default function ProfileEditForm({
 				<input
 					type='tel'
 					value={phone}
-					onChange={event => setPhone(event.target.value)}
+					onChange={event =>
+						setPhone(formatPhoneInput(event.target.value))
+					}
 					className='h-12 rounded-xl border border-[#d8cec3] bg-white px-4 font-normal outline-none transition focus:border-[var(--accent)]'
 					inputMode='tel'
+					maxLength={17}
 				/>
 			</label>
 

@@ -23,6 +23,7 @@ import {
 	normalizeEmail,
 } from '@/features/auth/lib/auth-validation';
 import { normalizePhone } from '@/features/auth/lib/normalize-phone';
+import { formatPhoneInput } from '@/features/auth/lib/phone-mask';
 import { createClient } from '@/lib/supabase/client';
 
 export default function RegisterScreen() {
@@ -174,9 +175,10 @@ export default function RegisterScreen() {
 					label={t('phone')}
 					type='tel'
 					value={phone}
-					onChange={event => setPhone(event.target.value)}
-					placeholder='+972 50 123 4567'
+					onChange={event => setPhone(formatPhoneInput(event.target.value))}
+					placeholder='+972 50-123-4567'
 					autoComplete='tel'
+					maxLength={17}
 					required
 				/>
 
