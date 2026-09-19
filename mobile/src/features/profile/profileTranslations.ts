@@ -46,6 +46,8 @@ export type TProfileTranslations = {
 	firstName: string;
 	greeting: string;
 	home: string;
+	adminPanel: string;
+	adminPanelShort: string;
 	loading: string;
 	name: string;
 	lastName: string;
@@ -149,6 +151,8 @@ export const profileTranslations: Record<TLocale, TProfileTranslations> = {
 		verifying: 'Проверяем...',
 		editingProfile: 'Редактирование профиля',
 		home: 'На главную',
+		adminPanel: 'Админ-панель',
+		adminPanelShort: 'Админ',
 		settings: 'Настройки',
 		settingsDescription:
 			'Управление безопасностью и вашим аккаунтом.',
@@ -242,6 +246,8 @@ export const profileTranslations: Record<TLocale, TProfileTranslations> = {
 		verifying: 'Verifying...',
 		editingProfile: 'Edit profile',
 		home: 'Back to home',
+		adminPanel: 'Admin panel',
+		adminPanelShort: 'Admin',
 		settings: 'Settings',
 		settingsDescription:
 			'Manage your account security and sign-in settings.',
@@ -333,6 +339,8 @@ export const profileTranslations: Record<TLocale, TProfileTranslations> = {
 		verifying: 'מאמת...',
 		editingProfile: 'עריכת פרופיל',
 		home: 'חזרה לדף הבית',
+		adminPanel: 'לוח ניהול',
+		adminPanelShort: 'ניהול',
 		settings: 'הגדרות',
 		settingsDescription: 'ניהול אבטחת החשבון והכניסה.',
 		activeDevices: 'מכשירים פעילים',

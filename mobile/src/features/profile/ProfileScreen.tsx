@@ -31,6 +31,7 @@ export default function ProfileScreen() {
 	const [activeStatus, setActiveStatus] =
 		useState<TProfileOrderStatus>('all');
 	const [isEditing, setIsEditing] = useState<boolean>(false);
+	const [isAdmin, setIsAdmin] = useState<boolean>(false);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 
 	useFocusEffect(
@@ -54,7 +55,7 @@ export default function ProfileScreen() {
 
 				const { data: profileRecord } = await supabase
 					.from('profiles')
-					.select('first_name, last_name, phone, birth_date')
+					.select('first_name, last_name, phone, birth_date, role')
 					.eq('id', user.id)
 					.maybeSingle();
 				const metadata = user.user_metadata ?? {};
@@ -90,6 +91,7 @@ export default function ProfileScreen() {
 							getString(metadata.phone),
 					),
 				});
+				setIsAdmin(profileRecord?.role === 'admin');
 				setIsLoading(false);
 			}
 
@@ -108,6 +110,13 @@ export default function ProfileScreen() {
 	function goHome() {
 		router.navigate({
 			pathname: '/',
+			params: { locale },
+		});
+	}
+
+	function goToAdmin() {
+		router.navigate({
+			pathname: '/admin',
 			params: { locale },
 		});
 	}
@@ -133,6 +142,10 @@ export default function ProfileScreen() {
 			<Header
 				locale={locale}
 				onLocaleChange={changeLocale}
+				contextActionIcon={isAdmin ? 'shield' : undefined}
+				contextActionLabel={isAdmin ? copy.adminPanel : undefined}
+				contextActionText={isAdmin ? copy.adminPanelShort : undefined}
+				onContextAction={isAdmin ? goToAdmin : undefined}
 				homeLabel={copy.home}
 				onHome={goHome}
 				searchPlaceholder={appContent.searchPlaceholder}

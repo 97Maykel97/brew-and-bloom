@@ -52,7 +52,7 @@ export default function LoginScreen() {
 		setIsLoading(true);
 
 		try {
-			const { error } = await supabase.auth.signInWithPassword({
+			const { data, error } = await supabase.auth.signInWithPassword({
 				email: normalizedEmail,
 				password,
 			});
@@ -63,9 +63,16 @@ export default function LoginScreen() {
 			}
 
 			await registerCurrentMobileDevice();
+			const { data: profile } = await supabase
+				.from('profiles')
+				.select('role')
+				.eq('id', data.user.id)
+				.maybeSingle();
+			const destination = profile?.role === 'admin' ? '/admin' : '/profile';
+
 			setEmail('');
 			setPassword('');
-			router.replace(createLocalizedHref('/profile', locale));
+			router.replace(createLocalizedHref(destination, locale));
 		} catch (error: unknown) {
 			setMessage(getAuthErrorMessage(error, locale));
 		} finally {

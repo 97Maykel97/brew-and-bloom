@@ -6,6 +6,7 @@ import type { TProfileLocale } from '../types';
 
 type TProfileTopBarProps = {
 	adminLabel: string;
+	adminShortLabel: string;
 	homeLabel: string;
 	isAdmin: boolean;
 	locale: TProfileLocale;
@@ -13,6 +14,7 @@ type TProfileTopBarProps = {
 
 export default function ProfileTopBar({
 	adminLabel,
+	adminShortLabel,
 	homeLabel,
 	isAdmin,
 	locale,
@@ -53,9 +55,10 @@ export default function ProfileTopBar({
 						href={'/' + locale + '/admin'}
 						aria-label={adminLabel}
 						title={adminLabel}
-						className='inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-[var(--foreground)] transition hover:bg-[#efe4d8] lg:hidden'
+						className='inline-flex h-9 cursor-pointer items-center justify-center gap-1.5 rounded-full border border-[#d8ccc0] bg-white/55 px-2.5 text-[11px] font-semibold text-[var(--foreground)] transition hover:bg-[#efe4d8] lg:hidden'
 					>
-						<ShieldCheck size={19} strokeWidth={1.8} />
+						<ShieldCheck size={16} strokeWidth={1.8} />
+						<span>{adminShortLabel}</span>
 					</Link>
 				) : null}
 				<LanguageSwitcher locale={locale} />

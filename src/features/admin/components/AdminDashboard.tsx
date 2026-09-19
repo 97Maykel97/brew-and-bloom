@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { ShieldCheck } from 'lucide-react';
 
 import type {
 	TAdminCopy,
@@ -78,7 +79,7 @@ export default function AdminDashboard({
 
 					<div className='mx-auto max-w-[1120px] px-4 py-6 sm:px-8 sm:py-9 lg:px-10 lg:py-10'>
 						<header className='mb-6 sm:mb-8'>
-							<div className='flex flex-wrap items-end justify-between gap-3'>
+							<div className='flex flex-col items-start gap-3 rtl:items-end sm:flex-row sm:items-end sm:justify-between'>
 								<div>
 									<p className='text-xs font-medium uppercase tracking-[0.15em] text-[var(--muted)]'>
 										{copy.administrator}
@@ -91,7 +92,12 @@ export default function AdminDashboard({
 									</p>
 								</div>
 
-								<div className='rounded-full border border-[#dfd3c7] bg-white/65 px-4 py-2 text-sm font-medium'>
+								<div className='inline-flex items-center gap-2 rounded-full border border-[#dfd3c7] bg-white/65 px-4 py-2 text-sm font-medium'>
+									<ShieldCheck
+										size={16}
+										strokeWidth={1.8}
+										className='shrink-0 text-[var(--accent)]'
+									/>
 									{displayName}
 								</div>
 							</div>

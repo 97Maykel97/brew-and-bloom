@@ -109,6 +109,7 @@ export default function ProfileDashboard({
 				<section className='min-w-0 flex-1 bg-[#f8f3ec]'>
 					<ProfileTopBar
 						adminLabel={copy.adminPanel}
+						adminShortLabel={copy.adminPanelShort}
 						homeLabel={copy.home}
 						isAdmin={isAdmin}
 						locale={locale}

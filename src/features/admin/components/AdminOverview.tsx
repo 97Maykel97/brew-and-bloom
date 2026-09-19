@@ -22,20 +22,20 @@ export default function AdminOverview({ copy }: TAdminOverviewProps) {
 
 	return (
 		<div className='space-y-5 sm:space-y-6'>
-			<div className='grid gap-3 sm:grid-cols-2 xl:grid-cols-4'>
+			<div className='grid grid-cols-2 gap-3 xl:grid-cols-4'>
 				{statistics.map(item => {
 					const Icon = item.icon;
 
 					return (
 						<article
 							key={item.label}
-							className='rounded-2xl border border-[#e4d8cd] bg-white/75 p-4 shadow-[0_10px_30px_rgba(61,43,31,0.04)] sm:p-5'
+							className='min-w-0 rounded-2xl border border-[#e4d8cd] bg-white/75 p-3.5 shadow-[0_10px_30px_rgba(61,43,31,0.04)] sm:p-5'
 						>
 							<div className='mb-5 flex h-10 w-10 items-center justify-center rounded-full bg-[#f1e5d8] text-[var(--accent)]'>
 								<Icon size={19} strokeWidth={1.7} />
 							</div>
 							<strong className='block text-2xl font-semibold'>—</strong>
-							<span className='mt-1 block text-sm text-[var(--muted)]'>
+							<span className='mt-1 block text-xs leading-5 text-[var(--muted)] sm:text-sm'>
 								{item.label}
 							</span>
 						</article>

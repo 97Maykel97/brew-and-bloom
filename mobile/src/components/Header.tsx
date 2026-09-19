@@ -1,6 +1,7 @@
 import { Feather } from '@expo/vector-icons';
 import { Image } from 'expo-image';
 import { router } from 'expo-router';
+import type { ComponentProps } from 'react';
 import { useState } from 'react';
 import {
 	Keyboard,
@@ -21,21 +22,29 @@ type THeaderProps = {
 	locale: TLocale;
 	searchPlaceholder: string;
 	onLocaleChange: (locale: TLocale) => void;
+	contextActionIcon?: ComponentProps<typeof Feather>['name'];
+	contextActionLabel?: string;
+	contextActionText?: string;
+	onContextAction?: () => void;
 	homeLabel?: string;
 	onHome?: () => void;
-	variant?: 'default' | 'profile';
+	variant?: 'default' | 'profile' | 'admin';
 };
 
 export default function Header({
 	locale,
 	searchPlaceholder,
 	onLocaleChange,
+	contextActionIcon,
+	contextActionLabel,
+	contextActionText,
+	onContextAction,
 	homeLabel,
 	onHome,
 	variant = 'default',
 }: THeaderProps) {
 	const isRtl = locale === 'he';
-	const isProfileHeader = variant === 'profile';
+	const isAccountHeader = variant === 'profile' || variant === 'admin';
 	const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
 	const [isLanguageOpen, setIsLanguageOpen] = useState<boolean>(false);
 	const [query, setQuery] = useState<string>('');
@@ -100,7 +109,7 @@ export default function Header({
 				</View>
 
 				<View style={styles.actions}>
-					{!isProfileHeader && (
+					{!isAccountHeader && (
 						<>
 							<Pressable
 								accessibilityLabel='Search'
@@ -159,6 +168,31 @@ export default function Header({
 								color={Colors.muted}
 							/>
 							<Text style={styles.homeText}>{homeLabel}</Text>
+						</Pressable>
+					)}
+
+					{onContextAction && contextActionLabel && contextActionIcon && (
+						<Pressable
+							accessibilityLabel={contextActionLabel}
+							accessibilityRole='button'
+							onPress={onContextAction}
+							style={({ pressed }) => [
+								contextActionText
+									? styles.contextButton
+									: styles.iconButton,
+								pressed && styles.pressed,
+							]}
+						>
+							<Feather
+								name={contextActionIcon}
+								size={20}
+								color={Colors.foreground}
+							/>
+							{contextActionText ? (
+								<Text style={styles.contextButtonText}>
+									{contextActionText}
+								</Text>
+							) : null}
 						</Pressable>
 					)}
 
@@ -225,6 +259,24 @@ const styles = StyleSheet.create({
 		height: 40,
 		alignItems: 'center',
 		justifyContent: 'center',
+	},
+	contextButton: {
+		height: 36,
+		paddingHorizontal: 9,
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'center',
+		gap: 5,
+		borderWidth: 1,
+		borderColor: '#D8CCC0',
+		borderRadius: 999,
+		backgroundColor: 'rgba(255,255,255,0.58)',
+	},
+	contextButtonText: {
+		color: Colors.foreground,
+		fontFamily: Fonts.sans,
+		fontSize: 11,
+		fontWeight: '700',
 	},
 	homeButton: {
 		height: 40,
