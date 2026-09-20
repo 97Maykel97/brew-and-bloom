@@ -9,6 +9,7 @@ import {
 	BackHandler,
 	KeyboardAvoidingView,
 	Platform,
+	Pressable,
 	ScrollView,
 	StyleSheet,
 	Text,
@@ -109,12 +110,22 @@ export default function AuthScreen({
 					/>
 
 					<View style={styles.card}>
-						<Image
-							source={brandLogo}
-							contentFit='contain'
-							style={styles.logo}
-							alt='Brew & Bloom'
-						/>
+						<Pressable
+							accessibilityLabel='Brew & Bloom'
+							accessibilityRole='link'
+							onPress={handleBack}
+							style={({ pressed }) => [
+								styles.logoButton,
+								pressed && styles.logoPressed,
+							]}
+						>
+							<Image
+								source={brandLogo}
+								contentFit='contain'
+								style={styles.logo}
+								alt='Brew & Bloom'
+							/>
+						</Pressable>
 						<View style={styles.divider} />
 						<Text style={[styles.title, isRtl && styles.rtlText]}>
 							{title}
@@ -168,7 +179,12 @@ const styles = StyleSheet.create({
 	logo: {
 		width: 150,
 		height: 50,
+	},
+	logoButton: {
 		alignSelf: 'center',
+	},
+	logoPressed: {
+		opacity: 0.65,
 	},
 	divider: {
 		width: 56,

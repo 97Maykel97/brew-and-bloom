@@ -96,17 +96,34 @@ export default function Header({
 		router.navigate(createLocalizedHref(pathname, locale));
 	}
 
+	function openHome() {
+		if (onHome) {
+			onHome();
+			return;
+		}
+
+		router.navigate(createLocalizedHref('/', locale));
+	}
+
 	return (
 		<View style={styles.wrapper}>
 			<View style={styles.header}>
-				<View style={styles.logoWrapper}>
+				<Pressable
+					accessibilityLabel='Brew & Bloom'
+					accessibilityRole='link'
+					onPress={openHome}
+					style={({ pressed }) => [
+						styles.logoWrapper,
+						pressed && styles.pressed,
+					]}
+				>
 					<Image
 						source={brandLogo}
 						contentFit='contain'
 						style={styles.logo}
 						alt='Brew & Bloom'
 					/>
-				</View>
+				</Pressable>
 
 				<View style={styles.actions}>
 					{!isAccountHeader && (

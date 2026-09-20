@@ -15,6 +15,12 @@
 			"description": "קפה מצוין, אווירה נעימה ורגעים שתרצו לחזור אליהם.",
 			"button": "הזמנת שולחן",
 			"note": "רעיונות טובים\nמתחילים כאן"
+		},
+		"highlights": {
+			"freshCoffee": "קפה טרי",
+			"cozyAtmosphere": "אווירה נעימה",
+			"signatureDrinks": "משקאות מיוחדים",
+			"friendlyCommunity": "קהילה ידידותית"
 		}
 	},
 	"auth": {

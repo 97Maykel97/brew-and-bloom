@@ -15,6 +15,12 @@
 			"description": "Great coffee, a cozy atmosphere, and moments worth coming back to.",
 			"button": "Book a table",
 			"note": "Good ideas\nbegin here"
+		},
+		"highlights": {
+			"freshCoffee": "Fresh coffee",
+			"cozyAtmosphere": "Cozy atmosphere",
+			"signatureDrinks": "Signature drinks",
+			"friendlyCommunity": "Friendly community"
 		}
 	},
 	"auth": {

@@ -11,10 +11,18 @@ export type THeroTranslations = {
 	note: string;
 };
 
+export type THomeHighlightsTranslations = {
+	freshCoffee: string;
+	cozyAtmosphere: string;
+	signatureDrinks: string;
+	friendlyCommunity: string;
+};
+
 export type TAppTranslations = {
 	nav: string[];
 	searchPlaceholder: string;
 	hero: THeroTranslations;
+	highlights: THomeHighlightsTranslations;
 };
 
 export const translations: Record<TLocale, TAppTranslations> = {
@@ -30,6 +38,12 @@ export const translations: Record<TLocale, TAppTranslations> = {
 			button: 'Забронировать столик',
 			note: 'Хорошие\nидеи начинаются\nздесь',
 		},
+		highlights: {
+			freshCoffee: 'Свежий кофе',
+			cozyAtmosphere: 'Уютная атмосфера',
+			signatureDrinks: 'Авторские напитки',
+			friendlyCommunity: 'Дружелюбное сообщество',
+		},
 	},
 	he: {
 		nav: ['דף הבית', 'תפריט', 'עלינו', 'אירועים', 'צור קשר'],
@@ -41,6 +55,12 @@ export const translations: Record<TLocale, TAppTranslations> = {
 			description: 'קפה מצוין, אווירה נעימה ורגעים שתרצו לחזור אליהם.',
 			button: 'הזמנת שולחן',
 			note: 'רעיונות טובים\nמתחילים כאן',
+		},
+		highlights: {
+			freshCoffee: 'קפה טרי',
+			cozyAtmosphere: 'אווירה נעימה',
+			signatureDrinks: 'משקאות מיוחדים',
+			friendlyCommunity: 'קהילה ידידותית',
 		},
 	},
 	en: {
@@ -54,6 +74,12 @@ export const translations: Record<TLocale, TAppTranslations> = {
 				'Great coffee, a cozy atmosphere and moments worth coming back to.',
 			button: 'Book a table',
 			note: 'Good ideas\nbegin here',
+		},
+		highlights: {
+			freshCoffee: 'Fresh coffee',
+			cozyAtmosphere: 'Cozy atmosphere',
+			signatureDrinks: 'Signature drinks',
+			friendlyCommunity: 'Friendly community',
 		},
 	},
 };
