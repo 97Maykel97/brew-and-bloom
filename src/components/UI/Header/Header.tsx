@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
-import { ChevronDown, Heart } from "lucide-react";
+import { ChevronDown, Heart, ShoppingBag } from "lucide-react";
 
 import Container from "@/components/common/Container";
 import { languageOptions } from "@/i18n/languages";
@@ -79,6 +79,14 @@ async function Header({ locale }: THeaderProps) {
 
             <Link href={`/${locale}/favorites`} aria-label="Favorites" className="group flex h-10 w-10 shrink-0 items-center justify-center text-[var(--foreground)] transition-all duration-300 ease-out hover:scale-105 hover:text-[#A65345] active:scale-95">
               <Heart className="transition-all duration-300 ease-out group-hover:fill-[#A65345] group-hover:stroke-[#A65345]" size={18} strokeWidth={1.8} />
+            </Link>
+
+            <Link
+              href={`/${locale}/cart`}
+              aria-label="Cart"
+              className="flex h-10 w-10 shrink-0 items-center justify-center text-[var(--foreground)] transition-transform duration-200 hover:scale-110 active:scale-95"
+            >
+              <ShoppingBag size={18} strokeWidth={1.8} />
             </Link>
 
             <ProfileButton href={profileHref} />

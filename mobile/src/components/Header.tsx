@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import brandLogo from '../../assets/images/brand-logo.png';
 import HeaderLanguageMenu from '@/components/header/HeaderLanguageMenu';
+import HeaderNavigationMenu from '@/components/header/HeaderNavigationMenu';
 import HeaderSearchModal from '@/components/header/HeaderSearchModal';
 import { Colors, Fonts, Spacing } from '@/constants/theme';
 import type { TLocale } from '@/i18n/translations';
@@ -20,6 +21,7 @@ import { supabase } from '@/lib/supabase';
 
 type THeaderProps = {
 	locale: TLocale;
+	navItems: string[];
 	searchPlaceholder: string;
 	onLocaleChange: (locale: TLocale) => void;
 	contextActionIcon?: ComponentProps<typeof Feather>['name'];
@@ -33,6 +35,7 @@ type THeaderProps = {
 
 export default function Header({
 	locale,
+	navItems,
 	searchPlaceholder,
 	onLocaleChange,
 	contextActionIcon,
@@ -45,6 +48,8 @@ export default function Header({
 }: THeaderProps) {
 	const isRtl = locale === 'he';
 	const isAccountHeader = variant === 'profile' || variant === 'admin';
+	const isAdminHeader = variant === 'admin';
+	const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 	const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
 	const [isLanguageOpen, setIsLanguageOpen] = useState<boolean>(false);
 	const [query, setQuery] = useState<string>('');
@@ -61,7 +66,18 @@ export default function Header({
 		}
 
 		setIsSearchOpen(true);
+		setIsMenuOpen(false);
 		setIsLanguageOpen(false);
+	}
+
+	function toggleMenu() {
+		setIsMenuOpen(value => !value);
+		setIsSearchOpen(false);
+		setIsLanguageOpen(false);
+	}
+
+	function closeMenu() {
+		setIsMenuOpen(false);
 	}
 
 	function handleSearchAction() {
@@ -79,6 +95,7 @@ export default function Header({
 
 	function toggleLanguage() {
 		setIsLanguageOpen(value => !value);
+		setIsMenuOpen(false);
 		setIsSearchOpen(false);
 	}
 
@@ -105,25 +122,48 @@ export default function Header({
 		router.navigate(createLocalizedHref('/', locale));
 	}
 
+	function openCart() {
+		router.navigate(createLocalizedHref('/cart', locale));
+	}
+
 	return (
 		<View style={styles.wrapper}>
 			<View style={styles.header}>
-				<Pressable
-					accessibilityLabel='Brew & Bloom'
-					accessibilityRole='link'
-					onPress={openHome}
-					style={({ pressed }) => [
-						styles.logoWrapper,
-						pressed && styles.pressed,
-					]}
-				>
-					<Image
-						source={brandLogo}
-						contentFit='contain'
-						style={styles.logo}
-						alt='Brew & Bloom'
-					/>
-				</Pressable>
+				{isAdminHeader ? (
+					<Pressable
+						accessibilityLabel='Brew & Bloom'
+						accessibilityRole='link'
+						onPress={openHome}
+						style={({ pressed }) => [
+							styles.logoButton,
+							pressed && styles.pressed,
+						]}
+					>
+						<Image
+							alt='Brew & Bloom'
+							contentFit='contain'
+							source={brandLogo}
+							style={styles.logo}
+						/>
+					</Pressable>
+				) : (
+					<Pressable
+						accessibilityLabel={isMenuOpen ? 'Close menu' : 'Open menu'}
+						accessibilityRole='button'
+						accessibilityState={{ expanded: isMenuOpen }}
+						onPress={toggleMenu}
+						style={({ pressed }) => [
+							styles.menuButton,
+							pressed && styles.pressed,
+						]}
+					>
+						<Feather
+							name={isMenuOpen ? 'x' : 'menu'}
+							size={24}
+							color={Colors.foreground}
+						/>
+					</Pressable>
+				)}
 
 				<View style={styles.actions}>
 					{!isAccountHeader && (
@@ -149,6 +189,22 @@ export default function Header({
 							>
 								<Feather
 									name='heart'
+									size={20}
+									color={Colors.foreground}
+								/>
+							</Pressable>
+
+							<Pressable
+								accessibilityLabel='Cart'
+								accessibilityRole='button'
+								onPress={openCart}
+								style={({ pressed }) => [
+									styles.iconButton,
+									pressed && styles.pressed,
+								]}
+							>
+								<Feather
+									name='shopping-bag'
 									size={20}
 									color={Colors.foreground}
 								/>
@@ -231,6 +287,15 @@ export default function Header({
 				onClose={closeLanguage}
 				onSelect={selectLanguage}
 			/>
+			{!isAdminHeader && (
+				<HeaderNavigationMenu
+					isRtl={isRtl}
+					items={navItems}
+					locale={locale}
+					onClose={closeMenu}
+					visible={isMenuOpen}
+				/>
+			)}
 			<HeaderSearchModal
 				visible={isSearchOpen}
 				isRtl={isRtl}
@@ -256,17 +321,23 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		backgroundColor: Colors.background,
 	},
-	logoWrapper: {
-		flex: 1,
-		minWidth: 0,
-		alignItems: 'flex-start',
-		paddingLeft: 4,
+	menuButton: {
+		width: 40,
+		height: 40,
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+	logoButton: {
+		width: 132,
+		height: 48,
+		justifyContent: 'center',
 	},
 	logo: {
-		width: 140,
-		height: 48,
+		width: 128,
+		height: 44,
 	},
 	actions: {
+		marginLeft: 'auto',
 		flexShrink: 1,
 		flexDirection: 'row',
 		alignItems: 'center',

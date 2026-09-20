@@ -141,6 +141,7 @@ export default function ProfileScreen() {
 		<SafeAreaView style={styles.screen}>
 			<Header
 				locale={locale}
+				navItems={appContent.nav}
 				onLocaleChange={changeLocale}
 				contextActionIcon={isAdmin ? 'shield' : undefined}
 				contextActionLabel={isAdmin ? copy.adminPanel : undefined}

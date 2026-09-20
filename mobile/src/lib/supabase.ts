@@ -12,8 +12,16 @@ if (!supabaseUrl || !supabasePublishableKey) {
 	);
 }
 
+async function getSecureItem(key: string) {
+	try {
+		return await SecureStore.getItemAsync(key);
+	} catch {
+		return null;
+	}
+}
+
 const secureStorage = {
-	getItem: (key: string) => SecureStore.getItemAsync(key),
+	getItem: getSecureItem,
 	setItem: (key: string, value: string) =>
 		SecureStore.setItemAsync(key, value),
 	removeItem: (key: string) => SecureStore.deleteItemAsync(key),

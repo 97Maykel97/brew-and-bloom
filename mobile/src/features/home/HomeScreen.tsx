@@ -22,6 +22,7 @@ export default function HomeScreen() {
 		<SafeAreaView style={styles.screen}>
 			<Header
 				locale={locale}
+				navItems={content.nav}
 				onLocaleChange={handleLocaleChange}
 				searchPlaceholder={content.searchPlaceholder}
 			/>

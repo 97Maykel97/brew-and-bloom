@@ -98,6 +98,7 @@ export default function AdminScreen() {
 		<SafeAreaView style={styles.screen}>
 			<Header
 				locale={locale}
+				navItems={appContent.nav}
 				onLocaleChange={changeLocale}
 				contextActionIcon='user'
 				contextActionLabel={copy.profile}

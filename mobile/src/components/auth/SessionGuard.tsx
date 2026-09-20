@@ -17,9 +17,10 @@ export default function SessionGuard() {
 		let isChecking = false;
 		let isDisposed = false;
 		let lastActivityUpdateAt = 0;
+		let appState = AppState.currentState;
 
 		async function verifySession() {
-			if (isChecking || isDisposed) return;
+			if (isChecking || isDisposed || appState !== 'active') return;
 
 			isChecking = true;
 
@@ -50,9 +51,23 @@ export default function SessionGuard() {
 					await registerCurrentMobileDevice();
 					lastActivityUpdateAt = Date.now();
 				}
+			} catch {
+				// iOS can temporarily lock Keychain while the app changes state.
 			} finally {
 				isChecking = false;
 			}
+		}
+
+		function handleAppStateChange(nextState: typeof appState) {
+			appState = nextState;
+
+			if (nextState === 'active') {
+				supabase.auth.startAutoRefresh();
+				void verifySession();
+				return;
+			}
+
+			supabase.auth.stopAutoRefresh();
 		}
 
 		const intervalId = setInterval(
@@ -61,17 +76,14 @@ export default function SessionGuard() {
 		);
 		const appStateSubscription = AppState.addEventListener(
 			'change',
-			nextState => {
-				if (nextState === 'active') {
-					void verifySession();
-				}
-			},
+			handleAppStateChange,
 		);
 
-		void verifySession();
+		handleAppStateChange(appState);
 
 		return () => {
 			isDisposed = true;
+			supabase.auth.stopAutoRefresh();
 			clearInterval(intervalId);
 			appStateSubscription.remove();
 		};

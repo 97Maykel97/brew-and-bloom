@@ -2,7 +2,16 @@ import type { Href } from 'expo-router';
 
 import type { TLocale } from '@/i18n/languages';
 
-type TLocalizedRoute = '/' | '/admin' | '/auth/login' | '/profile';
+type TLocalizedRoute =
+	| '/'
+	| '/about'
+	| '/admin'
+	| '/auth/login'
+	| '/cart'
+	| '/contacts'
+	| '/events'
+	| '/menu'
+	| '/profile';
 
 export function createLocalizedHref(
 	pathname: TLocalizedRoute,
