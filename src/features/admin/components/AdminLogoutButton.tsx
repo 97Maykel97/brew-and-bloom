@@ -26,7 +26,6 @@ export default function AdminLogoutButton({
 		const supabase = createClient();
 		await supabase.auth.signOut();
 		router.replace('/' + locale + '/auth/login');
-		router.refresh();
 	}
 
 	return (

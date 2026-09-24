@@ -41,7 +41,6 @@ export default function SessionGuard({ locale }: TSessionGuardProps) {
 				if (!error && isActive === false && !isDisposed) {
 					await supabase.auth.signOut({ scope: 'local' });
 					router.replace('/' + locale + '/auth/login');
-					router.refresh();
 					return;
 				}
 

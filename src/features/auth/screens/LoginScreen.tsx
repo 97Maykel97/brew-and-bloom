@@ -75,7 +75,6 @@ export default function LoginScreen() {
 			setEmail('');
 			setPassword('');
 			router.replace('/' + locale + destination);
-			router.refresh();
 		} catch (error: unknown) {
 			setMessage(getAuthErrorMessage(error, locale));
 		} finally {
