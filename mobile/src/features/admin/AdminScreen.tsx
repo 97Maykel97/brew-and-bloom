@@ -120,6 +120,7 @@ export default function AdminScreen() {
 					copy={copy}
 					displayName={displayName}
 					isRtl={locale === 'he'}
+					locale={locale}
 					onLogout={() => void signOut()}
 					onSectionChange={setActiveSection}
 				/>

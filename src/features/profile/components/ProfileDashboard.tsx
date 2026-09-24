@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
+import { createClient } from '@/lib/supabase/client';
 import type { TProfileCopy } from '../profile-copy';
 import type {
 	TOrderStatus,
@@ -59,6 +60,32 @@ export default function ProfileDashboard({
 
 		window.addEventListener('popstate', syncStateWithUrl);
 		return () => window.removeEventListener('popstate', syncStateWithUrl);
+	}, []);
+
+	useEffect(() => {
+		let isActive = true;
+		const supabase = createClient();
+		let channel: ReturnType<typeof supabase.channel> | null = null;
+
+		async function subscribeToBonusUpdates() {
+			const { data: { user } } = await supabase.auth.getUser();
+			if (!user || !isActive) return;
+			channel = supabase
+				.channel(`profile-bonus-${user.id}-${crypto.randomUUID()}`)
+				.on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'profiles', filter: `id=eq.${user.id}` }, payload => {
+					const bonusPoints = (payload.new as { bonus_points?: unknown }).bonus_points;
+					if (typeof bonusPoints === 'number') {
+						setCurrentProfile(current => ({ ...current, bonusPoints }));
+					}
+				})
+				.subscribe();
+		}
+
+		void subscribeToBonusUpdates();
+		return () => {
+			isActive = false;
+			if (channel) void supabase.removeChannel(channel);
+		};
 	}, []);
 
 	function updateUrl(tab: TProfileTab, status: TOrderStatus) {

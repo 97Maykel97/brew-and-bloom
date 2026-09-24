@@ -3,7 +3,7 @@
     "name": "Эспрессо",
     "slug": "espresso",
     "price": 150,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Насыщенный кофе с плотным телом, ярким ароматом и бархатистой крема.",
     "ingredients": [
       "эспрессо"
@@ -22,7 +22,7 @@
     "name": "Американо",
     "slug": "amerikano",
     "price": 180,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Классический эспрессо с горячей водой — мягкий, сбалансированный и ароматный.",
     "ingredients": [
       "эспрессо",
@@ -43,7 +43,7 @@
     "name": "Капучино",
     "slug": "kapucino",
     "price": 250,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Эспрессо, тёплое молоко и воздушная микропена в гармоничном балансе.",
     "ingredients": [
       "эспрессо",
@@ -66,7 +66,7 @@
     "name": "Латте",
     "slug": "latte",
     "price": 260,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Латте — мягкий молочный кофе с выразительным ароматом и нежной кремовой текстурой.",
     "ingredients": [
       "эспрессо",
@@ -89,7 +89,7 @@
     "name": "Раф Классический",
     "slug": "raf-klassiceskij",
     "price": 320,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Сливочный кофейный напиток на основе эспрессо с нежной, бархатистой текстурой.",
     "ingredients": [
       "эспрессо",
@@ -112,7 +112,7 @@
     "name": "Флэт Уайт",
     "slug": "flet-uajt",
     "price": 270,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Флэт Уайт — авторская кофейная классика Brew & Bloom с мягким и сбалансированным вкусом.",
     "ingredients": [
       "эспрессо",
@@ -135,7 +135,7 @@
     "name": "Мокко",
     "slug": "mokko",
     "price": 310,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Эспрессо, шоколад и молоко — насыщенный кофейно-десертный вкус.",
     "ingredients": [
       "эспрессо",
@@ -159,7 +159,7 @@
     "name": "Айс Латте",
     "slug": "ajs-latte",
     "price": 280,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Айс Латте — мягкий молочный кофе с выразительным ароматом и нежной кремовой текстурой.",
     "ingredients": [
       "эспрессо",
@@ -182,7 +182,7 @@
     "name": "Карамельный Макиато",
     "slug": "karamel-nyj-makiato",
     "price": 300,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Карамельный Макиато — мягкий молочный кофе с выразительным ароматом и нежной кремовой текстурой.",
     "ingredients": [
       "эспрессо",
@@ -206,7 +206,7 @@
     "name": "Ванильный Латте",
     "slug": "vanil-nyj-latte",
     "price": 290,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Ванильный Латте — мягкий молочный кофе с выразительным ароматом и нежной кремовой текстурой.",
     "ingredients": [
       "эспрессо",
@@ -230,7 +230,7 @@
     "name": "Ореховый Раф",
     "slug": "orehovyj-raf",
     "price": 340,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Сливочный кофейный напиток на основе эспрессо с нежной, бархатистой текстурой.",
     "ingredients": [
       "эспрессо",
@@ -255,7 +255,7 @@
     "name": "Аффогато",
     "slug": "affogato",
     "price": 330,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Горячий эспрессо с шариком сливочного мороженого — кофе и десерт в одной чашке.",
     "ingredients": [
       "эспрессо",
@@ -277,7 +277,7 @@
     "name": "Кофе по-венски",
     "slug": "kofe-po-venski",
     "price": 300,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Кофе по-венски — авторская кофейная классика Brew & Bloom с мягким и сбалансированным вкусом.",
     "ingredients": [
       "эспрессо",
@@ -300,7 +300,7 @@
     "name": "Ледяной Брю",
     "slug": "ledanoj-bru",
     "price": 280,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Холодное заваривание с чистым кофейным вкусом, мягкой кислотностью и льдом.",
     "ingredients": [
       "кофе холодного заваривания",
@@ -322,7 +322,7 @@
     "name": "Цитрусовый Бамбл",
     "slug": "citrusovyj-bambl",
     "price": 320,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Яркое сочетание эспрессо и цитруса со льдом — свежо, бодро и необычно.",
     "ingredients": [
       "эспрессо",
@@ -344,7 +344,7 @@
     "name": "Кокосовый Латте",
     "slug": "kokosovyj-latte",
     "price": 300,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Кокосовый Латте — мягкий молочный кофе с выразительным ароматом и нежной кремовой текстурой.",
     "ingredients": [
       "эспрессо",
@@ -368,7 +368,7 @@
     "name": "Пряный Латте",
     "slug": "pranyj-latte",
     "price": 300,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Пряный Латте — мягкий молочный кофе с выразительным ароматом и нежной кремовой текстурой.",
     "ingredients": [
       "эспрессо",
@@ -392,7 +392,7 @@
     "name": "Медовый Латте",
     "slug": "medovyj-latte",
     "price": 310,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Медовый Латте — мягкий молочный кофе с выразительным ароматом и нежной кремовой текстурой.",
     "ingredients": [
       "эспрессо",
@@ -416,7 +416,7 @@
     "name": "Соленая Карамель Латте",
     "slug": "solenaa-karamel-latte",
     "price": 320,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Соленая Карамель Латте — мягкий молочный кофе с выразительным ароматом и нежной кремовой текстурой.",
     "ingredients": [
       "эспрессо",
@@ -440,7 +440,7 @@
     "name": "Фисташковый Латте",
     "slug": "fistaskovyj-latte",
     "price": 340,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Фисташковый Латте — мягкий молочный кофе с выразительным ароматом и нежной кремовой текстурой.",
     "ingredients": [
       "эспрессо",
@@ -465,7 +465,7 @@
     "name": "Матча Латте",
     "slug": "matca-latte",
     "price": 340,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Матча Латте — нежный напиток на основе японской матчи с мягкой кремовой текстурой.",
     "ingredients": [
       "матча",
@@ -488,7 +488,7 @@
     "name": "Клубничная Матча",
     "slug": "klubnicnaa-matca",
     "price": 360,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Клубничная Матча — нежный напиток на основе японской матчи с мягкой кремовой текстурой.",
     "ingredients": [
       "матча",
@@ -512,7 +512,7 @@
     "name": "Лавандовый Латте",
     "slug": "lavandovyj-latte",
     "price": 340,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Лавандовый Латте — фирменный напиток Brew & Bloom с необычным сочетанием вкусов и мягким послевкусием.",
     "ingredients": [
       "эспрессо",
@@ -536,7 +536,7 @@
     "name": "Карамельный Бамбл",
     "slug": "karamel-nyj-bambl",
     "price": 360,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Карамельный Бамбл — фирменный напиток Brew & Bloom с необычным сочетанием вкусов и мягким послевкусием.",
     "ingredients": [
       "эспрессо",
@@ -558,7 +558,7 @@
     "name": "Цитрусовый Раф",
     "slug": "citrusovyj-raf",
     "price": 340,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Цитрусовый Раф — фирменный напиток Brew & Bloom с необычным сочетанием вкусов и мягким послевкусием.",
     "ingredients": [
       "эспрессо",
@@ -582,7 +582,7 @@
     "name": "Манговый Латте",
     "slug": "mangovyj-latte",
     "price": 340,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Манговый Латте — фирменный напиток Brew & Bloom с необычным сочетанием вкусов и мягким послевкусием.",
     "ingredients": [
       "эспрессо",
@@ -606,7 +606,7 @@
     "name": "Ягодный Латте",
     "slug": "agodnyj-latte",
     "price": 360,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Ягодный Латте — фирменный напиток Brew & Bloom с необычным сочетанием вкусов и мягким послевкусием.",
     "ingredients": [
       "эспрессо",
@@ -630,7 +630,7 @@
     "name": "Малиновый Айс Ти",
     "slug": "malinovyj-ajs-ti",
     "price": 320,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Малиновый Айс Ти — прохладный чайный напиток с фруктовыми нотами и освежающим послевкусием.",
     "ingredients": [
       "чай",
@@ -652,7 +652,7 @@
     "name": "Персиковый Айс Ти",
     "slug": "persikovyj-ajs-ti",
     "price": 320,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Персиковый Айс Ти — прохладный чайный напиток с фруктовыми нотами и освежающим послевкусием.",
     "ingredients": [
       "чай",
@@ -674,7 +674,7 @@
     "name": "Лимонад Классический",
     "slug": "limonad-klassiceskij",
     "price": 290,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Лимонад Классический — освежающий домашний лимонад с ярким фруктовым вкусом и льдом.",
     "ingredients": [
       "фрукты или ягоды",
@@ -697,7 +697,7 @@
     "name": "Лимонад Клубничный",
     "slug": "limonad-klubnicnyj",
     "price": 310,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Лимонад Клубничный — освежающий домашний лимонад с ярким фруктовым вкусом и льдом.",
     "ingredients": [
       "фрукты или ягоды",
@@ -720,7 +720,7 @@
     "name": "Лимонад Малиновый",
     "slug": "limonad-malinovyj",
     "price": 310,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Лимонад Малиновый — освежающий домашний лимонад с ярким фруктовым вкусом и льдом.",
     "ingredients": [
       "фрукты или ягоды",
@@ -743,7 +743,7 @@
     "name": "Огуречный Лимонад",
     "slug": "ogurecnyj-limonad",
     "price": 300,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Огуречный Лимонад — освежающий домашний лимонад с ярким фруктовым вкусом и льдом.",
     "ingredients": [
       "фрукты или ягоды",
@@ -766,7 +766,7 @@
     "name": "Лимонад Маракуйя",
     "slug": "limonad-marakuja",
     "price": 340,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Лимонад Маракуйя — освежающий домашний лимонад с ярким фруктовым вкусом и льдом.",
     "ingredients": [
       "фрукты или ягоды",
@@ -789,7 +789,7 @@
     "name": "Чай Облепиховый",
     "slug": "caj-oblepihovyj",
     "price": 320,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Чай Облепиховый — согревающий авторский чай с натуральными ягодами, травами и пряными нотами.",
     "ingredients": [
       "чай",
@@ -811,7 +811,7 @@
     "name": "Чай Имбирный",
     "slug": "caj-imbirnyj",
     "price": 320,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Чай Имбирный — согревающий авторский чай с натуральными ягодами, травами и пряными нотами.",
     "ingredients": [
       "чай",
@@ -833,7 +833,7 @@
     "name": "Чай Ягодный",
     "slug": "caj-agodnyj",
     "price": 320,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Чай Ягодный — согревающий авторский чай с натуральными ягодами, травами и пряными нотами.",
     "ingredients": [
       "чай",
@@ -855,7 +855,7 @@
     "name": "Чай Мятный",
     "slug": "caj-matnyj",
     "price": 300,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Чай Мятный — согревающий авторский чай с натуральными ягодами, травами и пряными нотами.",
     "ingredients": [
       "чай",
@@ -877,7 +877,7 @@
     "name": "Горячий Шоколад",
     "slug": "goracij-sokolad",
     "price": 340,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Густой горячий шоколад с насыщенным какао-вкусом и нежной сливочной текстурой.",
     "ingredients": [
       "какао",
@@ -901,7 +901,7 @@
     "name": "Сезонный Напиток",
     "slug": "sezonnyj-napitok",
     "price": 360,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Сезонный Напиток — фирменный напиток Brew & Bloom с необычным сочетанием вкусов и мягким послевкусием.",
     "ingredients": [
       "эспрессо",
@@ -925,7 +925,7 @@
     "name": "Черный классический",
     "slug": "cernyj-klassiceskij",
     "price": 180,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Черный классический — свежезаваренный чай с чистым ароматом и сбалансированным вкусом.",
     "ingredients": [
       "черный классический",
@@ -946,7 +946,7 @@
     "name": "Эрл Грей",
     "slug": "erl-grej",
     "price": 200,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Эрл Грей — свежезаваренный чай с чистым ароматом и сбалансированным вкусом.",
     "ingredients": [
       "эрл грей",
@@ -967,7 +967,7 @@
     "name": "Английский завтрак",
     "slug": "anglijskij-zavtrak",
     "price": 200,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Английский завтрак — свежезаваренный чай с чистым ароматом и сбалансированным вкусом.",
     "ingredients": [
       "английский завтрак",
@@ -988,7 +988,7 @@
     "name": "Зеленый классический",
     "slug": "zelenyj-klassiceskij",
     "price": 180,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Зеленый классический — свежезаваренный чай с чистым ароматом и сбалансированным вкусом.",
     "ingredients": [
       "зеленый классический",
@@ -1009,7 +1009,7 @@
     "name": "Жасминовый",
     "slug": "jasminovyj",
     "price": 220,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Жасминовый — свежезаваренный чай с чистым ароматом и сбалансированным вкусом.",
     "ingredients": [
       "жасминовый",
@@ -1030,7 +1030,7 @@
     "name": "Сенча",
     "slug": "senca",
     "price": 220,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Сенча — свежезаваренный чай с чистым ароматом и сбалансированным вкусом.",
     "ingredients": [
       "сенча",
@@ -1051,7 +1051,7 @@
     "name": "Генмайча",
     "slug": "genmajca",
     "price": 240,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Генмайча — свежезаваренный чай с чистым ароматом и сбалансированным вкусом.",
     "ingredients": [
       "генмайча",
@@ -1072,7 +1072,7 @@
     "name": "Матча",
     "slug": "matca",
     "price": 280,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Традиционный напиток из мелко молотого зелёного чая с насыщенным травянистым вкусом.",
     "ingredients": [
       "матча",
@@ -1093,7 +1093,7 @@
     "name": "Улун",
     "slug": "ulun",
     "price": 260,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Улун — свежезаваренный чай с чистым ароматом и сбалансированным вкусом.",
     "ingredients": [
       "улун",
@@ -1114,7 +1114,7 @@
     "name": "Молочный улун",
     "slug": "molocnyj-ulun",
     "price": 280,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Молочный улун — свежезаваренный чай с чистым ароматом и сбалансированным вкусом.",
     "ingredients": [
       "молочный улун",
@@ -1137,7 +1137,7 @@
     "name": "Пуэр",
     "slug": "puer",
     "price": 250,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Пуэр — свежезаваренный чай с чистым ароматом и сбалансированным вкусом.",
     "ingredients": [
       "пуэр",
@@ -1158,7 +1158,7 @@
     "name": "Белый чай",
     "slug": "belyj-caj",
     "price": 300,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Белый чай — свежезаваренный чай с чистым ароматом и сбалансированным вкусом.",
     "ingredients": [
       "белый чай",
@@ -1179,7 +1179,7 @@
     "name": "Травяной сбор",
     "slug": "travanoj-sbor",
     "price": 220,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Травяной сбор — свежезаваренный чай с чистым ароматом и сбалансированным вкусом.",
     "ingredients": [
       "травяной сбор",
@@ -1200,7 +1200,7 @@
     "name": "Мятный",
     "slug": "matnyj",
     "price": 200,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Ароматный чай с яркой мятной свежестью и лёгким успокаивающим послевкусием.",
     "ingredients": [
       "мята",
@@ -1221,7 +1221,7 @@
     "name": "Имбирный",
     "slug": "imbirnyj",
     "price": 220,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Согревающий чай с выразительной пряностью имбиря и мягким ароматом.",
     "ingredients": [
       "чай",
@@ -1243,7 +1243,7 @@
     "name": "Облепиховый",
     "slug": "oblepihovyj",
     "price": 240,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Облепиховый — ароматный фруктово-ягодный чай с яркой кислинкой и насыщенным вкусом.",
     "ingredients": [
       "чай",
@@ -1264,7 +1264,7 @@
     "name": "Ягодный",
     "slug": "agodnyj",
     "price": 240,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Ягодный — ароматный фруктово-ягодный чай с яркой кислинкой и насыщенным вкусом.",
     "ingredients": [
       "чай",
@@ -1285,7 +1285,7 @@
     "name": "Цитрусовый",
     "slug": "citrusovyj",
     "price": 220,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Цитрусовый — ароматный фруктово-ягодный чай с яркой кислинкой и насыщенным вкусом.",
     "ingredients": [
       "чай",
@@ -1306,7 +1306,7 @@
     "name": "Чай Масала",
     "slug": "caj-masala",
     "price": 260,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Чай Масала — свежезаваренный чай с чистым ароматом и сбалансированным вкусом.",
     "ingredients": [
       "чёрный чай",
@@ -1330,7 +1330,7 @@
     "name": "Ройбуш",
     "slug": "rojbus",
     "price": 220,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Ройбуш — свежезаваренный чай с чистым ароматом и сбалансированным вкусом.",
     "ingredients": [
       "ройбуш",
@@ -1351,7 +1351,7 @@
     "name": "Чизкейк Классический",
     "slug": "cizkejk-klassiceskij",
     "price": 320,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Чизкейк Классический — нежный сливочный чизкейк на хрустящей основе с мягкой кремовой текстурой.",
     "ingredients": [
       "сливочный сыр",
@@ -1376,7 +1376,7 @@
     "name": "Чизкейк Ягодный",
     "slug": "cizkejk-agodnyj",
     "price": 340,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Чизкейк Ягодный — нежный сливочный чизкейк на хрустящей основе с мягкой кремовой текстурой.",
     "ingredients": [
       "сливочный сыр",
@@ -1402,7 +1402,7 @@
     "name": "Тирамису",
     "slug": "tiramisu",
     "price": 320,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Тирамису — фирменный десерт Brew & Bloom с нежной текстурой и выразительным вкусом.",
     "ingredients": [
       "мука",
@@ -1427,7 +1427,7 @@
     "name": "Шоколадный Брауни",
     "slug": "sokoladnyj-brauni",
     "price": 290,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Шоколадный Брауни — фирменный десерт Brew & Bloom с нежной текстурой и выразительным вкусом.",
     "ingredients": [
       "мука",
@@ -1452,7 +1452,7 @@
     "name": "Панакота",
     "slug": "panakota",
     "price": 280,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Панакота — фирменный десерт Brew & Bloom с нежной текстурой и выразительным вкусом.",
     "ingredients": [
       "мука",
@@ -1477,7 +1477,7 @@
     "name": "Эклер Ванильный",
     "slug": "ekler-vanil-nyj",
     "price": 260,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Эклер Ванильный — воздушное заварное тесто с кремовой начинкой и аккуратной глазурью.",
     "ingredients": [
       "заварное тесто",
@@ -1500,7 +1500,7 @@
     "name": "Эклер Шоколадный",
     "slug": "ekler-sokoladnyj",
     "price": 260,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Эклер Шоколадный — воздушное заварное тесто с кремовой начинкой и аккуратной глазурью.",
     "ingredients": [
       "заварное тесто",
@@ -1523,7 +1523,7 @@
     "name": "Макарон Малина",
     "slug": "makaron-malina",
     "price": 180,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Макарон Малина — французское миндальное пирожное с хрустящей корочкой и нежной начинкой.",
     "ingredients": [
       "миндальная мука",
@@ -1547,7 +1547,7 @@
     "name": "Макарон Фисташка",
     "slug": "makaron-fistaska",
     "price": 180,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Макарон Фисташка — французское миндальное пирожное с хрустящей корочкой и нежной начинкой.",
     "ingredients": [
       "миндальная мука",
@@ -1571,7 +1571,7 @@
     "name": "Макарон Шоколад",
     "slug": "makaron-sokolad",
     "price": 180,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Макарон Шоколад — французское миндальное пирожное с хрустящей корочкой и нежной начинкой.",
     "ingredients": [
       "миндальная мука",
@@ -1595,7 +1595,7 @@
     "name": "Муссовый Десерт",
     "slug": "mussovyj-desert",
     "price": 320,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Муссовый Десерт — фирменный десерт Brew & Bloom с нежной текстурой и выразительным вкусом.",
     "ingredients": [
       "мука",
@@ -1620,7 +1620,7 @@
     "name": "Фисташковый Торт",
     "slug": "fistaskovyj-tort",
     "price": 350,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Фисташковый Торт — многослойный десерт с нежным кремом и насыщенным домашним вкусом.",
     "ingredients": [
       "мука",
@@ -1645,7 +1645,7 @@
     "name": "Лимонный Тарт",
     "slug": "limonnyj-tart",
     "price": 300,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Лимонный Тарт — хрустящая песочная основа с нежной начинкой и ярким акцентом.",
     "ingredients": [
       "мука",
@@ -1670,7 +1670,7 @@
     "name": "Красный Бархат",
     "slug": "krasnyj-barhat",
     "price": 340,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Красный Бархат — многослойный десерт с нежным кремом и насыщенным домашним вкусом.",
     "ingredients": [
       "мука",
@@ -1695,7 +1695,7 @@
     "name": "Медовик",
     "slug": "medovik",
     "price": 320,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Медовик — многослойный десерт с нежным кремом и насыщенным домашним вкусом.",
     "ingredients": [
       "мука",
@@ -1720,7 +1720,7 @@
     "name": "Наполеон",
     "slug": "napoleon",
     "price": 300,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Наполеон — многослойный десерт с нежным кремом и насыщенным домашним вкусом.",
     "ingredients": [
       "мука",
@@ -1745,7 +1745,7 @@
     "name": "Птичье Молоко",
     "slug": "ptic-e-moloko",
     "price": 290,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Птичье Молоко — фирменный десерт Brew & Bloom с нежной текстурой и выразительным вкусом.",
     "ingredients": [
       "мука",
@@ -1770,7 +1770,7 @@
     "name": "Тарталетка с ягодами",
     "slug": "tartaletka-s-agodami",
     "price": 280,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Тарталетка с ягодами — хрустящая песочная основа с нежной начинкой и ярким акцентом.",
     "ingredients": [
       "мука",
@@ -1795,7 +1795,7 @@
     "name": "Профитроли",
     "slug": "profitroli",
     "price": 300,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Профитроли — фирменный десерт Brew & Bloom с нежной текстурой и выразительным вкусом.",
     "ingredients": [
       "мука",
@@ -1820,7 +1820,7 @@
     "name": "Чиа-пудинг",
     "slug": "cia-puding",
     "price": 260,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Чиа-пудинг — фирменный десерт Brew & Bloom с нежной текстурой и выразительным вкусом.",
     "ingredients": [
       "семена чиа",
@@ -1843,7 +1843,7 @@
     "name": "Круассан Классический",
     "slug": "kruassan-klassiceskij",
     "price": 220,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Круассан Классический — слоёный французский круассан с хрустящей корочкой и воздушной серединой.",
     "ingredients": [
       "пшеничная мука",
@@ -1868,7 +1868,7 @@
     "name": "Круассан Миндальный",
     "slug": "kruassan-mindal-nyj",
     "price": 240,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Круассан Миндальный — слоёный французский круассан с хрустящей корочкой и воздушной серединой.",
     "ingredients": [
       "пшеничная мука",
@@ -1893,7 +1893,7 @@
     "name": "Круассан Шоколадный",
     "slug": "kruassan-sokoladnyj",
     "price": 240,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Круассан Шоколадный — слоёный французский круассан с хрустящей корочкой и воздушной серединой.",
     "ingredients": [
       "пшеничная мука",
@@ -1918,7 +1918,7 @@
     "name": "Круассан Сырный",
     "slug": "kruassan-syrnyj",
     "price": 240,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Круассан Сырный — слоёный французский круассан с хрустящей корочкой и воздушной серединой.",
     "ingredients": [
       "пшеничная мука",
@@ -1943,7 +1943,7 @@
     "name": "Круассан Фисташковый",
     "slug": "kruassan-fistaskovyj",
     "price": 260,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Круассан Фисташковый — слоёный французский круассан с хрустящей корочкой и воздушной серединой.",
     "ingredients": [
       "пшеничная мука",
@@ -1968,7 +1968,7 @@
     "name": "Булочка с корицей",
     "slug": "bulocka-s-koricej",
     "price": 220,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Булочка с корицей — мягкая свежая булочка с ароматной начинкой, выпекаемая каждый день.",
     "ingredients": [
       "пшеничная мука",
@@ -1993,7 +1993,7 @@
     "name": "Булочка с ягодами",
     "slug": "bulocka-s-agodami",
     "price": 240,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Булочка с ягодами — мягкая свежая булочка с ароматной начинкой, выпекаемая каждый день.",
     "ingredients": [
       "пшеничная мука",
@@ -2018,7 +2018,7 @@
     "name": "Булочка с яблоком",
     "slug": "bulocka-s-ablokom",
     "price": 220,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Булочка с яблоком — мягкая свежая булочка с ароматной начинкой, выпекаемая каждый день.",
     "ingredients": [
       "пшеничная мука",
@@ -2043,7 +2043,7 @@
     "name": "Булочка с маком",
     "slug": "bulocka-s-makom",
     "price": 220,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Булочка с маком — мягкая свежая булочка с ароматной начинкой, выпекаемая каждый день.",
     "ingredients": [
       "пшеничная мука",
@@ -2068,7 +2068,7 @@
     "name": "Булочка с творогом",
     "slug": "bulocka-s-tvorogom",
     "price": 240,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Булочка с творогом — мягкая свежая булочка с ароматной начинкой, выпекаемая каждый день.",
     "ingredients": [
       "пшеничная мука",
@@ -2093,7 +2093,7 @@
     "name": "Слойка с вишней",
     "slug": "slojka-s-visnej",
     "price": 240,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Слойка с вишней — хрустящая слоёная выпечка с сочной начинкой.",
     "ingredients": [
       "пшеничная мука",
@@ -2118,7 +2118,7 @@
     "name": "Слойка с яблоком",
     "slug": "slojka-s-ablokom",
     "price": 230,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Слойка с яблоком — хрустящая слоёная выпечка с сочной начинкой.",
     "ingredients": [
       "пшеничная мука",
@@ -2143,7 +2143,7 @@
     "name": "Слойка с сыром",
     "slug": "slojka-s-syrom",
     "price": 230,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Слойка с сыром — хрустящая слоёная выпечка с сочной начинкой.",
     "ingredients": [
       "пшеничная мука",
@@ -2168,7 +2168,7 @@
     "name": "Слойка с ветчиной и сыром",
     "slug": "slojka-s-vetcinoj-i-syrom",
     "price": 260,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Слойка с ветчиной и сыром — хрустящая слоёная выпечка с сочной начинкой.",
     "ingredients": [
       "пшеничная мука",
@@ -2193,7 +2193,7 @@
     "name": "Слойка со шпинатом",
     "slug": "slojka-so-spinatom",
     "price": 260,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Слойка со шпинатом — хрустящая слоёная выпечка с сочной начинкой.",
     "ingredients": [
       "пшеничная мука",
@@ -2218,7 +2218,7 @@
     "name": "Чиабатта",
     "slug": "ciabatta",
     "price": 180,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Чиабатта — свежая ароматная выпечка с румяной корочкой и мягким мякишем.",
     "ingredients": [
       "пшеничная мука",
@@ -2242,7 +2242,7 @@
     "name": "Багет",
     "slug": "baget",
     "price": 180,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Багет — свежая ароматная выпечка с румяной корочкой и мягким мякишем.",
     "ingredients": [
       "пшеничная мука",
@@ -2266,7 +2266,7 @@
     "name": "Зерновой хлеб",
     "slug": "zernovoj-hleb",
     "price": 200,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Зерновой хлеб — свежая ароматная выпечка с румяной корочкой и мягким мякишем.",
     "ingredients": [
       "пшеничная мука",
@@ -2290,7 +2290,7 @@
     "name": "Хлеб Тостовый",
     "slug": "hleb-tostovyj",
     "price": 160,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Хлеб Тостовый — свежая ароматная выпечка с румяной корочкой и мягким мякишем.",
     "ingredients": [
       "пшеничная мука",
@@ -2314,7 +2314,7 @@
     "name": "Фокачча с розмарином",
     "slug": "fokacca-s-rozmarinom",
     "price": 240,
-    "currency": "RUB",
+    "currency": "ILS",
     "description": "Фокачча с розмарином — свежая ароматная выпечка с румяной корочкой и мягким мякишем.",
     "ingredients": [
       "пшеничная мука",

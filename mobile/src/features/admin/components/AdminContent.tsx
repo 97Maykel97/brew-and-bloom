@@ -11,13 +11,17 @@ import type { TAdminSection, TAdminTranslation } from '../types';
 import { adminNavigationItems } from './admin-navigation';
 import { adminContentStyles as styles } from './admin-content.styles';
 import AdminNavigation from './AdminNavigation';
+import AdminMenu from './AdminMenu';
+import AdminOrders from './AdminOrders';
 import AdminOverview from './AdminOverview';
+import type { TLocale } from '@/i18n/translations';
 
 type TAdminContentProps = {
 	activeSection: TAdminSection;
 	copy: TAdminTranslation;
 	displayName: string;
 	isRtl: boolean;
+	locale: TLocale;
 	onLogout: () => void;
 	onSectionChange: (section: TAdminSection) => void;
 };
@@ -27,6 +31,7 @@ export default function AdminContent({
 	copy,
 	displayName,
 	isRtl,
+	locale,
 	onLogout,
 	onSectionChange,
 }: TAdminContentProps) {
@@ -71,7 +76,11 @@ export default function AdminContent({
 			/>
 
 			{activeSection === 'overview' ? (
-				<AdminOverview copy={copy} isRtl={isRtl} />
+				<AdminOverview copy={copy} isRtl={isRtl} locale={locale} onSectionChange={onSectionChange} />
+			) : activeSection === 'orders' ? (
+				<AdminOrders isRtl={isRtl} locale={locale} />
+			) : activeSection === 'menu' ? (
+				<AdminMenu isRtl={isRtl} locale={locale} />
 			) : (
 				<View style={styles.placeholder}>
 					{activeItem ? (

@@ -18,11 +18,28 @@ export type THomeHighlightsTranslations = {
 	friendlyCommunity: string;
 };
 
+export type THomeBestsellerProductKey =
+	| 'classicRaf'
+	| 'matchaLatte'
+	| 'espressoTonic'
+	| 'classicCroissant';
+
+export type THomeBestsellersTranslations = {
+	title: string;
+	viewAll: string;
+	addToCart: string;
+	products: Record<
+		THomeBestsellerProductKey,
+		{ name: string; description: string }
+	>;
+};
+
 export type TAppTranslations = {
 	nav: string[];
 	searchPlaceholder: string;
 	hero: THeroTranslations;
 	highlights: THomeHighlightsTranslations;
+	bestsellers: THomeBestsellersTranslations;
 };
 
 export const translations: Record<TLocale, TAppTranslations> = {
@@ -44,6 +61,29 @@ export const translations: Record<TLocale, TAppTranslations> = {
 			signatureDrinks: 'Авторские напитки',
 			friendlyCommunity: 'Дружелюбное сообщество',
 		},
+		bestsellers: {
+			title: 'Наши хиты',
+			viewAll: 'Смотреть всё',
+			addToCart: 'Добавить в корзину',
+			products: {
+				classicRaf: {
+					name: 'Раф Классический',
+					description: 'Нежный сливочный кофе с бархатистой пеной',
+				},
+				matchaLatte: {
+					name: 'Матча Латте',
+					description: 'Японская матча с мягким молочным вкусом',
+				},
+				espressoTonic: {
+					name: 'Эспрессо-Тоник',
+					description: 'Освежающий тоник с насыщенным эспрессо',
+				},
+				classicCroissant: {
+					name: 'Круассан',
+					description: 'Слоёный французский круассан на сливочном масле',
+				},
+			},
+		},
 	},
 	he: {
 		nav: ['דף הבית', 'תפריט', 'עלינו', 'אירועים', 'צור קשר'],
@@ -61,6 +101,29 @@ export const translations: Record<TLocale, TAppTranslations> = {
 			cozyAtmosphere: 'אווירה נעימה',
 			signatureDrinks: 'משקאות מיוחדים',
 			friendlyCommunity: 'קהילה ידידותית',
+		},
+		bestsellers: {
+			title: 'הלהיטים שלנו',
+			viewAll: 'לצפייה בהכול',
+			addToCart: 'הוספה לסל',
+			products: {
+				classicRaf: {
+					name: 'ראף קלאסי',
+					description: 'קפה קרמי עדין עם קצף קטיפתי',
+				},
+				matchaLatte: {
+					name: "מאצ'ה לאטה",
+					description: "מאצ'ה יפנית עם טעם חלבי ורך",
+				},
+				espressoTonic: {
+					name: 'אספרסו טוניק',
+					description: 'טוניק מרענן עם אספרסו עשיר',
+				},
+				classicCroissant: {
+					name: 'קרואסון',
+					description: 'קרואסון צרפתי פריך על בסיס חמאה',
+				},
+			},
 		},
 	},
 	en: {
@@ -80,6 +143,29 @@ export const translations: Record<TLocale, TAppTranslations> = {
 			cozyAtmosphere: 'Cozy atmosphere',
 			signatureDrinks: 'Signature drinks',
 			friendlyCommunity: 'Friendly community',
+		},
+		bestsellers: {
+			title: 'Our favorites',
+			viewAll: 'View all',
+			addToCart: 'Add to cart',
+			products: {
+				classicRaf: {
+					name: 'Classic Raf',
+					description: 'Delicate creamy coffee with velvety foam',
+				},
+				matchaLatte: {
+					name: 'Matcha Latte',
+					description: 'Japanese matcha with a smooth milky taste',
+				},
+				espressoTonic: {
+					name: 'Espresso Tonic',
+					description: 'Refreshing tonic topped with rich espresso',
+				},
+				classicCroissant: {
+					name: 'Croissant',
+					description: 'Flaky French croissant made with butter',
+				},
+			},
 		},
 	},
 };

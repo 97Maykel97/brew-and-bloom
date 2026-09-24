@@ -21,6 +21,29 @@
 			"cozyAtmosphere": "Уютная атмосфера",
 			"signatureDrinks": "Авторские напитки",
 			"friendlyCommunity": "Дружелюбное сообщество"
+		},
+		"bestsellers": {
+			"title": "Наши хиты",
+			"viewAll": "Смотреть всё",
+			"addToCart": "Добавить в корзину",
+			"products": {
+				"classicRaf": {
+					"name": "Раф Классический",
+					"description": "Нежный сливочный кофе с бархатистой пеной"
+				},
+				"matchaLatte": {
+					"name": "Матча Латте",
+					"description": "Японская матча с мягким молочным вкусом"
+				},
+				"espressoTonic": {
+					"name": "Эспрессо-Тоник",
+					"description": "Освежающий тоник с насыщенным эспрессо"
+				},
+				"classicCroissant": {
+					"name": "Круассан",
+					"description": "Слоёный французский круассан на сливочном масле"
+				}
+			}
 		}
 	},
 	"auth": {

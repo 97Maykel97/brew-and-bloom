@@ -82,6 +82,7 @@ export default function ProfileTabContent({
 			activeTab={activeTab}
 			copy={copy}
 			isRtl={isRtl}
+			locale={locale}
 			onStatusChange={onStatusChange}
 		/>
 	);

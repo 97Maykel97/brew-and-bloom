@@ -54,6 +54,7 @@ export type TProfileTranslations = {
 	orders: string;
 	phone: string;
 	processingOrders: string;
+	preparingOrders: string;
 	profileTab: string;
 	profileUpdateError: string;
 	invalidPhone: string;
@@ -61,6 +62,11 @@ export type TProfileTranslations = {
 	profileUpdated: string;
 	requiredProfileFields: string;
 	readyOrders: string;
+	cancelledOrders: string;
+	cancelOrder: string;
+	cancelOrderConfirm: string;
+	cancellingOrder: string;
+	cancelOrderError: string;
 	settings: string;
 	settingsDescription: string;
 	activeDevices: string;
@@ -100,8 +106,14 @@ export const profileTranslations: Record<TLocale, TProfileTranslations> = {
 		firstName: 'Имя',
 		allOrders: 'Все',
 		processingOrders: 'В обработке',
-		readyOrders: 'Готовы',
+		preparingOrders: 'Готовится',
+		readyOrders: 'Готов к выдаче',
 		completedOrders: 'Завершённые',
+		cancelledOrders: 'Отменённые',
+		cancelOrder: 'Отменить заказ',
+		cancelOrderConfirm: 'Отменить заказ? После начала приготовления отмена будет недоступна.',
+		cancellingOrder: 'Отменяем...',
+		cancelOrderError: 'Не удалось отменить заказ.',
 		emptyOrders: 'Здесь появятся ваши заказы',
 		emptyOrdersText: 'Оформите первый заказ, чтобы увидеть историю.',
 		emptyBookings: 'Здесь появятся ваши бронирования',
@@ -117,7 +129,7 @@ export const profileTranslations: Record<TLocale, TProfileTranslations> = {
 		birthDate: 'Дата рождения',
 		bonuses: 'бонусов',
 		bonusDescription:
-			'Бонусы можно использовать при оформлении заказа.',
+			'Получайте 10% от стоимости завершённых заказов бонусами и используйте их при следующих покупках.',
 		bonusTab: 'Бонусы',
 		bonusText: 'У вас',
 		bonusTitle: 'Бонусная программа',
@@ -197,8 +209,14 @@ export const profileTranslations: Record<TLocale, TProfileTranslations> = {
 		firstName: 'First name',
 		allOrders: 'All',
 		processingOrders: 'In progress',
-		readyOrders: 'Ready',
+		preparingOrders: 'Preparing',
+		readyOrders: 'Ready for pickup',
 		completedOrders: 'Completed',
+		cancelledOrders: 'Cancelled',
+		cancelOrder: 'Cancel order',
+		cancelOrderConfirm: 'Cancel this order? Cancellation will be unavailable once preparation begins.',
+		cancellingOrder: 'Cancelling...',
+		cancelOrderError: 'Could not cancel the order.',
 		emptyOrders: 'Your orders will appear here',
 		emptyOrdersText: 'Make your first order to see your history.',
 		emptyBookings: 'Your bookings will appear here',
@@ -212,7 +230,7 @@ export const profileTranslations: Record<TLocale, TProfileTranslations> = {
 		birthDate: 'Date of birth',
 		bonuses: 'bonuses',
 		bonusDescription:
-			'Bonuses can be used when placing an order.',
+			'Earn 10% of every completed order in bonuses and use them on future purchases.',
 		bonusTab: 'Bonuses',
 		bonusText: 'You have',
 		bonusTitle: 'Bonus programme',
@@ -292,8 +310,14 @@ export const profileTranslations: Record<TLocale, TProfileTranslations> = {
 		firstName: 'שם פרטי',
 		allOrders: 'הכל',
 		processingOrders: 'בטיפול',
-		readyOrders: 'מוכן',
+		preparingOrders: 'בהכנה',
+		readyOrders: 'מוכן לאיסוף',
 		completedOrders: 'הושלם',
+		cancelledOrders: 'בוטלו',
+		cancelOrder: 'ביטול הזמנה',
+		cancelOrderConfirm: 'לבטל את ההזמנה? לאחר תחילת ההכנה לא ניתן יהיה לבטל.',
+		cancellingOrder: 'מבטלים...',
+		cancelOrderError: 'לא ניתן לבטל את ההזמנה.',
 		emptyOrders: 'ההזמנות שלך יופיעו כאן',
 		emptyOrdersText: 'בצעו הזמנה ראשונה כדי לראות את ההיסטוריה שלכם.',
 		emptyBookings: 'ההזמנות שלך יופיעו כאן',
@@ -307,7 +331,7 @@ export const profileTranslations: Record<TLocale, TProfileTranslations> = {
 		phone: 'טלפון',
 		birthDate: 'תאריך לידה',
 		bonuses: 'נקודות',
-		bonusDescription: 'ניתן להשתמש בנקודות בעת ביצוע הזמנה.',
+		bonusDescription: 'צוברים 10% מערך כל הזמנה שהושלמה כנקודות ומשתמשים בהן ברכישות הבאות.',
 		bonusTab: 'נקודות',
 		bonusText: 'יש לך',
 		bonusTitle: 'תוכנית הטבות',

@@ -22,12 +22,14 @@ import type {
 import { supabase } from '@/lib/supabase';
 
 export default function ProfileScreen() {
-	const params = useLocalSearchParams<{ locale?: string }>();
+	const params = useLocalSearchParams<{ locale?: string; tab?: string }>();
 	const locale = getLocale(params.locale);
 	const appContent = translations[locale];
 	const copy = profileTranslations[locale];
 	const [profile, setProfile] = useState<TMobileProfileData | null>(null);
-	const [activeTab, setActiveTab] = useState<TProfileTab>('profile');
+	const [activeTab, setActiveTab] = useState<TProfileTab>(() =>
+		getRequestedTab(params.tab),
+	);
 	const [activeStatus, setActiveStatus] =
 		useState<TProfileOrderStatus>('all');
 	const [isEditing, setIsEditing] = useState<boolean>(false);
@@ -37,6 +39,7 @@ export default function ProfileScreen() {
 	useFocusEffect(
 		useCallback(() => {
 			let isActive = true;
+			let profileChannel: ReturnType<typeof supabase.channel> | null = null;
 
 			async function loadProfile() {
 				const {
@@ -44,6 +47,7 @@ export default function ProfileScreen() {
 				} = await supabase.auth.getUser();
 
 				if (!isActive) return;
+				if (params.tab) setActiveTab(getRequestedTab(params.tab));
 
 				if (!user) {
 					router.replace({
@@ -53,11 +57,21 @@ export default function ProfileScreen() {
 					return;
 				}
 
-				const { data: profileRecord } = await supabase
-					.from('profiles')
-					.select('first_name, last_name, phone, birth_date, role')
-					.eq('id', user.id)
-					.maybeSingle();
+				const [profileResult, bonusResult, roleResult] = await Promise.all([
+					supabase
+						.from('profiles')
+						.select('first_name, last_name, phone, birth_date, role')
+						.eq('id', user.id)
+						.maybeSingle(),
+					supabase
+						.from('profiles')
+						.select('bonus_points')
+						.eq('id', user.id)
+						.maybeSingle(),
+					supabase.rpc('current_profile_role'),
+				]);
+				const profileRecord = profileResult.data;
+				const bonusRecord = bonusResult.data;
 				const metadata = user.user_metadata ?? {};
 				const firstName =
 					getString(profileRecord?.first_name) ||
@@ -74,12 +88,14 @@ export default function ProfileScreen() {
 					getString(profileRecord?.birth_date) ||
 					getString(metadata.birth_date);
 				const bonusPoints =
-					typeof metadata.bonus_points === 'number'
+					typeof bonusRecord?.bonus_points === 'number'
+						? bonusRecord.bonus_points
+						: typeof metadata.bonus_points === 'number'
 						? metadata.bonus_points
 						: 0;
 
 				setProfile({
-					birthDate: formatBirthDate(birthDate, locale),
+					birthDate: birthDate ? formatBirthDate(birthDate, locale) : '—',
 					birthDateValue: birthDate,
 					bonusPoints,
 					displayName,
@@ -91,16 +107,29 @@ export default function ProfileScreen() {
 							getString(metadata.phone),
 					),
 				});
-				setIsAdmin(profileRecord?.role === 'admin');
+				setIsAdmin(
+					roleResult.data === 'admin' || profileRecord?.role === 'admin',
+				);
 				setIsLoading(false);
+
+				profileChannel = supabase
+					.channel(`profile-bonus-${user.id}-${Date.now()}-${Math.random().toString(36).slice(2)}`)
+					.on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'profiles', filter: `id=eq.${user.id}` }, payload => {
+						const nextBonusPoints = (payload.new as { bonus_points?: unknown }).bonus_points;
+						if (typeof nextBonusPoints === 'number') {
+							setProfile(current => current ? { ...current, bonusPoints: nextBonusPoints } : current);
+						}
+					})
+					.subscribe();
 			}
 
 			void loadProfile();
 
 			return () => {
 				isActive = false;
+				if (profileChannel) void supabase.removeChannel(profileChannel);
 			};
-		}, [locale]),
+		}, [locale, params.tab]),
 	);
 
 	function changeLocale(nextLocale: typeof locale) {
@@ -182,6 +211,19 @@ export default function ProfileScreen() {
 			)}
 		</SafeAreaView>
 	);
+}
+
+function getRequestedTab(value: string | undefined): TProfileTab {
+	const tabs: TProfileTab[] = [
+		'profile',
+		'orders',
+		'bookings',
+		'favorites',
+		'bonuses',
+		'settings',
+	];
+
+	return tabs.includes(value as TProfileTab) ? (value as TProfileTab) : 'profile';
 }
 
 const styles = StyleSheet.create({

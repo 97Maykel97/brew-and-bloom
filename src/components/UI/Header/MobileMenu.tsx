@@ -3,7 +3,9 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Heart, Menu, ShoppingBag, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import FavoritesModalButton from "./FavoritesModalButton";
+import OrderModalButton from "./OrderModalButton";
 import ProfileButton from "./ProfileButton";
 import SearchButton from "./SearchButton";
 
@@ -15,6 +17,7 @@ type TMobileNavItem = {
 type TMobileMenuProps = {
   locale: string;
   items: TMobileNavItem[];
+  isSignedIn: boolean;
   profileHref: string;
   searchLabel: string;
 };
@@ -22,6 +25,7 @@ type TMobileMenuProps = {
 function MobileMenu({
   locale,
   items,
+  isSignedIn,
   profileHref,
   searchLabel,
 }: TMobileMenuProps) {
@@ -61,17 +65,14 @@ function MobileMenu({
                 variant="menu"
               />
 
-              <Link href={`/${locale}/favorites`} aria-label="Favorites" onClick={() => setIsOpen(false)} className="group flex h-10 w-10 shrink-0 items-center justify-center text-[var(--foreground)] transition-all duration-300 ease-out hover:scale-105 hover:text-[#A65345] active:scale-95">
-                <Heart className="transition-all duration-300 ease-out group-hover:fill-[#A65345] group-hover:stroke-[#A65345]" size={18} strokeWidth={1.8} />
-              </Link>
-              <Link
-                href={`/${locale}/cart`}
-                aria-label="Cart"
-                onClick={() => setIsOpen(false)}
-                className="flex h-10 w-10 shrink-0 items-center justify-center text-[var(--foreground)] transition-transform duration-200 hover:scale-110 active:scale-95"
-              >
-                <ShoppingBag size={18} strokeWidth={1.8} />
-              </Link>
+              <FavoritesModalButton
+                isSignedIn={isSignedIn}
+                locale={locale}
+              />
+              <OrderModalButton
+                isSignedIn={isSignedIn}
+                locale={locale}
+              />
               <ProfileButton
                 href={profileHref}
                 onNavigate={() => setIsOpen(false)}

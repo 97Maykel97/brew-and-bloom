@@ -21,6 +21,29 @@
 			"cozyAtmosphere": "אווירה נעימה",
 			"signatureDrinks": "משקאות מיוחדים",
 			"friendlyCommunity": "קהילה ידידותית"
+		},
+		"bestsellers": {
+			"title": "הלהיטים שלנו",
+			"viewAll": "לצפייה בהכול",
+			"addToCart": "הוספה לסל",
+			"products": {
+				"classicRaf": {
+					"name": "ראף קלאסי",
+					"description": "קפה קרמי עדין עם קצף קטיפתי"
+				},
+				"matchaLatte": {
+					"name": "מאצ'ה לאטה",
+					"description": "מאצ'ה יפנית עם טעם חלבי ורך"
+				},
+				"espressoTonic": {
+					"name": "אספרסו טוניק",
+					"description": "טוניק מרענן עם אספרסו עשיר"
+				},
+				"classicCroissant": {
+					"name": "קרואסון",
+					"description": "קרואסון צרפתי פריך על בסיס חמאה"
+				}
+			}
 		}
 	},
 	"auth": {

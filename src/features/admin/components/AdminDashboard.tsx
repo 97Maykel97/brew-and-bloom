@@ -10,6 +10,8 @@ import type {
 } from '../types';
 import { getAdminSection } from '../lib/admin-section';
 import AdminMobileNavigation from './AdminMobileNavigation';
+import AdminMenu from './AdminMenu';
+import AdminOrders from './AdminOrders';
 import AdminOverview from './AdminOverview';
 import AdminSectionPlaceholder from './AdminSectionPlaceholder';
 import AdminSidebar from './AdminSidebar';
@@ -112,7 +114,11 @@ export default function AdminDashboard({
 						</div>
 
 						{activeSection === 'overview' ? (
-							<AdminOverview copy={copy} />
+							<AdminOverview copy={copy} locale={locale} onSectionChange={changeSection} />
+						) : activeSection === 'orders' ? (
+							<AdminOrders locale={locale} />
+						) : activeSection === 'menu' ? (
+							<AdminMenu locale={locale} />
 						) : (
 							<AdminSectionPlaceholder
 								copy={copy}

@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '@/components/Header';
 import { getLocale } from '@/i18n/locale';
 import { type TLocale, translations } from '@/i18n/translations';
+import HomeBestsellers from './components/HomeBestsellers/HomeBestsellers';
 import HomeHighlights from './components/HomeHighlights';
 import { homeScreenStyles as styles } from './home-screen.styles';
 
@@ -61,6 +62,11 @@ export default function HomeScreen() {
 				</View>
 
 				<HomeHighlights copy={content.highlights} isRtl={isRtl} />
+				<HomeBestsellers
+					copy={content.bestsellers}
+					isRtl={isRtl}
+					locale={locale}
+				/>
 			</ScrollView>
 		</SafeAreaView>
 	);

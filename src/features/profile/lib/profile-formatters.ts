@@ -16,8 +16,10 @@ const PROFILE_TABS: TProfileTab[] = [
 const ORDER_STATUSES: TOrderStatus[] = [
 	'all',
 	'processing',
+	'preparing',
 	'ready',
 	'completed',
+	'cancelled',
 ];
 
 export function getProfileLocale(locale: string): TProfileLocale {

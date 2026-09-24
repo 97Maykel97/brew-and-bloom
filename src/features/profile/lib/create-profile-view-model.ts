@@ -7,6 +7,7 @@ type TProfileRecord = {
 	last_name?: unknown;
 	phone?: unknown;
 	birth_date?: unknown;
+	bonus_points?: unknown;
 } | null;
 
 type TCreateProfileViewModelOptions = {
@@ -37,7 +38,8 @@ export function createProfileViewModel({
 		getString(metadata.full_name);
 	const phone =
 		getString(profile?.phone) || getString(metadata.phone);
-	const birthDate = getString(profile?.birth_date);
+	const birthDate =
+		getString(profile?.birth_date) || getString(metadata.birth_date);
 
 	return {
 		fullName,
@@ -49,7 +51,9 @@ export function createProfileViewModel({
 		birthDate: birthDate ? formatBirthDate(birthDate, locale) : '—',
 		birthDateValue: birthDate,
 		bonusPoints:
-			typeof metadata.bonus_points === 'number'
+			typeof profile?.bonus_points === 'number'
+				? profile.bonus_points
+				: typeof metadata.bonus_points === 'number'
 				? metadata.bonus_points
 				: 0,
 	};

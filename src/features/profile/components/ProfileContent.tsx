@@ -1,4 +1,4 @@
-import { CalendarDays, Heart } from 'lucide-react';
+import { CalendarDays } from 'lucide-react';
 import type { TProfileCopy } from '../profile-copy';
 import type {
 	TOrderStatus,
@@ -8,6 +8,7 @@ import type {
 } from '../types';
 import BonusView from './BonusView';
 import EmptyState from './EmptyState';
+import FavoritesView from './FavoritesView';
 import OrdersView from './OrdersView';
 import ProfileDetails from './ProfileDetails';
 import SettingsView from './SettingsView';
@@ -51,16 +52,7 @@ export default function ProfileContent({
 	}
 
 	if (activeTab === 'favorites') {
-		return (
-			<EmptyState
-				id='favorites'
-				icon={<Heart size={24} strokeWidth={1.6} />}
-				title={copy.emptyFavorites}
-				description={copy.emptyFavoritesText}
-				actionLabel={copy.explore}
-				actionHref={'/' + locale + '/menu'}
-			/>
-		);
+		return <FavoritesView copy={copy} locale={locale} />;
 	}
 
 	if (activeTab === 'bookings') {

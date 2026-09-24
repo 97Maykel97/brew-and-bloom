@@ -1,0 +1,265 @@
+import { StyleSheet } from 'react-native';
+
+import { Colors, Fonts, Spacing } from '@/constants/theme';
+
+export const homeBestsellersStyles = StyleSheet.create({
+	section: {
+		paddingTop: 16,
+		paddingBottom: 52,
+		backgroundColor: '#F8F3EC',
+	},
+	heading: {
+		paddingHorizontal: Spacing.medium,
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-between',
+		gap: Spacing.medium,
+	},
+	title: {
+		flex: 1,
+		color: Colors.foreground,
+		fontFamily: Fonts.serif,
+		fontSize: 34,
+		fontWeight: '500',
+		lineHeight: 40,
+	},
+	viewAll: {
+		paddingVertical: 6,
+		flexDirection: 'row',
+		alignItems: 'center',
+		gap: 7,
+		borderBottomWidth: StyleSheet.hairlineWidth,
+		borderBottomColor: Colors.foreground,
+	},
+	viewAllText: {
+		color: Colors.foreground,
+		fontFamily: Fonts.sans,
+		fontSize: 12,
+		fontWeight: '600',
+	},
+	slider: {
+		marginTop: Spacing.large,
+	},
+	sliderContent: {
+		paddingHorizontal: Spacing.medium,
+	},
+	slide: {
+		paddingRight: 14,
+	},
+	card: {
+		overflow: 'hidden',
+		borderWidth: 1,
+		borderColor: 'rgba(74,50,36,0.1)',
+		borderRadius: 22,
+		backgroundColor: 'rgba(255,252,248,0.9)',
+	},
+	skeletonBlock: {
+		alignItems: 'center',
+		justifyContent: 'center',
+		backgroundColor: '#EAE0D6',
+	},
+	skeletonLine: {
+		height: 12,
+		borderRadius: 8,
+		backgroundColor: '#EAE0D6',
+	},
+	skeletonTitle: {
+		width: '62%',
+		height: 18,
+	},
+	skeletonDescription: {
+		width: '92%',
+		marginTop: 12,
+	},
+	skeletonDescriptionShort: {
+		width: '70%',
+		marginTop: 8,
+	},
+	skeletonPrice: {
+		width: 72,
+		height: 18,
+	},
+	skeletonButton: {
+		width: 38,
+		height: 38,
+		borderRadius: 19,
+	},
+	imageWrapper: {
+		width: '100%',
+		aspectRatio: 1.5,
+		position: 'relative',
+		backgroundColor: '#EFE4D7',
+	},
+	image: {
+		width: '100%',
+		height: '100%',
+	},
+	favoriteButton: {
+		position: 'absolute',
+		top: 12,
+		right: 12,
+		width: 40,
+		height: 40,
+		alignItems: 'center',
+		justifyContent: 'center',
+		borderWidth: 1,
+		borderColor: 'rgba(74,50,36,0.12)',
+		borderRadius: 20,
+		backgroundColor: 'rgba(255,252,248,0.94)',
+	},
+	favoriteButtonActive: {
+		backgroundColor: '#A65345',
+	},
+	favoriteButtonLoading: {
+		opacity: 0,
+	},
+	content: {
+		minHeight: 148,
+		padding: Spacing.medium,
+	},
+	productName: {
+		color: Colors.foreground,
+		fontFamily: Fonts.sans,
+		fontSize: 15,
+		fontWeight: '700',
+		lineHeight: 21,
+	},
+	description: {
+		minHeight: 38,
+		marginTop: 6,
+		color: Colors.muted,
+		fontFamily: Fonts.sans,
+		fontSize: 12,
+		lineHeight: 18,
+	},
+	footer: {
+		marginTop: 12,
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-between',
+	},
+	price: {
+		color: Colors.foreground,
+		fontFamily: Fonts.sans,
+		fontSize: 16,
+		fontWeight: '800',
+		writingDirection: 'ltr',
+	},
+	unavailable: {
+		minHeight: 38,
+		paddingHorizontal: 14,
+		alignItems: 'center',
+		justifyContent: 'center',
+		borderRadius: 20,
+		backgroundColor: '#F7E3DF',
+	},
+	unavailableText: {
+		color: '#9A433D',
+		fontFamily: Fonts.sans,
+		fontSize: 12,
+		fontWeight: '700',
+	},
+	inventoryLoading: {
+		minWidth: 82,
+		minHeight: 38,
+		alignItems: 'center',
+		justifyContent: 'center',
+		borderRadius: 20,
+		backgroundColor: '#EEE5DC',
+	},
+	inventoryLoadingText: {
+		color: Colors.muted,
+		fontFamily: Fonts.sans,
+		fontSize: 12,
+		fontWeight: '700',
+		letterSpacing: 4,
+	},
+	addButton: {
+		width: 38,
+		height: 38,
+		alignItems: 'center',
+		justifyContent: 'center',
+		borderRadius: 19,
+		backgroundColor: Colors.accent,
+	},
+	addButtonSuccess: {
+		backgroundColor: '#637A57',
+	},
+	addButtonDisabled: {
+		opacity: 0.35,
+	},
+	quantityControl: {
+		height: 38,
+		flexDirection: 'row',
+		alignItems: 'center',
+		borderWidth: 1,
+		borderColor: 'rgba(74,50,36,0.18)',
+		borderRadius: 19,
+		backgroundColor: '#F8F3EC',
+	},
+	quantityButton: {
+		width: 34,
+		height: 34,
+		alignItems: 'center',
+		justifyContent: 'center',
+		borderRadius: 17,
+	},
+	quantityButtonDisabled: {
+		opacity: 0.3,
+	},
+	quantityInput: {
+		width: 34,
+		height: 34,
+		padding: 0,
+		color: Colors.foreground,
+		fontFamily: Fonts.sans,
+		fontSize: 13,
+		fontWeight: '700',
+		textAlign: 'center',
+	},
+	controls: {
+		marginTop: Spacing.medium,
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'center',
+		gap: 14,
+	},
+	sliderArrow: {
+		width: 38,
+		height: 38,
+		alignItems: 'center',
+		justifyContent: 'center',
+		borderWidth: 1,
+		borderColor: 'rgba(74,50,36,0.16)',
+		borderRadius: 19,
+		backgroundColor: 'rgba(255,252,248,0.88)',
+	},
+	disabledArrow: {
+		opacity: 0.3,
+	},
+	dots: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		gap: 6,
+	},
+	dot: {
+		width: 6,
+		height: 6,
+		borderRadius: 3,
+		backgroundColor: '#D8CCC0',
+	},
+	activeDot: {
+		width: 20,
+		backgroundColor: Colors.accent,
+	},
+	rtlRow: {
+		flexDirection: 'row-reverse',
+	},
+	rtlText: {
+		textAlign: 'right',
+		writingDirection: 'rtl',
+	},
+	pressed: {
+		opacity: 0.6,
+	},
+});

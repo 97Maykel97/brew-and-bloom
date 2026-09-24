@@ -21,6 +21,29 @@
 			"cozyAtmosphere": "Cozy atmosphere",
 			"signatureDrinks": "Signature drinks",
 			"friendlyCommunity": "Friendly community"
+		},
+		"bestsellers": {
+			"title": "Our favorites",
+			"viewAll": "View all",
+			"addToCart": "Add to cart",
+			"products": {
+				"classicRaf": {
+					"name": "Classic Raf",
+					"description": "Delicate creamy coffee with velvety foam"
+				},
+				"matchaLatte": {
+					"name": "Matcha Latte",
+					"description": "Japanese matcha with a smooth milky taste"
+				},
+				"espressoTonic": {
+					"name": "Espresso Tonic",
+					"description": "Refreshing tonic topped with rich espresso"
+				},
+				"classicCroissant": {
+					"name": "Croissant",
+					"description": "Flaky French croissant made with butter"
+				}
+			}
 		}
 	},
 	"auth": {

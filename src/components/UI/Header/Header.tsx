@@ -1,12 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
-import { ChevronDown, Heart, ShoppingBag } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 import Container from "@/components/common/Container";
 import { languageOptions } from "@/i18n/languages";
 import { createClient } from "@/lib/supabase/server";
 import MobileMenu from "./MobileMenu";
+import FavoritesModalButton from "./FavoritesModalButton";
+import OrderModalButton from "./OrderModalButton";
 import ProfileButton from "./ProfileButton";
 import SearchButton from "./SearchButton";
 import NavLinks from "./NavLinks";
@@ -44,13 +46,14 @@ async function Header({ locale }: THeaderProps) {
     : `/${locale}/auth/login`;
 
   return (
-    <header className="bg-[var(--background)]">
+    <header className="sticky top-0 z-50 border-b border-[#4a3224]/8 bg-[rgba(248,243,236,0.94)] backdrop-blur-xl supports-[backdrop-filter]:bg-[rgba(248,243,236,0.82)]">
       <Container>
         <div className="grid h-20 min-w-0 grid-cols-[auto_minmax(0,1fr)_auto] items-center">
           <div className="xl:hidden">
             <MobileMenu
               locale={locale}
               items={translatedNavItems}
+              isSignedIn={Boolean(user)}
               profileHref={profileHref}
               searchLabel={searchLabel}
             />
@@ -77,17 +80,15 @@ async function Header({ locale }: THeaderProps) {
             <SearchButton locale={locale} searchLabel={searchLabel} />
 
 
-            <Link href={`/${locale}/favorites`} aria-label="Favorites" className="group flex h-10 w-10 shrink-0 items-center justify-center text-[var(--foreground)] transition-all duration-300 ease-out hover:scale-105 hover:text-[#A65345] active:scale-95">
-              <Heart className="transition-all duration-300 ease-out group-hover:fill-[#A65345] group-hover:stroke-[#A65345]" size={18} strokeWidth={1.8} />
-            </Link>
+            <FavoritesModalButton
+              isSignedIn={Boolean(user)}
+              locale={locale}
+            />
 
-            <Link
-              href={`/${locale}/cart`}
-              aria-label="Cart"
-              className="flex h-10 w-10 shrink-0 items-center justify-center text-[var(--foreground)] transition-transform duration-200 hover:scale-110 active:scale-95"
-            >
-              <ShoppingBag size={18} strokeWidth={1.8} />
-            </Link>
+            <OrderModalButton
+              isSignedIn={Boolean(user)}
+              locale={locale}
+            />
 
             <ProfileButton href={profileHref} />
 

@@ -9,8 +9,10 @@ export type TProfileTab =
 export type TProfileOrderStatus =
 	| 'all'
 	| 'processing'
+	| 'preparing'
 	| 'ready'
-	| 'completed';
+	| 'completed'
+	| 'cancelled';
 
 export type TMobileProfileData = {
 	birthDate: string;
