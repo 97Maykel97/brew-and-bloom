@@ -218,6 +218,7 @@ function getRequestedTab(value: string | undefined): TProfileTab {
 		'profile',
 		'orders',
 		'bookings',
+		'events',
 		'favorites',
 		'bonuses',
 		'settings',

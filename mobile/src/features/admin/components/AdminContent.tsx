@@ -15,6 +15,7 @@ import AdminMenu from './AdminMenu';
 import AdminBookings from './AdminBookings';
 import AdminOrders from './AdminOrders';
 import AdminOverview from './AdminOverview';
+import AdminEvents from './AdminEvents';
 import type { TLocale } from '@/i18n/translations';
 
 type TAdminContentProps = {
@@ -84,6 +85,8 @@ export default function AdminContent({
 				<AdminBookings isRtl={isRtl} locale={locale} />
 			) : activeSection === 'menu' ? (
 				<AdminMenu isRtl={isRtl} locale={locale} />
+			) : activeSection === 'events' ? (
+				<AdminEvents isRtl={isRtl} locale={locale} />
 			) : (
 				<View style={styles.placeholder}>
 					{activeItem ? (

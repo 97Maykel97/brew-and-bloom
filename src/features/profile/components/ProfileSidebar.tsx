@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {
 	CalendarDays,
+	CalendarRange,
 	Gift,
 	Heart,
 	Settings,
@@ -46,6 +47,12 @@ export default function ProfileSidebar({
 			tab: 'bookings',
 			icon: CalendarDays,
 			active: activeTab === 'bookings',
+		},
+		{
+			label: copy.sidebar.events,
+			tab: 'events',
+			icon: CalendarRange,
+			active: activeTab === 'events',
 		},
 		{
 			label: copy.sidebar.favorites,

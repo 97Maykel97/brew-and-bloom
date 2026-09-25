@@ -2,6 +2,7 @@
 
 import { Clock3, Coffee, Music2, UsersRound } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 import { createClient } from '@/lib/supabase/client';
@@ -38,6 +39,7 @@ export type THomeEventsCopy = {
 	eyebrow: string;
 	title: string;
 	description: string;
+	viewAll: string;
 	tasting: TEventCopy;
 	latteArt: TEventCopy;
 	acoustic: TEventCopy;
@@ -110,7 +112,10 @@ export default function HomeEvents({
 						<p className={styles.eyebrow}>{copy.eyebrow}</p>
 						<h2 className={styles.title}>{copy.title}</h2>
 					</div>
-					<p className={styles.intro}>{copy.description}</p>
+					<div className={styles.introWrap}>
+						<p className={styles.intro}>{copy.description}</p>
+						<Link className={styles.viewAll} href={`/${locale}/events`}>{copy.viewAll}</Link>
+					</div>
 				</header>
 
 				<div className={`${styles.grid} ${secondaryEvents.length === 0 ? styles.singleEvent : ''}`}>

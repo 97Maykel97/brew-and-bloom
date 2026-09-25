@@ -8,6 +8,7 @@ import type {
 import BonusView from './BonusView';
 import BookingsView from './BookingsView';
 import FavoritesView from './FavoritesView';
+import EventRegistrationsView from './EventRegistrationsView';
 import OrdersView from './OrdersView';
 import ProfileDetails from './ProfileDetails';
 import SettingsView from './SettingsView';
@@ -56,6 +57,10 @@ export default function ProfileContent({
 
 	if (activeTab === 'bookings') {
 		return <BookingsView locale={locale} />;
+	}
+
+	if (activeTab === 'events') {
+		return <EventRegistrationsView locale={locale} />;
 	}
 
 	if (activeTab === 'bonuses') {

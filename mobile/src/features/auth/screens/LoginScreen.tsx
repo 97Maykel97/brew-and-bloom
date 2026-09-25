@@ -22,7 +22,7 @@ import {
 } from '@/features/auth/lib/auth-validation';
 
 export default function LoginScreen() {
-	const params = useLocalSearchParams<{ locale?: string }>();
+	const params = useLocalSearchParams<{ locale?: string; next?: string; eventId?: string }>();
 	const locale = getLocale(params.locale);
 	const [email, setEmail] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
@@ -68,11 +68,22 @@ export default function LoginScreen() {
 				.select('role')
 				.eq('id', data.user.id)
 				.maybeSingle();
-			const destination = profile?.role === 'admin' ? '/admin' : '/profile';
+			const requestedProfileTab = ['bookings', 'bonuses', 'events'].includes(params.next ?? '')
+				? params.next
+				: null;
+			const destination = requestedProfileTab
+				? '/profile'
+				: profile?.role === 'admin' ? '/admin' : '/profile';
 
 			setEmail('');
 			setPassword('');
-			router.replace(createLocalizedHref(destination, locale));
+			if (params.next === 'events') {
+				router.replace({ pathname: '/events', params: { locale, eventId: params.eventId } });
+			} else if (requestedProfileTab) {
+				router.replace({ pathname: '/profile', params: { locale, tab: requestedProfileTab } });
+			} else {
+				router.replace(createLocalizedHref(destination, locale));
+			}
 		} catch (error: unknown) {
 			setMessage(getAuthErrorMessage(error, locale));
 		} finally {

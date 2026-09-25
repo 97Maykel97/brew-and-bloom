@@ -21,6 +21,7 @@ export default function ProfileTabs({
 		{ key: 'profile', label: copy.profileTab },
 		{ key: 'orders', label: copy.orders },
 		{ key: 'bookings', label: copy.bookings },
+		{ key: 'events', label: copy.events },
 		{ key: 'favorites', label: copy.favorites },
 		{ key: 'bonuses', label: copy.bonusTab },
 		{ key: 'settings', label: copy.settings },

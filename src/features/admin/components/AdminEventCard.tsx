@@ -1,7 +1,10 @@
-import { Eye, EyeOff, LoaderCircle, Pencil, Trash2 } from 'lucide-react';
+'use client';
+
+import { Check, ChevronDown, Eye, EyeOff, LoaderCircle, Pencil, Phone, Trash2, UsersRound, X } from 'lucide-react';
+import { useState } from 'react';
 
 import type { TAdminLocale } from '../types';
-import type { TAdminEvent, TAdminEventsCopy } from '../lib/admin-events-config';
+import type { TAdminEvent, TAdminEventRegistration, TAdminEventsCopy, TEventParticipantProfile, TEventRegistrationStatus } from '../lib/admin-events-config';
 
 type TAdminEventCardProps = {
 	copy: TAdminEventsCopy;
@@ -11,6 +14,10 @@ type TAdminEventCardProps = {
 	onDelete: () => void;
 	onEdit: () => void;
 	onToggle: () => void;
+	registrations: TAdminEventRegistration[];
+	profiles: Map<string, TEventParticipantProfile>;
+	pendingRegistrationId: string | null;
+	onRegistrationStatusChange: (id: string, status: TEventRegistrationStatus) => void;
 };
 
 export default function AdminEventCard({
@@ -21,13 +28,19 @@ export default function AdminEventCard({
 	onDelete,
 	onEdit,
 	onToggle,
+	registrations,
+	profiles,
+	pendingRegistrationId,
+	onRegistrationStatusChange,
 }: TAdminEventCardProps) {
+	const [isParticipantsOpen, setIsParticipantsOpen] = useState(false);
 	const title = event[`title_${locale}`] || event.title_ru;
 	const description = event[`description_${locale}`] || event.description_ru;
 	const localeCode = locale === 'ru' ? 'ru-RU' : locale === 'he' ? 'he-IL' : 'en-GB';
 	const formattedDate = new Intl.DateTimeFormat(localeCode, {
 		day: 'numeric', month: 'long', year: 'numeric',
 	}).format(new Date(`${event.event_date}T12:00:00`));
+	const activeGuestCount = registrations.filter(item => item.status !== 'cancelled').reduce((total, item) => total + item.guest_count, 0);
 
 	return (
 		<article className={`rounded-2xl border p-4 transition sm:p-5 ${event.is_published ? 'border-[#dfd2c5] bg-white/80' : 'border-[#ddd7d1] bg-[#f0edeb]/80'}`}>
@@ -39,6 +52,7 @@ export default function AdminEventCard({
 					</div>
 					<h3 className='mt-3 text-lg font-semibold'>{title}</h3>
 					<p className='mt-1 text-sm font-medium text-[#725542]'>{formattedDate} · <bdi>{event.start_time.slice(0, 5)}–{event.end_time.slice(0, 5)}</bdi></p>
+					<p className='mt-1 text-xs font-medium text-[var(--muted)]'>{copy.capacity}: {event.capacity}</p>
 					<p className='mt-2 max-w-2xl text-sm leading-6 text-[var(--muted)]'>{description}</p>
 				</div>
 				<div className='flex shrink-0 flex-wrap gap-2'>
@@ -47,6 +61,8 @@ export default function AdminEventCard({
 					<IconButton label={copy.delete} onClick={onDelete} disabled={isPending} danger>{isPending ? <LoaderCircle className='animate-spin' size={16} /> : <Trash2 size={16} />}</IconButton>
 				</div>
 			</div>
+			<button className='mt-4 flex min-h-11 w-full cursor-pointer items-center justify-between rounded-xl bg-[#f4ebe2] px-4 text-sm font-semibold' onClick={() => setIsParticipantsOpen(current => !current)} type='button'><span className='inline-flex items-center gap-2'><UsersRound size={16} />{copy.participants}: {activeGuestCount}/{event.capacity}</span><ChevronDown className={`transition ${isParticipantsOpen ? 'rotate-180' : ''}`} size={16} /></button>
+			{isParticipantsOpen ? <div className='mt-3 grid gap-2'>{registrations.length === 0 ? <p className='rounded-xl border border-dashed border-[#d8cabd] p-4 text-center text-sm text-[var(--muted)]'>{copy.noParticipants}</p> : registrations.map(registration => { const profile = profiles.get(registration.user_id); const name = [profile?.first_name, profile?.last_name].filter(Boolean).join(' ') || registration.user_id.slice(0, 8); const pending = pendingRegistrationId === registration.id; return <div className='flex flex-col gap-3 rounded-xl border border-[#e0d4c8] bg-white p-3 sm:flex-row sm:items-center sm:justify-between' key={registration.id}><div><p className='font-semibold'>{name}</p><p className='mt-1 inline-flex items-center gap-3 text-xs text-[var(--muted)]'>{profile?.phone ? <span className='inline-flex items-center gap-1'><Phone size={12} /><bdi>{profile.phone}</bdi></span> : null}<span>{registration.guest_count} {copy.guests}</span><span className={registration.status === 'confirmed' ? 'text-[#526c48]' : registration.status === 'cancelled' ? 'text-red-500' : 'text-[#8a621b]'}>{copy.registrationStatuses[registration.status]}</span></p></div><div className='flex gap-2'>{registration.status !== 'confirmed' ? <button className='inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-full bg-[#63805a] px-3 text-xs font-bold text-white disabled:opacity-50' disabled={pending} onClick={() => onRegistrationStatusChange(registration.id, 'confirmed')} type='button'>{pending ? <LoaderCircle className='animate-spin' size={13} /> : <Check size={13} />}{copy.confirmRegistration}</button> : null}{registration.status !== 'cancelled' ? <button className='inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-full border border-red-200 bg-red-50 px-3 text-xs font-bold text-red-600 disabled:opacity-50' disabled={pending} onClick={() => onRegistrationStatusChange(registration.id, 'cancelled')} type='button'><X size={13} />{copy.cancelRegistration}</button> : null}</div></div>; })}</div> : null}
 		</article>
 	);
 }

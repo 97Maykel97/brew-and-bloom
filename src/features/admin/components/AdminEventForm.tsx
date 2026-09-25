@@ -40,10 +40,11 @@ export default function AdminEventForm({
 
 	return (
 		<form className='mt-5 rounded-2xl bg-[#f2e7db] p-4 sm:p-5' onSubmit={onSubmit}>
-			<div className='grid gap-3 sm:grid-cols-2 lg:grid-cols-4'>
+			<div className='grid gap-3 sm:grid-cols-2 lg:grid-cols-5'>
 				<EventInput label={copy.date}><input className={INPUT_CLASS_NAME} onChange={event => onDraftChange({ ...draft, event_date: event.target.value })} required type='date' value={draft.event_date} /></EventInput>
 				<EventInput label={copy.start}><input className={INPUT_CLASS_NAME} onChange={event => onDraftChange({ ...draft, start_time: event.target.value })} required type='time' value={draft.start_time} /></EventInput>
 				<EventInput label={copy.end}><input className={INPUT_CLASS_NAME} onChange={event => onDraftChange({ ...draft, end_time: event.target.value })} required type='time' value={draft.end_time} /></EventInput>
+				<EventInput label={copy.capacity}><input className={INPUT_CLASS_NAME} max='500' min='1' onChange={event => onDraftChange({ ...draft, capacity: Number(event.target.value) })} required type='number' value={draft.capacity} /></EventInput>
 				<EventInput label={copy.type}>
 					<select className={`${INPUT_CLASS_NAME} cursor-pointer`} onChange={event => onDraftChange({ ...draft, event_type: event.target.value as TEventType })} value={draft.event_type}>
 						{(Object.keys(copy.types) as TEventType[]).map(type => <option key={type} value={type}>{copy.types[type]}</option>)}

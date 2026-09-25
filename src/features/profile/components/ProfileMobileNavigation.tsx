@@ -29,6 +29,11 @@ export default function ProfileMobileNavigation({
 			active: activeTab === 'bookings',
 		},
 		{
+			label: copy.sidebar.events,
+			tab: 'events',
+			active: activeTab === 'events',
+		},
+		{
 			label: copy.sidebar.favorites,
 			tab: 'favorites',
 			active: activeTab === 'favorites',

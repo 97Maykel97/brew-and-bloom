@@ -8,6 +8,7 @@ const PROFILE_TABS: TProfileTab[] = [
 	'profile',
 	'orders',
 	'bookings',
+	'events',
 	'favorites',
 	'bonuses',
 	'settings',

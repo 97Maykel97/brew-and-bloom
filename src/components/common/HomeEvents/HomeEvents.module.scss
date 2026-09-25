@@ -40,6 +40,31 @@
 	color: var(--muted);
 }
 
+.introWrap {
+	display: grid;
+	gap: 16px;
+	justify-items: start;
+}
+
+.viewAll {
+	display: inline-flex;
+	min-height: 42px;
+	align-items: center;
+	justify-content: center;
+	padding-inline: 18px;
+	border-radius: 999px;
+	background: var(--accent);
+	font-family: var(--font-body), sans-serif;
+	font-size: 13px;
+	font-weight: 700;
+	color: #fff;
+	transition: transform 180ms ease;
+}
+
+.viewAll:hover {
+	transform: translateY(-2px);
+}
+
 .section[dir='rtl'] .title,
 .section[dir='rtl'] .eventTitle,
 .section[dir='rtl'] .dateBadge strong {

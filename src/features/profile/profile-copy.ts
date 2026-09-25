@@ -37,6 +37,7 @@ export const profileCopy = {
 			'Получайте 10% от стоимости завершённых заказов бонусами и используйте их при следующих покупках.',
 		orders: 'Мои заказы',
 		bookings: 'Мои бронирования',
+		events: 'Мои события',
 		allOrders: 'Все',
 		processingOrders: 'В обработке',
 		preparingOrders: 'Готовится',
@@ -110,6 +111,7 @@ export const profileCopy = {
 		sidebar: {
 			profile: 'Мой профиль',
 			orders: 'Мои заказы',
+			events: 'События',
 			favorites: 'Избранное',
 			bonuses: 'Бонусы',
 			settings: 'Настройки',
@@ -152,6 +154,7 @@ export const profileCopy = {
 			'Earn 10% of every completed order in bonuses and use them on future purchases.',
 		orders: 'My orders',
 		bookings: 'My bookings',
+		events: 'My events',
 		allOrders: 'All',
 		processingOrders: 'In progress',
 		preparingOrders: 'Preparing',
@@ -222,6 +225,7 @@ export const profileCopy = {
 		sidebar: {
 			profile: 'My profile',
 			orders: 'My orders',
+			events: 'Events',
 			favorites: 'Favorites',
 			bonuses: 'Bonuses',
 			settings: 'Settings',
@@ -264,6 +268,7 @@ export const profileCopy = {
 			'צוברים 10% מערך כל הזמנה שהושלמה כנקודות ומשתמשים בהן ברכישות הבאות.',
 		orders: 'ההזמנות שלי',
 		bookings: 'הזמנות שולחן',
+		events: 'האירועים שלי',
 		allOrders: 'הכל',
 		processingOrders: 'בטיפול',
 		preparingOrders: 'בהכנה',
@@ -337,6 +342,7 @@ export const profileCopy = {
 		sidebar: {
 			profile: 'הפרופיל שלי',
 			orders: 'ההזמנות שלי',
+			events: 'אירועים',
 			favorites: 'מועדפים',
 			bonuses: 'הטבות',
 			settings: 'הגדרות',

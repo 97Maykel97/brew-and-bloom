@@ -54,6 +54,7 @@
 			"eyebrow": "Meet at Brew & Bloom",
 			"title": "Upcoming events",
 			"description": "Coffee tastes even better when shared. Join us to learn, enjoy live music, and meet new people.",
+			"viewAll": "All events",
 			"items": {
 				"tasting": {
 					"day": "12",

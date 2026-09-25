@@ -71,8 +71,16 @@ export default function LoginScreen() {
 				.eq('id', data.user.id)
 				.maybeSingle();
 			const requestedDestination = searchParams.get('next');
-			const safeDestination =
-				requestedDestination?.startsWith(`/${locale}/profile`) &&
+			const allowedDestinations = [
+				`/${locale}/profile`,
+				`/${locale}/events`,
+			];
+			const safeDestination = requestedDestination &&
+				allowedDestinations.some(destination =>
+					requestedDestination === destination ||
+					requestedDestination.startsWith(`${destination}?`) ||
+					requestedDestination.startsWith(`${destination}#`),
+				) &&
 				!requestedDestination.startsWith('//')
 					? requestedDestination
 					: null;

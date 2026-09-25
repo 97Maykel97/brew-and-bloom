@@ -14,8 +14,11 @@ import {
 	EMPTY_EVENT_DRAFT,
 	isEventDraftComplete,
 	type TAdminEvent,
+	type TAdminEventRegistration,
 	type TEventDraft,
 	type TEventLanguage,
+	type TEventParticipantProfile,
+	type TEventRegistrationStatus,
 } from '../lib/admin-events-config';
 import type { TAdminLocale } from '../types';
 import AdminEventCard from './AdminEventCard';
@@ -24,6 +27,8 @@ import AdminEventForm from './AdminEventForm';
 export default function AdminEvents({ locale }: { locale: TAdminLocale }) {
 	const copy = ADMIN_EVENTS_COPY[locale];
 	const [events, setEvents] = useState<TAdminEvent[]>([]);
+	const [registrations, setRegistrations] = useState<TAdminEventRegistration[]>([]);
+	const [profiles, setProfiles] = useState<Map<string, TEventParticipantProfile>>(new Map());
 	const [draft, setDraft] = useState<TEventDraft>(EMPTY_EVENT_DRAFT);
 	const [editingId, setEditingId] = useState<string | null>(null);
 	const [activeLanguage, setActiveLanguage] = useState<TEventLanguage>(locale);
@@ -31,17 +36,23 @@ export default function AdminEvents({ locale }: { locale: TAdminLocale }) {
 	const [isLoading, setIsLoading] = useState(true);
 	const [isSaving, setIsSaving] = useState(false);
 	const [pendingId, setPendingId] = useState<string | null>(null);
+	const [pendingRegistrationId, setPendingRegistrationId] = useState<string | null>(null);
 	const [error, setError] = useState('');
 
 	const loadEvents = useCallback(async () => {
-		const { data, error: loadError } = await createClient()
-			.from('events')
-			.select('*')
-			.order('event_date', { ascending: true })
-			.order('start_time', { ascending: true });
+		const supabase = createClient();
+		const [eventsResult, registrationsResult, profilesResult] = await Promise.all([
+			supabase.from('events').select('*').order('event_date', { ascending: true }).order('start_time', { ascending: true }),
+			supabase.from('event_registrations').select('*').order('created_at', { ascending: true }),
+			supabase.from('profiles').select('id, first_name, last_name, phone'),
+		]);
 
-		if (loadError) setError(ADMIN_EVENTS_COPY[locale].error);
-		else setEvents((data as TAdminEvent[] | null) ?? []);
+		if (eventsResult.error || registrationsResult.error || profilesResult.error) setError(ADMIN_EVENTS_COPY[locale].error);
+		else {
+			setEvents((eventsResult.data as TAdminEvent[] | null) ?? []);
+			setRegistrations((registrationsResult.data as TAdminEventRegistration[] | null) ?? []);
+			setProfiles(new Map(((profilesResult.data as TEventParticipantProfile[] | null) ?? []).map(profile => [profile.id, profile])));
+		}
 		setIsLoading(false);
 	}, [locale]);
 
@@ -55,6 +66,7 @@ export default function AdminEvents({ locale }: { locale: TAdminLocale }) {
 				{ event: '*', schema: 'public', table: 'events' },
 				() => void loadEvents(),
 			)
+			.on('postgres_changes', { event: '*', schema: 'public', table: 'event_registrations' }, () => void loadEvents())
 			.subscribe();
 
 		return () => {
@@ -92,6 +104,7 @@ export default function AdminEvents({ locale }: { locale: TAdminLocale }) {
 			event_date: event.event_date,
 			start_time: event.start_time.slice(0, 5),
 			end_time: event.end_time.slice(0, 5),
+			capacity: event.capacity ?? 20,
 			is_published: event.is_published,
 		});
 		setEditingId(event.id);
@@ -164,6 +177,15 @@ export default function AdminEvents({ locale }: { locale: TAdminLocale }) {
 		else await loadEvents();
 	}
 
+	async function changeRegistrationStatus(id: string, status: TEventRegistrationStatus) {
+		setPendingRegistrationId(id);
+		setError('');
+		const { error: updateError } = await createClient().rpc('admin_set_event_registration_status', { p_registration_id: id, p_status: status });
+		setPendingRegistrationId(null);
+		if (updateError) setError(copy.registrationError);
+		else await loadEvents();
+	}
+
 	return (
 		<section className='space-y-5'>
 			<header className='rounded-3xl border border-[#dfd2c5] bg-white/75 p-5 shadow-[0_12px_35px_rgba(65,45,32,0.05)] sm:p-6'>
@@ -224,9 +246,13 @@ export default function AdminEvents({ locale }: { locale: TAdminLocale }) {
 							isPending={pendingId === event.id}
 							key={event.id}
 							locale={locale}
+							registrations={registrations.filter(registration => registration.event_id === event.id)}
+							profiles={profiles}
+							pendingRegistrationId={pendingRegistrationId}
 							onDelete={() => void deleteEvent(event)}
 							onEdit={() => openEditForm(event)}
 							onToggle={() => void togglePublication(event)}
+							onRegistrationStatusChange={(id, status) => void changeRegistrationStatus(id, status)}
 						/>
 					))}
 				</div>

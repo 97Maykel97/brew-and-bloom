@@ -2,6 +2,7 @@ export type TProfileTab =
 	| 'profile'
 	| 'orders'
 	| 'bookings'
+	| 'events'
 	| 'favorites'
 	| 'bonuses'
 	| 'settings';

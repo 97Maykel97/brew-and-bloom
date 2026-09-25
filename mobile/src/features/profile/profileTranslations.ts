@@ -3,6 +3,7 @@ import type { TLocale } from '@/i18n/languages';
 export type TProfileTranslations = {
 	allOrders: string;
 	bookings: string;
+	events: string;
 	birthDate: string;
 	bonuses: string;
 	bonusDescription: string;
@@ -102,6 +103,7 @@ export const profileTranslations: Record<TLocale, TProfileTranslations> = {
 		profileTab: 'Мой профиль',
 		orders: 'Мои заказы',
 		bookings: 'Бронирования',
+		events: 'Мои события',
 		favorites: 'Избранное',
 		firstName: 'Имя',
 		allOrders: 'Все',
@@ -205,6 +207,7 @@ export const profileTranslations: Record<TLocale, TProfileTranslations> = {
 		profileTab: 'My profile',
 		orders: 'My orders',
 		bookings: 'Bookings',
+		events: 'My events',
 		favorites: 'Favorites',
 		firstName: 'First name',
 		allOrders: 'All',
@@ -306,6 +309,7 @@ export const profileTranslations: Record<TLocale, TProfileTranslations> = {
 		profileTab: 'הפרופיל שלי',
 		orders: 'ההזמנות שלי',
 		bookings: 'הזמנות שולחן',
+		events: 'האירועים שלי',
 		favorites: 'מועדפים',
 		firstName: 'שם פרטי',
 		allOrders: 'הכל',

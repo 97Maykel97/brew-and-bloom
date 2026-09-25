@@ -10,8 +10,13 @@ export const homeScreenStyles = StyleSheet.create({
 	scrollContent: {
 		flexGrow: 1,
 	},
+	hero: {
+		minHeight: 650,
+		justifyContent: 'center',
+		backgroundColor: Colors.background,
+	},
 	content: {
-		minHeight: 600,
+		minHeight: 650,
 		justifyContent: 'center',
 		alignItems: 'center',
 		paddingHorizontal: Spacing.large,

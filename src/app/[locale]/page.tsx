@@ -68,6 +68,7 @@ export default async function Page({ params }: TPageProps) {
 		eyebrow: eventsT('eyebrow'),
 		title: eventsT('title'),
 		description: eventsT('description'),
+		viewAll: eventsT('viewAll'),
 		tasting: {
 			day: eventsT('items.tasting.day'),
 			month: eventsT('items.tasting.month'),
