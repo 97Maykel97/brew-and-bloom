@@ -96,7 +96,11 @@ export default function HomeBestsellers({
 	}
 
 	return (
-		<section className={styles.section} dir={isRtl ? 'rtl' : 'ltr'}>
+		<section
+			id='bestsellers'
+			className={styles.section}
+			dir={isRtl ? 'rtl' : 'ltr'}
+		>
 			<Container>
 				<div className={styles.heading}>
 					<h2 className={styles.title}>{copy.title}</h2>

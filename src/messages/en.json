@@ -44,6 +44,39 @@
 					"description": "Flaky French croissant made with butter"
 				}
 			}
+		},
+		"promo": {
+			"title": "Your second coffee is 50% off",
+			"description": "More moments together. More to enjoy.",
+			"button": "Learn more"
+		},
+		"events": {
+			"eyebrow": "Meet at Brew & Bloom",
+			"title": "Upcoming events",
+			"description": "Coffee tastes even better when shared. Join us to learn, enjoy live music, and meet new people.",
+			"items": {
+				"tasting": {
+					"day": "12",
+					"month": "Oct",
+					"title": "Specialty coffee tasting",
+					"description": "Explore different origins, aromas, and brewing methods together with our barista.",
+					"time": "19:00–21:00"
+				},
+				"latteArt": {
+					"day": "20",
+					"month": "Oct",
+					"title": "Latte art workshop",
+					"description": "Learn to create beautiful patterns and prepare your own perfect cappuccino.",
+					"time": "16:00–18:00"
+				},
+				"acoustic": {
+					"day": "27",
+					"month": "Oct",
+					"title": "Acoustic evening",
+					"description": "Live music, soft light, and a relaxed evening in good company.",
+					"time": "19:00–22:00"
+				}
+			}
 		}
 	},
 	"auth": {
