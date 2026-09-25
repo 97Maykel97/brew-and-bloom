@@ -138,19 +138,6 @@ export default function ProfileList({
 		else notifyFavoriteChanged(productKey, false);
 	}
 
-	if (activeTab === 'bookings') {
-		return (
-			<View style={styles.list}>
-				<EmptyProfileState
-					description={copy.emptyBookingsText}
-					icon='calendar'
-					isRtl={isRtl}
-					title={copy.emptyBookings}
-				/>
-			</View>
-		);
-	}
-
 	return (
 		<View style={styles.list}>
 			{isOrders ? (

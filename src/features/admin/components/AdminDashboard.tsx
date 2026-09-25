@@ -11,6 +11,7 @@ import type {
 import { getAdminSection } from '../lib/admin-section';
 import AdminMobileNavigation from './AdminMobileNavigation';
 import AdminMenu from './AdminMenu';
+import AdminBookings from './AdminBookings';
 import AdminOrders from './AdminOrders';
 import AdminOverview from './AdminOverview';
 import AdminSectionPlaceholder from './AdminSectionPlaceholder';
@@ -117,6 +118,8 @@ export default function AdminDashboard({
 							<AdminOverview copy={copy} locale={locale} onSectionChange={changeSection} />
 						) : activeSection === 'orders' ? (
 							<AdminOrders locale={locale} />
+						) : activeSection === 'bookings' ? (
+							<AdminBookings locale={locale} />
 						) : activeSection === 'menu' ? (
 							<AdminMenu locale={locale} />
 						) : (

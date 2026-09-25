@@ -1,4 +1,3 @@
-import { CalendarDays } from 'lucide-react';
 import type { TProfileCopy } from '../profile-copy';
 import type {
 	TOrderStatus,
@@ -7,7 +6,7 @@ import type {
 	TProfileViewModel,
 } from '../types';
 import BonusView from './BonusView';
-import EmptyState from './EmptyState';
+import BookingsView from './BookingsView';
 import FavoritesView from './FavoritesView';
 import OrdersView from './OrdersView';
 import ProfileDetails from './ProfileDetails';
@@ -56,16 +55,7 @@ export default function ProfileContent({
 	}
 
 	if (activeTab === 'bookings') {
-		return (
-			<EmptyState
-				id='bookings'
-				icon={<CalendarDays size={24} strokeWidth={1.6} />}
-				title={copy.emptyBookings}
-				description={copy.emptyBookingsText}
-				actionLabel={copy.makeBooking}
-				actionHref={'/' + locale}
-			/>
-		);
+		return <BookingsView locale={locale} />;
 	}
 
 	if (activeTab === 'bonuses') {

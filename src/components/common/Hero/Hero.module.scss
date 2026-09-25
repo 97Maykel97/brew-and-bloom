@@ -187,6 +187,12 @@
 	outline-offset: 4px;
 }
 
+.button:disabled {
+	cursor: wait;
+	opacity: 0.72;
+	transform: none;
+}
+
 .steam {
 	position: absolute;
 	top: 0;

@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { ActivityIndicator, Pressable, Text, View } from 'react-native';
 
 import { Colors } from '@/constants/theme';
+import { getIsraelDateAndTime } from '@/features/profile/lib/booking-utils';
 import type { TLocale } from '@/i18n/translations';
 import { supabase } from '@/lib/supabase';
 import type { TAdminSection, TAdminTranslation } from '../types';
@@ -32,29 +33,38 @@ export default function AdminOverview({ copy, isRtl, locale, onSectionChange }: 
 	const labels = ACTIVITY_COPY[locale];
 
 	const loadOverview = useCallback(async () => {
-		const [ordersResult, profilesResult, menuResult] = await Promise.all([
+		const today = getIsraelDateAndTime().date;
+		const [ordersResult, profilesResult, menuResult, bookingsResult] = await Promise.all([
 			supabase.from('customer_orders').select('order_id, user_id, quantity, status, updated_at').neq('status', 'cart').order('updated_at', { ascending: false }),
 			supabase.from('profiles').select('id, first_name, last_name'),
 			supabase.from('menu_products').select('id', { count: 'exact', head: true }),
+			supabase
+				.from('table_bookings')
+				.select('id', { count: 'exact', head: true })
+				.eq('booking_date', today)
+				.neq('status', 'cancelled'),
 		]);
 		const rows = (ordersResult.data as TOrderRow[] | null) ?? [];
 		const profiles = new Map((profilesResult.data ?? []).map(profile => [profile.id, [profile.first_name, profile.last_name].filter(Boolean).join(' ')]));
 		const grouped = groupOrders(rows, profiles, copy.administrator);
 		setOrders(grouped.slice(0, 6));
-		setCounts({ orders: grouped.filter(order => ['processing', 'preparing', 'ready'].includes(order.status)).length, bookings: 0, users: profilesResult.data?.length ?? 0, menuItems: menuResult.count ?? 0 });
+		setCounts({ orders: grouped.filter(order => ['processing', 'preparing', 'ready'].includes(order.status)).length, bookings: bookingsResult.count ?? 0, users: profilesResult.data?.length ?? 0, menuItems: menuResult.count ?? 0 });
 		setIsLoading(false);
 	}, [copy.administrator]);
 
 	useEffect(() => {
 		const initialLoadTimer = setTimeout(() => void loadOverview(), 0);
+		const refreshInterval = setInterval(() => void loadOverview(), 15000);
 		const channel = supabase
 			.channel(`mobile-admin-overview-${Date.now()}-${Math.random().toString(36).slice(2)}`)
 			.on('postgres_changes', { event: '*', schema: 'public', table: 'customer_orders' }, () => void loadOverview())
 			.on('postgres_changes', { event: '*', schema: 'public', table: 'menu_products' }, () => void loadOverview())
 			.on('postgres_changes', { event: '*', schema: 'public', table: 'profiles' }, () => void loadOverview())
+			.on('postgres_changes', { event: '*', schema: 'public', table: 'table_bookings' }, () => void loadOverview())
 			.subscribe();
 		return () => {
 			clearTimeout(initialLoadTimer);
+			clearInterval(refreshInterval);
 			void supabase.removeChannel(channel);
 		};
 	}, [loadOverview]);

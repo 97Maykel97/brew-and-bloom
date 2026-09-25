@@ -2,7 +2,7 @@
 
 import { SubmitEvent, useState } from 'react';
 import Link from 'next/link';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
 import AuthField from '@/components/auth/AuthField';
@@ -24,6 +24,7 @@ import { createClient } from '@/lib/supabase/client';
 export default function LoginScreen() {
 	const { locale } = useParams<{ locale: string }>();
 	const router = useRouter();
+	const searchParams = useSearchParams();
 	const t = useTranslations('auth.login');
 	const formT = useTranslations('auth.form');
 
@@ -69,12 +70,18 @@ export default function LoginScreen() {
 				.select('role')
 				.eq('id', data.user.id)
 				.maybeSingle();
-			const destination =
-				profile?.role === 'admin' ? '/admin' : '/profile';
+			const requestedDestination = searchParams.get('next');
+			const safeDestination =
+				requestedDestination?.startsWith(`/${locale}/profile`) &&
+				!requestedDestination.startsWith('//')
+					? requestedDestination
+					: null;
+			const defaultDestination =
+				`/${locale}${profile?.role === 'admin' ? '/admin' : '/profile'}`;
 
 			setEmail('');
 			setPassword('');
-			router.replace('/' + locale + destination);
+			router.replace(safeDestination ?? defaultDestination);
 		} catch (error: unknown) {
 			setMessage(getAuthErrorMessage(error, locale));
 		} finally {

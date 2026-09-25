@@ -4,6 +4,7 @@ import { CalendarDays, ChevronRight, Clock3, Inbox, LoaderCircle, ShoppingBag, U
 import { useCallback, useEffect, useState } from 'react';
 
 import { createClient } from '@/lib/supabase/client';
+import { getTodayDate } from '@/features/profile/lib/booking-utils';
 import type { TAdminCopy, TAdminLocale, TAdminSection } from '../types';
 
 type TAdminOverviewProps = { copy: TAdminCopy; locale: TAdminLocale; onSectionChange: (section: TAdminSection) => void };
@@ -31,10 +32,16 @@ export default function AdminOverview({ copy, locale, onSectionChange }: TAdminO
 
 	const loadOverview = useCallback(async () => {
 		const supabase = createClient();
-		const [ordersResult, profilesResult, menuResult] = await Promise.all([
+		const today = getTodayDate();
+		const [ordersResult, profilesResult, menuResult, bookingsResult] = await Promise.all([
 			supabase.from('customer_orders').select('order_id, user_id, quantity, status, updated_at').neq('status', 'cart').order('updated_at', { ascending: false }),
 			supabase.from('profiles').select('id, first_name, last_name'),
 			supabase.from('menu_products').select('id', { count: 'exact', head: true }),
+			supabase
+				.from('table_bookings')
+				.select('id', { count: 'exact', head: true })
+				.eq('booking_date', today)
+				.neq('status', 'cancelled'),
 		]);
 
 		const rows = (ordersResult.data as TOrderRow[] | null) ?? [];
@@ -43,7 +50,7 @@ export default function AdminOverview({ copy, locale, onSectionChange }: TAdminO
 		setOrders(grouped.slice(0, 6));
 		setCounts({
 			orders: grouped.filter(order => ['processing', 'preparing', 'ready'].includes(order.status)).length,
-			bookings: 0,
+			bookings: bookingsResult.count ?? 0,
 			users: profilesResult.data?.length ?? 0,
 			menuItems: menuResult.count ?? 0,
 		});
@@ -52,15 +59,18 @@ export default function AdminOverview({ copy, locale, onSectionChange }: TAdminO
 
 	useEffect(() => {
 		const initialLoadTimer = window.setTimeout(() => void loadOverview(), 0);
+		const refreshInterval = window.setInterval(() => void loadOverview(), 15000);
 		const supabase = createClient();
 		const channel = supabase
 			.channel(`admin-overview-${crypto.randomUUID()}`)
 			.on('postgres_changes', { event: '*', schema: 'public', table: 'customer_orders' }, () => void loadOverview())
 			.on('postgres_changes', { event: '*', schema: 'public', table: 'menu_products' }, () => void loadOverview())
 			.on('postgres_changes', { event: '*', schema: 'public', table: 'profiles' }, () => void loadOverview())
+			.on('postgres_changes', { event: '*', schema: 'public', table: 'table_bookings' }, () => void loadOverview())
 			.subscribe();
 		return () => {
 			window.clearTimeout(initialLoadTimer);
+			window.clearInterval(refreshInterval);
 			void supabase.removeChannel(channel);
 		};
 	}, [loadOverview]);

@@ -9,6 +9,7 @@ import EmptyProfileState from './EmptyProfileState';
 import ProfileDetails from './ProfileDetails';
 import ProfileList from './ProfileList';
 import ProfileSettings from './ProfileSettings';
+import BookingsView from './BookingsView';
 
 type TProfileTabContentProps = {
 	activeStatus: TProfileOrderStatus;
@@ -74,6 +75,10 @@ export default function ProfileTabContent({
 				onLogoutAll={onLogoutAll}
 			/>
 		);
+	}
+
+	if (activeTab === 'bookings') {
+		return <BookingsView isRtl={isRtl} locale={locale} />;
 	}
 
 	return (

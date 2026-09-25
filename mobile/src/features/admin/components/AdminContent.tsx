@@ -12,6 +12,7 @@ import { adminNavigationItems } from './admin-navigation';
 import { adminContentStyles as styles } from './admin-content.styles';
 import AdminNavigation from './AdminNavigation';
 import AdminMenu from './AdminMenu';
+import AdminBookings from './AdminBookings';
 import AdminOrders from './AdminOrders';
 import AdminOverview from './AdminOverview';
 import type { TLocale } from '@/i18n/translations';
@@ -79,6 +80,8 @@ export default function AdminContent({
 				<AdminOverview copy={copy} isRtl={isRtl} locale={locale} onSectionChange={onSectionChange} />
 			) : activeSection === 'orders' ? (
 				<AdminOrders isRtl={isRtl} locale={locale} />
+			) : activeSection === 'bookings' ? (
+				<AdminBookings isRtl={isRtl} locale={locale} />
 			) : activeSection === 'menu' ? (
 				<AdminMenu isRtl={isRtl} locale={locale} />
 			) : (
